@@ -402,3 +402,146 @@ html:not(.uc-dark) {
   will-change: transform, opacity;
   backface-visibility: hidden;
 }
+
+// Light theme with orange accents
+.theme-5-light {
+  // Override background colors for light theme
+  .bg-tertiary-800 {
+    background-color: #ffffff !important;
+  }
+  .bg-tertiary-700 {
+    background-color: #fafafa !important;
+  }
+  .bg-tertiary-900 {
+    background-color: #f5f5f5 !important;
+  }
+  .bg-secondary {
+    background-color: #fff5ed !important; // Light orange tint
+  }
+  .bg-gray-900 {
+    background-color: #fff5ed !important;
+  }
+
+  // Override text colors for light theme
+  .text-tertiary-200,
+  .text-tertiary-100,
+  .text-white {
+    color: #0a0b0c !important; // Dark text
+  }
+  .text-tertiary-400,
+  .text-tertiary-300 {
+    color: #31393a !important; // Medium dark text
+  }
+  .text-secondary {
+    color: #66300b !important; // Dark orange
+  }
+  .text-gray-100,
+  .text-gray-200 {
+    color: #31393a !important;
+  }
+
+  // Keep primary orange color
+  .text-primary,
+  .text-orange {
+    color: #ff781a !important;
+  }
+  .bg-primary {
+    background-color: #ff781a !important;
+  }
+
+  // Buttons
+  .btn-primary {
+    background-color: #ff781a !important;
+    border-color: #ff781a !important;
+    color: #ffffff !important;
+    &:hover {
+      background-color: #ff881d !important;
+      border-color: #ff881d !important;
+    }
+  }
+
+  .btn-outline-primary {
+    border-color: #ff781a !important;
+    color: #ff781a !important;
+    &:hover {
+      background-color: #ff781a !important;
+      color: #ffffff !important;
+    }
+  }
+
+  // Borders
+  .border-gray-900,
+  .border-tertiary-700 {
+    border-color: #e1e3e6 !important;
+  }
+
+  // Header specific
+  .uc-header {
+    background-color: #ffffff !important;
+    .uc-navbar-nav > li > a {
+      color: #0a0b0c !important;
+      &:hover {
+        color: #ff781a !important;
+      }
+    }
+  }
+
+  // Cards and panels
+  .card {
+    background-color: #ffffff !important;
+    color: #0a0b0c !important;
+  }
+
+  // Panel color without background to keep circles visible
+  .panel {
+    color: #0a0b0c !important;
+  }
+
+  // Footer
+  footer {
+    background-color: #0a0b0c !important;
+    color: #ffffff !important;
+    .text-tertiary-200,
+    .text-tertiary-100,
+    .text-white {
+      color: #ffffff !important;
+    }
+  }
+}
+
+/* Hero CTA Button - Responsive Mobile Fix */
+.hero-cta-btn {
+  width: 100%;
+  height: auto !important;
+  min-height: 48px !important;
+  line-height: 1.4 !important;
+  padding: 0.75rem 1.5rem !important;
+  white-space: normal !important;
+  display: flex !important;
+}
+
+@media (min-width: 640px) {
+  .hero-cta-btn {
+    width: auto;
+    white-space: nowrap !important;
+    padding: 0 1.5rem !important;
+    min-height: 48px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-cta-btn {
+    min-height: 56px !important;
+    padding: 0 2rem !important;
+  }
+}
+
+.hero-cta-text {
+  font-size: 0.95rem;
+}
+
+@media (min-width: 640px) {
+  .hero-cta-text {
+    font-size: 1rem;
+  }
+}

@@ -1,24 +1,32 @@
-import Header2 from "@/components/headers/Header2";
+import BlogSidebarRight from "@/components/blog/BlogSidebarRight";
+import Breadcumb3 from "@/components/blog/Breadcumb3";
+import Footer6 from "@/components/footers/Footer6";
+import Header6 from "@/components/headers/Header6";
+import Topbar from "@/components/headers/Topbar";
 
-import Footer2 from "@/components/footers/Footer2";
-import Newsletter from "@/components/blog/Newsletter";
-import Blogs1 from "@/components/blog/Blogs1";
+import React from "react";
 export const metadata = {
   title:
-    "Blog 1 || Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
+    "Blog Sidebar || Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
   description:
     "Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
 };
-export default function BlogPage1() {
+export default function page() {
   return (
     <>
-      <div className="page-wrapper uni-body panel bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-200 overflow-x-hidden bp-xs bp-sm bp-md bp-lg bp-xl bp-xxl dom-ready">
-        <Header2 />
-        <div id="wrapper" className="wrap">
-          <Blogs1 />
-          <Newsletter />
+      <div className="theme-3 ">
+        <div
+          className="bp-xs page-wrapper bp-sm bp-md bp-lg bp-xl dom-ready bp-xxl-max uni-body panel uni-body panel bg-white text-gray-900 dark:bg-black dark:text-gray-200 disable-cursor"
+          style={{ overflowX: "clip" }}
+        >
+          <Topbar />
+          <Header6 staticPosition />
+          <div id="wrapper" className="wrap">
+            <Breadcumb3 pageName="Blog Sidebar" />
+            <BlogSidebarRight />
+          </div>
+          <Footer6 />
         </div>
-        <Footer2 />
       </div>
     </>
   );

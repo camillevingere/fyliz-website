@@ -14,7 +14,7 @@ export default function Faqs() {
               <div>
                 <div className="vstack gap-2">
                   <h2 className="h4 sm:h3 xl:h2 m-0">
-                    Frequently asked questions!
+                    Vos questions légitimes méritent des réponses claires !
                   </h2>
                 </div>
               </div>

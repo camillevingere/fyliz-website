@@ -1,33 +1,29 @@
 import Footer8 from "@/components/footers/Footer8";
 import Header8 from "@/components/headers/Header8";
 import Brands from "@/components/homes/home-9/Brands";
+import ClientSuccess from "@/components/homes/home-9/ClientSuccess";
 import Faqs from "@/components/homes/home-9/Faqs";
-import Features from "@/components/homes/home-9/Features";
 import Hero from "@/components/homes/home-9/Hero";
-import Pricing from "@/components/homes/home-9/Pricing";
 import Process from "@/components/homes/home-9/Process";
 import Solutions from "@/components/homes/home-9/Solutions";
 import Testimonials from "@/components/homes/home-9/Testimonials";
 export const metadata = {
-  title:
-    "Home 9 || Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
+  title: "Fyliz - Agence d'automatisation IA en France",
   description:
-    "Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
+    "Fyliz automatise vos tâches répétitives avec l'IA et booste votre croissance de +30% en 90 jours.",
 };
 export default function page() {
   return (
     <>
-      {" "}
-      <div className="theme-5">
-        <div className="bp-xs bp-sm bp-md bp-lg bp-xl dom-ready bp-xxl-max uni-body panel uni-body panel bg-tertiary-800 text-tertiary-200 overflow-x-hidden disable-cursor uc-dark">
+      <div className="theme-5 theme-5-light">
+        <div className="bp-xs bp-sm bp-md bp-lg bp-xl dom-ready bp-xxl-max uni-body panel bg-white text-gray-900 overflow-x-hidden disable-cursor">
           <Header8 />
           <div id="wrapper" className="wrap">
             <Hero />
             <Process />
             <Brands />
-            <Features />
+            <ClientSuccess />
             <Solutions />
-            <Pricing />
             <Testimonials />
             <Faqs />
           </div>

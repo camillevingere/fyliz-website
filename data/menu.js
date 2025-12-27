@@ -908,151 +908,151 @@ export const sections2 = [
 
 export const sections3 = [
   {
-    title: "Builder Tools",
+    title: "Automatisations IA",
     icon: "unicon-cube",
     items: [
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-01.svg",
-        title: "Email Template Builder",
-        description: "Design personalized emails that convert",
+        title: "Automatisation d'Emails",
+        description: "Générez et envoyez des emails personnalisés avec l'IA",
       },
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-02.svg",
-        title: "Landing Page Builder",
-        description: "Deliver the right message to the right user",
+        title: "Automatisation CRM",
+        description: "Synchronisez et enrichissez vos données clients automatiquement",
       },
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-03.svg",
-        title: "Reporting & analytics",
-        description: "Track sales & campaign performance",
+        title: "Rapports & Analytics",
+        description: "Créez des tableaux de bord et rapports automatisés",
       },
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-07.svg",
-        title: "Chatbots, Free forever",
-        description: "Track sales & campaign performance",
+        title: "Chatbots IA",
+        description: "Répondez à vos clients 24/7 avec l'intelligence artificielle",
       },
     ],
-    viewAllText: "View all products",
+    viewAllText: "Voir toutes les automatisations",
   },
   {
-    title: "AI Solutions",
+    title: "Solutions métier",
     icon: "unicon-gamification",
     items: [
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-04.svg",
-        title: "AI-Powered Tools",
-        description: "Say hello to your AI growth assistant",
+        title: "Génération de Contenu IA",
+        description: "Créez articles, posts et contenus marketing automatiquement",
       },
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-05.svg",
-        title: "E-commerce and retail",
-        description: "Amplify the conversation across channels",
+        title: "E-commerce & Retail",
+        description: "Automatisez vos ventes et gestion de stock",
       },
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-06.svg",
-        title: "Large Community",
-        description: "Our services offerings",
+        title: "Support Client Automatisé",
+        description: "Traitez automatiquement les demandes clients",
       },
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-08.svg",
-        title: "AI-Powered Automation",
-        description: "Our services offerings",
+        title: "Marketing Automation",
+        description: "Orchestrez vos campagnes marketing avec l'IA",
       },
     ],
-    viewAllText: "View all solutions",
+    viewAllText: "Voir toutes les solutions",
   },
   {
-    title: "More Products",
+    title: "Intégrations",
     icon: "unicon-cube",
     items: [
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-01.svg",
-        title: "Email Template Builder",
-        description: "Design personalized emails that convert",
+        title: "n8n & Make",
+        description: "Connectez vos outils sans coder",
       },
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-02.svg",
-        title: "Landing Page Builder",
-        description: "Deliver the right message to the right user",
+        title: "APIs personnalisées",
+        description: "Créez des intégrations sur mesure pour votre entreprise",
       },
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-03.svg",
-        title: "Reporting & analytics",
-        description: "Track sales & campaign performance",
+        title: "Zapier & Automation",
+        description: "Connectez plus de 5000 applications",
       },
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-07.svg",
-        title: "Chatbots, Free forever",
-        description: "Track sales & campaign performance",
+        title: "Database & Cloud",
+        description: "Synchronisez vos bases de données automatiquement",
       },
     ],
-    viewAllText: "View all products",
+    viewAllText: "Voir toutes les intégrations",
   },
 ];
 
 export const sections4 = [
   {
-    title: "Automation",
+    title: "Ventes & Marketing",
     icon: "unicon-glyph-square-fill",
     items: [
       {
-        icon: "unicon-checkmark",
-        title: "To-Do List",
+        icon: "unicon-chart-pie",
+        title: "Lead Generation",
         description:
-          "Managing multiple software and tools for different tasks.",
+          "Automatisez la prospection et enrichissement de vos leads",
       },
       {
-        icon: "unicon-chart-pie",
-        title: "Reports",
-        description: "The latest industry reports, updates and info.",
+        icon: "unicon-email",
+        title: "Email Marketing",
+        description: "Campagnes d'emails personnalisés à grande échelle",
       },
       {
         icon: "unicon-increase-level",
-        title: "Spreadsheets",
-        description: "Suite of tools that cover all aspects of your business.",
+        title: "Sales Pipeline",
+        description: "Gérez automatiquement votre pipeline de ventes",
       },
     ],
   },
   {
-    title: "Teaming",
+    title: "Opérations",
     icon: "unicon-glyph-circle-fill",
     items: [
       {
-        icon: "unicon-chart-venn-diagram",
-        title: "Collaboration",
-        description: "Assign tasks, share files with your team.",
+        icon: "unicon-file-edit",
+        title: "Gestion de documents",
+        description: "Traitez et classez vos documents automatiquement",
       },
       {
-        icon: "unicon-chat",
-        title: "Chatbots",
-        description: "Assign tasks, share files with your team.",
+        icon: "unicon-workflow",
+        title: "Workflows métier",
+        description: "Automatisez vos processus internes",
       },
       {
-        icon: "unicon-checkmark",
-        title: "To-Do List",
+        icon: "unicon-database",
+        title: "Data Management",
         description:
-          "Managing multiple software and tools for different tasks.",
+          "Synchronisez et nettoyez vos données automatiquement",
       },
     ],
   },
   {
-    title: "Use Case",
+    title: "Support Client",
     icon: "unicon-glyph-caution",
     items: [
       {
-        icon: "unicon-chart-pie",
-        title: "Reports",
-        description: "The latest industry reports, updates and info.",
+        icon: "unicon-chat",
+        title: "Support Automatisé",
+        description: "Répondez instantanément aux demandes courantes",
       },
       {
-        icon: "unicon-increase-level",
-        title: "Spreadsheets",
-        description: "Suite of tools that cover all aspects of your business.",
+        icon: "unicon-ticket",
+        title: "Ticketing",
+        description: "Routez et priorisez automatiquement les tickets",
       },
       {
-        icon: "unicon-chart-venn-diagram",
-        title: "Collaboration",
-        description: "Assign tasks, share files with your team.",
+        icon: "unicon-headphones",
+        title: "Service Client IA",
+        description: "Assistez vos équipes avec l'intelligence artificielle",
       },
     ],
   },
@@ -1060,21 +1060,21 @@ export const sections4 = [
 
 export const categories = [
   {
-    title: "Get started is Easy!",
+    title: "Commencez maintenant !",
     links: [
-      { text: "Hire an Expert", href: "/page-contact" },
-      { text: "Customer stories", href: "#" },
-      { text: "Resources", href: "#" },
+      { text: "Audit Gratuit", href: "/page-contact-2" },
+      { text: "Cas clients", href: "#" },
+      { text: "Ressources", href: "#" },
       { text: "Blog", href: "/blog-sidebar" },
-      { text: "Career", href: "/page-career" },
-      { text: "Help Center", href: "/page-contact" },
+      { text: "Carrières", href: "/page-career" },
+      { text: "Centre d'aide", href: "/page-contact" },
     ],
   },
   {
-    title: "Terms and privacy",
+    title: "Légal",
     links: [
-      { text: "Terms of service", href: "/page-terms" },
-      { text: "Privacy Policy", href: "/page-privacy" },
+      { text: "Conditions d'utilisation", href: "/page-terms" },
+      { text: "Politique de confidentialité", href: "/page-privacy" },
     ],
   },
 ];

@@ -2,7 +2,7 @@
 import { pricingPlans4 } from "@/data/pricing";
 import Link from "next/link";
 
-import React, { useState } from "react";
+import { useState } from "react";
 export default function Pricing() {
   const [isYearly, setIsYearly] = useState(false);
 
@@ -22,12 +22,12 @@ export default function Pricing() {
                 style={{ transform: "translateY(0px)", opacity: 1 }}
               >
                 <span className="fs-7 fw-medium py-narrow px-2 bg-dark text-white dark:bg-primary dark:text-dark rounded-pill">
-                  Pricing
+                  Tarifs Transparents
                 </span>
                 <h2 className="h4 sm:h3 lg:h1 m-0 text-center max-w-650px mx-auto">
-                  Scalable plans{" "}
+                  Investissement intelligent.{" "}
                   <span className="text-tertiary dark:text-primary">
-                    to fit any business size
+                    Résultats mesurables garantis.
                   </span>
                 </h2>
               </div>
@@ -45,7 +45,7 @@ export default function Pricing() {
                     onClick={() => setIsYearly(false)}
                   >
                     <a className="d-flex justify-center text-dark">
-                      Pay monthly
+                      Paiement mensuel
                     </a>
                   </li>
                   <li
@@ -53,7 +53,7 @@ export default function Pricing() {
                     onClick={() => setIsYearly(true)}
                   >
                     <a className="d-flex justify-center text-dark">
-                      Pay yearly
+                      Paiement annuel (-20%)
                     </a>
                   </li>
                 </ul>
@@ -93,7 +93,7 @@ export default function Pricing() {
                               <hr />
                               <ul className="nav-y gap-1 fs-6">
                                 <li className="mb-1">
-                                  <b>Standout features</b>
+                                  <b>Inclus dans cette offre</b>
                                 </li>
                                 {plan.features.map((feature, i) => (
                                   <li key={i}>
@@ -110,7 +110,7 @@ export default function Pricing() {
                                   {plan.buttonText}
                                 </Link>
                                 <span className="fs-7 opacity-70">
-                                  No credit card required!
+                                  Sans engagement. Annulation en 1 clic.
                                 </span>
                               </div>
                             </div>{" "}
@@ -121,7 +121,8 @@ export default function Pricing() {
                   </li>
                 </div>
                 <p className="text-center mt-4 lg:mt-6">
-                  *Yearly discount available on select plans.
+                  *Garantie satisfait ou remboursé 60 jours. Aucune question
+                  posée.
                 </p>
               </div>
             </div>

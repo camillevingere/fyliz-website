@@ -1,11 +1,9 @@
 "use client";
+import { siteConfig } from "@/lib/config";
 import { openMobileMenu } from "@/utlis/toggleMobileMenu";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import ProductPages from "./ProductPages";
-import Solutions from "./Solutions";
-import { categories } from "@/data/menu";
+import { useEffect, useState } from "react";
 
 export default function Header8() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -75,31 +73,24 @@ export default function Header8() {
                 <div className="uc-logo ltr:ms-1 rtl:me-1">
                   <Link
                     className="panel text-none"
-                    href={`/home-9`}
+                    href={`/`}
                     style={{ width: 140 }}
                   >
                     <Image
-                      className="dark:d-none"
-                      alt="Lexend"
-                      src="/assets/images/common/logo-8-light.svg"
-                      width={148}
-                      height={39}
-                    />
-                    <Image
-                      className="d-none dark:d-block"
-                      alt="Lexend"
-                      src="/assets/images/common/logo-8-dark.svg"
-                      width={148}
-                      height={39}
+                      className="text-tertiary dark:text-primary"
+                      alt="Fyliz"
+                      src="/assets/images/logo.webp"
+                      width={60}
+                      height={60}
                     />
                   </Link>
                 </div>
               </div>
               <div className="uc-navbar-center">
                 <ul className="uc-navbar-nav fs-5 fw-bold gap-3 lg:gap-4 d-none lg:d-flex">
-                  <li className="has-dd-menu">
+                  {/* <li className="has-dd-menu">
                     <a href="#" role="button" aria-haspopup="true">
-                      Products{" "}
+                      Services{" "}
                       <span
                         data-uc-navbar-parent-icon=""
                         className="uc-icon uc-navbar-parent-icon"
@@ -132,36 +123,36 @@ export default function Header8() {
                       <div className="uc-dropbar-footer p-2 xl:p-4 xl:px-6 bg-primary dark:bg-tertiary-600 dark:bg-gradient-45 from-tertiary to-transparent text-dark dark:text-white border-top border-dark dark:border-white dark:border-opacity-15">
                         <ul className="nav-x gap-4 fs-8">
                           <li>
-                            <a href="#">
+                            <a href="/page-integrations">
                               <i className="fs-8 unicon-api" />
                               <span className="border-bottom hover:border-tertiary duration-150">
-                                Explore Apps
+                                Nos Intégrations
                               </span>
                             </a>
                           </li>
                           <li>
-                            <a href="#">
+                            <a href="/page-features">
                               <i className="fs-8 unicon-airplay" />
                               <span className="border-bottom hover:border-tertiary duration-150">
-                                AI Solutions
+                                Automatisations IA
                               </span>
                             </a>
                           </li>
                           <li>
-                            <a href="#">
+                            <a href="/page-contact-2">
                               <i className="fs-8 unicon-cloud-lightning" />
                               <span className="border-bottom hover:border-tertiary duration-150">
-                                Join Lexend Early Access
+                                Audit Gratuit en 48h
                               </span>
                             </a>
                           </li>
                         </ul>
                       </div>
                     </div>
-                  </li>
-                  <li className="has-dd-menu">
+                  </li> */}
+                  {/* <li className="has-dd-menu">
                     <a href="#" role="button" aria-haspopup="true">
-                      Solutions{" "}
+                      Cas d&apos;usage{" "}
                       <span
                         data-uc-navbar-parent-icon=""
                         className="uc-icon uc-navbar-parent-icon"
@@ -192,10 +183,12 @@ export default function Header8() {
                                 <div className="panel vstack gap-4 p-4">
                                   <div className="vstack gap-narrow flex-none">
                                     <h5 className="h5 xl:h4 m-0">
-                                      Workflow quick-start automation guide
+                                      Automatisez vos workflows en quelques
+                                      clics
                                     </h5>
                                     <p className="fs-7 opacity-60">
-                                      How Lexend can help you automate your work
+                                      Découvrez comment Fyliz automatise vos
+                                      processus et libère 40h/mois par employé
                                     </p>
                                   </div>
                                   <div className="row child-cols-4 gx-4 col-match justify-between">
@@ -237,24 +230,24 @@ export default function Header8() {
                         </div>
                       </div>
                     </div>
+                  </li> */}
+                  <li>
+                    <Link href={`/solutions-automatisation-ia`}>Solutions</Link>
                   </li>
                   <li>
-                    <Link href={`/blog-sidebar`}>Blog</Link>
+                    <Link href={`/cas-clients`}>Cas clients</Link>
                   </li>
                   <li>
-                    <Link href={`/page-pricing-2`}>Pricing</Link>
-                  </li>
-                  <li>
-                    <Link href={`/page-integrations`}>Integrations</Link>
+                    <Link href={`/blog`}>Blog</Link>
                   </li>
                 </ul>
               </div>
               <div className="uc-navbar-right">
                 <Link
                   className="btn btn-md dark:text-white border border-dark dark:border-white dark:border-opacity-15 dark:bg-gradient-45 from-tertiary to-transparent fs-5 lg:px-3 d-none lg:d-inline-flex rounded-pill"
-                  href={`/page-contact-2`}
+                  href={siteConfig.ctaHeader.buttonLink}
                 >
-                  Contact sales
+                  {siteConfig.ctaHeader.buttonText}
                 </Link>
                 <a
                   className="btn btn-md btn-tertiary w-48px h-48px d-inline-flex lg:d-none"
