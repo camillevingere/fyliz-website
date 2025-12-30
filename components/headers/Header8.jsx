@@ -4,9 +4,11 @@ import { siteConfig } from "@/lib/config";
 import { openMobileMenu } from "@/utlis/toggleMobileMenu";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Header8() {
+  const pathname = usePathname();
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [scrollingUp, setScrollingUp] = useState(false);
 
@@ -49,6 +51,11 @@ export default function Header8() {
       });
     };
   }, []);
+
+  const isMenuActive = (href) => {
+    return pathname.split("/")[1] === href?.split("/")[1];
+  };
+
   return (
     <header
       className={`uc-header header-nine uc-navbar-sticky-wrap z-999 uc-sticky  ${
@@ -88,12 +95,24 @@ export default function Header8() {
                 </div>
               </div>
               <div className="uc-navbar-center">
-                <ul className="uc-navbar-nav fs-5 fw-bold gap-3 lg:gap-4 d-none lg:d-flex">
-                  {headerMenuItems.map((item, index) => (
-                    <li key={index}>
-                      <Link href={item.href}>{item.label}</Link>
-                    </li>
-                  ))}
+                <ul
+                  className="uc-navbar-nav fs-5 fw-bold gap-3 lg:gap-4 d-none lg:d-flex"
+                  data-uc-nav=""
+                >
+                  {headerMenuItems.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        <Link
+                          href={item.href}
+                          className={
+                            isMenuActive(item.href) ? "menuActive" : ""
+                          }
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <div className="uc-navbar-right">

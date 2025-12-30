@@ -255,7 +255,7 @@ html:not(.uc-dark) {
   .header-seven {
     .uc-navbar-nav > li.has-dd-menu > a:hover {
       box-shadow: inset 0 3px var(--color-primary);
-      color: var(--color-gray-900) !important;
+      color: var(--color-gray-900);
       opacity: 0.75;
     }
   }
@@ -263,46 +263,46 @@ html:not(.uc-dark) {
 .header-eight {
   .uc-navbar-nav > li.has-dd-menu > a:hover {
     box-shadow: inset 0 3px var(--color-primary);
-    color: #fff !important;
+    color: #fff;
     opacity: 0.75;
   }
   .uc-navbar-nav {
-    margin-bottom: 0 !important;
-    padding-left: 0px !important;
+    margin-bottom: 0;
+    padding-left: 0px;
   }
 }
 .header-nine {
   .uc-navbar-nav > li.has-dd-menu > a:hover {
     box-shadow: inset 0 3px var(--color-primary);
-    color: #fff !important;
+    color: #fff;
     opacity: 0.75;
   }
   .uc-navbar-nav {
-    margin-bottom: 0 !important;
-    padding-left: 0px !important;
+    margin-bottom: 0;
+    padding-left: 0px;
   }
 }
 .header-global {
   .uc-navbar-nav > li.has-dd-menu > a:hover {
     box-shadow: inset 0 3px var(--color-primary);
-    color: #fff !important;
+    color: #fff;
     opacity: 0.75;
   }
   .uc-navbar-nav {
-    margin-bottom: 0 !important;
-    padding-left: 0px !important;
+    margin-bottom: 0;
+    padding-left: 0px;
   }
 }
 .header-default {
   .uc-navbar-nav {
-    margin-bottom: 0 !important;
-    padding-left: 0px !important;
+    margin-bottom: 0;
+    padding-left: 0px;
   }
 }
 .uc-dark .header-default {
   .uc-navbar-nav > li.has-dd-menu > a:hover {
     box-shadow: inset 0 3px var(--color-primary);
-    color: #fff !important;
+    color: #fff;
     opacity: 0.75;
   }
 }
@@ -317,14 +317,14 @@ html:not(.uc-dark) {
     align-items: center;
   }
   .uc-navbar-center {
-    position: static !important;
-    transform: none !important;
+    position: static;
+    transform: none;
   }
   .uc-navbar-right {
     margin-left: 0;
   }
   .uc-dropbar.uc-navbar-dropdown {
-    top: 88px !important;
+    top: 88px;
   }
 }
 .uc-navbar-nav > li > a {
@@ -479,7 +479,7 @@ html:not(.uc-dark) {
   .uc-header {
     background-color: #ffffff !important;
     .uc-navbar-nav > li > a {
-      color: #0a0b0c !important;
+      color: #0a0b0c;
       &:hover {
         color: #ff781a !important;
       }

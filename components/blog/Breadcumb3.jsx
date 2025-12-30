@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Breadcumb3({ pageName = "Blog" }) {
   return (
     <div
-      className="page-header panel vstack justify-center items-center gap-2 py-6 xl:py-9 mx-2 text-center rounded-2 dark:bg-gray-800"
+      className="page-header panel vstack justify-center items-center gap-2 py-10 mx-2 text-center rounded-2 dark:bg-gray-800"
       style={{
         backgroundColor: "#fff5ed",
         borderColor: "#ffddcc",

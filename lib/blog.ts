@@ -181,6 +181,35 @@ export async function getCustomerCasePosts(locale: string) {
   return getAllPosts("customer_cases");
 }
 
+export async function getSolutionsPosts() {
+  const { solutions } = await import("@/data/solutions");
+
+  return solutions
+    .filter((solution) => solution.status === "published")
+    .map((solution) => {
+      const defaultImage = `${siteConfig.url}/og?title=${encodeURIComponent(
+        solution.title
+      )}`;
+
+      return {
+        id: solution.id,
+        title: solution.title,
+        description: solution.description || "",
+        publishedAt: solution.publishedAt,
+        author: solution.author || "",
+        keywords: solution.keywords || [],
+        tags: solution.tags || [],
+        authorImage: "",
+        authorUsername: "",
+        image: solution.image || defaultImage,
+        status: solution.status,
+        slug: null,
+        link: solution.link,
+      };
+    })
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
+}
+
 // Nouvelle fonction pour récupérer un article par ID
 export async function getPostById(id: string, type = "articles") {
   const { data: article, error } = await supabase

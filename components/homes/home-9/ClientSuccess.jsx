@@ -1,9 +1,31 @@
-import { features10 } from "@/data/features";
+import { getCustomerCasePosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
+import { getSignedImageUrl } from "@/lib/image-utils";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ClientSuccess() {
+export default async function ClientSuccess() {
+  const allPosts = await getCustomerCasePosts("fr");
+  const articles = allPosts
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .slice(0, 4);
+
+  const customerCases = await Promise.all(
+    articles.map(async (post) => {
+      const signedImage =
+        (await getSignedImageUrl(post.image || null)) ||
+        "/images/default-blog.webp";
+
+      return {
+        id: post.slug || post.id,
+        slug: post.slug,
+        image: signedImage,
+        alt: post.title,
+        title: post.title,
+      };
+    })
+  );
+
   return (
     <div
       id="cas_clients"
@@ -41,8 +63,8 @@ export default function ClientSuccess() {
               className="row child-cols-12 md:child-cols-6 col-match g-2 lg:g-4"
               data-anime="onview: -200; targets: >*; translateY: [48, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: anime.stagger(100, {start: 200});"
             >
-              {features10.map((feature, index) => (
-                <div key={index}>
+              {customerCases.map((caseItem, index) => (
+                <div key={caseItem.id || index}>
                   <div
                     className="panel vstack lg:hstack gap-2 p-2 overflow-hidden text-gray-900 rounded-2 lg:rounded-3 border shadow-sm hover:shadow-md transition-shadow"
                     style={{
@@ -50,20 +72,20 @@ export default function ClientSuccess() {
                       borderColor: "#e5e7eb",
                     }}
                   >
-                    <div className="panel lg:max-w-300px lg:min-w-300px">
+                    <div className="panel lg:max-w-600px lg:min-w-600px">
                       <Image
                         className="rounded-1-5 border"
                         style={{ borderColor: "#e5e7eb" }}
-                        alt={feature.alt}
-                        src={feature.src}
+                        alt={caseItem.alt}
+                        src={caseItem.image}
                         width={680}
                         height={680}
                       />
                     </div>
                     <div className="panel vstack items-start gap-2 p-2">
-                      <h4 className="h4 m-0 text-inherit">{feature.title}</h4>
-                      <a
-                        href="#"
+                      <h4 className="h4 m-0 text-inherit">{caseItem.title}</h4>
+                      <Link
+                        href={`/cas-clients/${caseItem.slug}`}
                         className="btn btn-sm border px-2 mt-2 hover:opacity-80 transition-opacity"
                         style={{
                           backgroundColor: "#ff781a",
@@ -73,7 +95,7 @@ export default function ClientSuccess() {
                       >
                         <span>Voir l&apos;étude de cas</span>
                         <i className="icon icon-narrow unicon-arrow-up-right fw-bold rtl:rotate-180" />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

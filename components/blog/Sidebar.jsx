@@ -5,17 +5,23 @@ import Link from "next/link";
 const FALLBACK_IMAGE = "/images/default-blog.webp";
 
 export default async function Sidebar({ articles = [] }) {
-  const featured = articles.length > 0 && [
-    {
-      id: articles[0].slug || articles[0].id,
-      slug: articles[0].slug,
-      title: articles[0].title,
-      description: articles[0].description,
-      imgSrc:
-        (await getSignedImageUrl(articles[0].image || null)) || FALLBACK_IMAGE,
-      imgAlt: articles[0].title,
-    },
-  ];
+  // Find the article with isFavorite=true, fallback to first article if none found
+  const featuredArticle = articles.find((a) => a.isFavorite) || articles[0];
+
+  const featured = featuredArticle
+    ? [
+        {
+          id: featuredArticle.slug || featuredArticle.id,
+          slug: featuredArticle.slug,
+          title: featuredArticle.title,
+          description: featuredArticle.description,
+          imgSrc:
+            (await getSignedImageUrl(featuredArticle.image || null)) ||
+            FALLBACK_IMAGE,
+          imgAlt: featuredArticle.title,
+        },
+      ]
+    : null;
 
   const popular =
     articles.length > 3 &&

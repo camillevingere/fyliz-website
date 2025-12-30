@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 export default function Breadcumb({ pageName }) {
@@ -19,7 +18,7 @@ export default function Breadcumb({ pageName }) {
             />
           </li>
           <li>
-            <Link href={`/`}>Home</Link>
+            <Link href={`/`}>Accueil</Link>
           </li>
           <li>
             <i className="unicon-chevron-right fw-medium opacity-50 rtl:rotate-180"></i>
