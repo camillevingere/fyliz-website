@@ -1,4 +1,6 @@
-import Home9 from "./(homes)/home-9/page";
+import Home9 from "@/components/home-9/page";
+
+
 export const metadata = {
   title:
     "Fyliz - Libérez 40h/mois par employé avec l'IA | Automatisation Garantie en 48h",
