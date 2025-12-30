@@ -200,6 +200,10 @@
     }
   }
 
+  & a {
+    color: hsl(var(--primary));
+  }
+
   & ul,
   & ol {
     margin-bottom: 1.5rem;

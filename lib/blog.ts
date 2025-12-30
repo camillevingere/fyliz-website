@@ -58,10 +58,10 @@ export async function markdownToHTML(markdown: string) {
   return p.toString();
 }
 
-export async function getPost(slug: string) {
+export async function getPost(slug: string, type = "articles") {
   // Essayer d'abord de chercher par slug exact (si la colonne slug existe dans la DB)
   let { data: article } = await supabase
-    .from("articles")
+    .from(type)
     .select("*")
     .eq("status", "published")
     .eq("slug", slug) // Utilise la colonne slug si elle existe
@@ -70,7 +70,7 @@ export async function getPost(slug: string) {
   // Si pas trouvé par slug exact, rechercher par titre et générer le slug
   if (!article) {
     const { data: articles, error: articlesError } = await supabase
-      .from("articles")
+      .from(type)
       .select("*")
       .eq("status", "published");
 
@@ -123,9 +123,9 @@ export async function getPost(slug: string) {
   };
 }
 
-async function getAllPosts() {
+async function getAllPosts(type = "articles") {
   const { data: articles, error } = await supabase
-    .from("articles")
+    .from(type)
     .select("*")
     .eq("status", "published")
     .lte("published_at", new Date().toISOString())
@@ -174,10 +174,17 @@ export async function getBlogPosts(locale: string) {
   return getAllPosts();
 }
 
+export async function getCustomerCasePosts(locale: string) {
+  if (locale !== "fr") {
+    return [];
+  }
+  return getAllPosts("customer_cases");
+}
+
 // Nouvelle fonction pour récupérer un article par ID
-export async function getPostById(id: string) {
+export async function getPostById(id: string, type = "articles") {
   const { data: article, error } = await supabase
-    .from("articles")
+    .from(type)
     .select("*")
     .eq("id", id)
     .eq("status", "published")

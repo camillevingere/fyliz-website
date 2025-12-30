@@ -1,0 +1,117 @@
+/* MDX Editor Theme Customization */
+
+.theme {
+  --mdxeditor-color-primary: #ff781a;
+  --mdxeditor-color-text: #1f2937;
+  --mdxeditor-color-text-secondary: #6b7280;
+  --mdxeditor-color-background: #ffffff;
+  --mdxeditor-color-background-secondary: #f9fafb;
+  --mdxeditor-color-border: #e5e7eb;
+  --mdxeditor-color-border-focus: #ff781a;
+}
+
+.theme [data-toolbar] {
+  border-bottom: 1px solid var(--mdxeditor-color-border);
+  padding: 8px 12px;
+  background-color: var(--mdxeditor-color-background-secondary);
+}
+
+.theme [data-toolbar] button {
+  border-radius: 6px;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.theme [data-toolbar] button:hover {
+  background-color: var(--mdxeditor-color-background);
+  border-color: var(--mdxeditor-color-border);
+}
+
+.theme [data-toolbar] button[data-state="active"] {
+  background-color: var(--mdxeditor-color-primary);
+  color: white;
+  border-color: var(--mdxeditor-color-primary);
+}
+
+.theme [data-editor] {
+  min-height: 400px;
+  padding: 16px;
+}
+
+.theme [data-editor]:focus {
+  outline: none;
+  border-color: var(--mdxeditor-color-border-focus);
+}
+
+/* Custom styles for the editor content */
+.theme .prose {
+  color: var(--mdxeditor-color-text);
+  max-width: none;
+}
+
+.theme .prose h1,
+.theme .prose h2,
+.theme .prose h3,
+.theme .prose h4,
+.theme .prose h5,
+.theme .prose h6 {
+  color: var(--mdxeditor-color-text);
+}
+
+.theme .prose a {
+  color: var(--mdxeditor-color-primary);
+  text-decoration: underline;
+}
+
+.theme .prose a:hover {
+  opacity: 0.8;
+}
+
+.theme .prose blockquote {
+  border-left-color: var(--mdxeditor-color-primary);
+  background-color: var(--mdxeditor-color-background-secondary);
+  padding: 12px 16px;
+  border-radius: 6px;
+}
+
+.theme .prose code {
+  background-color: var(--mdxeditor-color-background-secondary);
+  padding: 2px 4px;
+  border-radius: 3px;
+  color: var(--mdxeditor-color-primary);
+}
+
+.theme .prose pre {
+  background-color: #1f2937;
+  border-radius: 8px;
+}
+
+.theme .prose pre code {
+  background-color: transparent;
+  color: #f9fafb;
+}
+
+.theme .table-scroll-x {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.theme .table-scroll-x table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 720px;
+}
+
+.theme .table-scroll-x th,
+.theme .table-scroll-x td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.theme .table-scroll-x thead th {
+  background: #f8fafc;
+  font-weight: 600;
+}

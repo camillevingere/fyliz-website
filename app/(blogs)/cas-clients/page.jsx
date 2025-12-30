@@ -1,14 +1,14 @@
-import BlogSidebarRight from "@/components/blog/BlogSidebarRight";
 import Breadcumb3 from "@/components/blog/Breadcumb3";
+import CustomerCaseSidebarRight from "@/components/blog/CustomerCaseSidebarRight";
 import Footer8 from "@/components/footers/Footer8";
 import Header8 from "@/components/headers/Header8";
-import { getBlogPosts } from "@/lib/blog";
+import { getCustomerCasePosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
-  title: "Blog",
-  description: `Derniers articles et actualités sur ${siteConfig.name}.`,
+  title: "Nos cas clients",
+  description: `Nos cas clients | ${siteConfig.name}.`,
 });
 
 const breadcrumbJsonLd = {
@@ -24,14 +24,14 @@ const breadcrumbJsonLd = {
     {
       "@type": "ListItem",
       position: 2,
-      name: "Blog",
-      item: `${siteConfig.url}/blog`,
+      name: "Nos cas clients",
+      item: `${siteConfig.url}/cas-clients`,
     },
   ],
 };
 
-export default async function Blog() {
-  const allPosts = await getBlogPosts("fr");
+export default async function CasClients() {
+  const allPosts = await getCustomerCasePosts("fr");
 
   const articles = await Promise.all(
     allPosts.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
@@ -41,12 +41,12 @@ export default async function Blog() {
   const jsonLdWithPosts = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: `${siteConfig.name} Blog`,
-    headline: `Blog - ${siteConfig.name}`,
-    description: `Derniers articles et actualités sur ${siteConfig.name}.`,
+    name: `${siteConfig.name} - Nos cas clients`,
+    headline: `Nos cas clients - ${siteConfig.name}`,
+    description: `Derniers cas clients et témoignages sur ${siteConfig.name}.`,
     image: siteConfig.logo,
     inLanguage: "fr",
-    url: `${siteConfig.url}/blog`,
+    url: `${siteConfig.url}/cas-clients`,
     publisher: {
       "@type": "Organization",
       name: siteConfig.name,
@@ -58,7 +58,7 @@ export default async function Blog() {
     blogPost: articles.slice(0, 5).map((post) => ({
       "@type": "BlogPosting",
       headline: post.title,
-      url: `${siteConfig.url}/blog/${post.slug}`,
+      url: `${siteConfig.url}/cas-clients/${post.slug}`,
       datePublished: post.publishedAt,
       author: {
         "@type": "Person",
@@ -86,8 +86,8 @@ export default async function Blog() {
         >
           <Header8 />
           <div id="wrapper" className="wrap">
-            <Breadcumb3 pageName="Blog" />
-            <BlogSidebarRight articles={articles} />
+            <Breadcumb3 pageName="Nos cas clients" />
+            <CustomerCaseSidebarRight articles={articles} />
           </div>
           <Footer8 />
         </div>

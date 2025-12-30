@@ -40,9 +40,9 @@ export async function generateMetadata({ params }) {
 export default async function BlogPost({ params }) {
   const { slug } = params;
 
-  let post = await getPostById(slug);
+  let post = await getPostById(slug, "customer_cases");
   if (!post || !post.metadata || !post.source) {
-    post = await getPost(slug);
+    post = await getPost(slug, "customer_cases");
   }
 
   if (!post || !post.metadata || !post.source) {
@@ -73,7 +73,7 @@ export default async function BlogPost({ params }) {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${siteConfig.url}/blog/${metadata.slug}`,
+      "@id": `${siteConfig.url}/cas-clients/${metadata.slug}`,
     },
   };
 
@@ -90,14 +90,14 @@ export default async function BlogPost({ params }) {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Blog",
-        item: `${siteConfig.url}/blog`,
+        name: "Cas Clients",
+        item: `${siteConfig.url}/cas-clients`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: metadata.title,
-        item: `${siteConfig.url}/blog/${metadata.slug}`,
+        item: `${siteConfig.url}/cas-clients/${metadata.slug}`,
       },
     ],
   };
@@ -142,7 +142,7 @@ export default async function BlogPost({ params }) {
                     <i className="unicon-chevron-right fw-medium opacity-50 rtl:rotate-180" />
                   </li>
                   <li>
-                    <Link href="/blog">Blog</Link>
+                    <Link href="/cas-clients">Cas Clients</Link>
                   </li>
                   <li>
                     <i className="unicon-chevron-right fw-medium opacity-50 rtl:rotate-180" />
@@ -180,25 +180,6 @@ export default async function BlogPost({ params }) {
                     {metadata.description}
                   </p>
                   <ul className="post-meta nav-x ft-tertiary justify-start gap-1 fs-7 text-gray-900 dark:text-white text-opacity-60 d-none lg:d-flex">
-                    {metadata.author && (
-                      <>
-                        <li>
-                          <div className="hstack gap-narrow ft-tertiary">
-                            {metadata.authorImage && (
-                              <Image
-                                src={metadata.authorImage}
-                                width={32}
-                                height={32}
-                                alt={metadata.author}
-                                className="w-32px h-32px rounded-circle me-narrow"
-                              />
-                            )}
-                            <span>{metadata.author}</span>
-                          </div>
-                        </li>
-                        <li className="opacity-50">•</li>
-                      </>
-                    )}
                     <li>
                       <time dateTime={metadata.publishedAt}>
                         {new Date(metadata.publishedAt).toLocaleDateString(
@@ -238,10 +219,10 @@ export default async function BlogPost({ params }) {
             {/* Back to Blog Link */}
             <div className="container max-w-lg mb-6">
               <Link
-                href="/blog"
+                href="/cas-clients"
                 className="btn btn-md btn-primary rounded-default shadow-xs"
               >
-                ← Retour au blog
+                ← Retour aux cas clients
               </Link>
             </div>
           </div>
