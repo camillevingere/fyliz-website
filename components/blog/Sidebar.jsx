@@ -1,17 +1,51 @@
 import { blogPosts7, posts2 } from "@/data/blogs";
+import { getSignedImageUrl } from "@/lib/image-utils";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
-export default function Sidebar() {
+const FALLBACK_IMAGE = "/images/default-blog.webp";
+
+export default async function Sidebar({ articles = [] }) {
+  const featured =
+    articles.length > 0
+      ? [
+          {
+            id: articles[0].slug || articles[0].id,
+            slug: articles[0].slug,
+            title: articles[0].title,
+            description: articles[0].description,
+            imgSrc:
+              (await getSignedImageUrl(articles[0].image || null)) ||
+              FALLBACK_IMAGE,
+            imgAlt: articles[0].title,
+          },
+        ]
+      : blogPosts7.slice(0, 1);
+
+  const popular =
+    articles.length > 3
+      ? articles.slice(3, 8).map((post) => ({
+          id: post.slug || post.id,
+          slug: post.slug,
+          title: post.title,
+          date: post.publishedAt
+            ? new Date(post.publishedAt).toLocaleDateString("fr-FR", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })
+            : "",
+        }))
+      : posts2;
+
   return (
     <div className="uc-sidebar panel vstack gap-2 ">
       <div className="widget featured-widget vstack gap-2 lg:gap-4 p-2 py-3 lg:p-4 lg:py-5 rounded-1-5 lg:rounded-2 bg-gray-25 dark:bg-gray-800">
         <div className="widget-title text-center">
-          <h5 className="fs-7 m-0">Featured post</h5>
+          <h5 className="fs-7 m-0">Article à la une</h5>
         </div>
         <div className="widget-content mt-2">
-          {blogPosts7.map((post, index) => (
+          {featured.map((post, index) => (
             <div className="panel text-center" key={index}>
               <div className="ratio ratio-16x9 rounded lg:rounded-1-5 uc-transition-toggle overflow-hidden">
                 <Image
@@ -24,20 +58,23 @@ export default function Sidebar() {
                 <Link
                   className="position-cover"
                   data-caption={post.imgAlt}
-                  href={`/blog-details/${post.id}`}
+                  href={post.slug ? `/${post.slug}` : `/${post.id}`}
                 />
               </div>
               <h4 className="h5 mt-3">
-                <Link className="text-none" href={`/blog-details/${post.id}`}>
+                <Link
+                  className="text-none"
+                  href={post.slug ? `/${post.slug}` : `/${post.id}`}
+                >
                   {post.title}
                 </Link>
               </h4>
               <p className="fs-6">{post.description}</p>
               <Link
                 className="btn btn-text text-primary dark:text-tertiary border-bottom mt-3"
-                href={`/blog-details/${post.id}`}
+                href={post.slug ? `/${post.slug}` : `/${post.id}`}
               >
-                Read more
+                Lire plus
               </Link>
             </div>
           ))}
@@ -45,12 +82,12 @@ export default function Sidebar() {
       </div>
       <div className="widget popular-widget vstack gap-2 p-2 py-3 lg:p-4 lg:py-5 rounded-1-5 lg:rounded-2 bg-gray-25 dark:bg-gray-800">
         <div className="widget-title text-center">
-          <h5 className="fs-7 m-0">Popular now</h5>
+          <h5 className="fs-7 m-0">Populaires</h5>
         </div>
         <div className="widget-content">
           <div className="row child-cols-12 gx-4 gy-3 sep-x">
-            {posts2.map((post, i) => (
-              <div key={post.id}>
+            {popular.map((post, i) => (
+              <div key={post.id || i}>
                 <article className="post type-post panel">
                   <div className="row child-cols g-2 lg:g-3">
                     <div>
@@ -62,7 +99,7 @@ export default function Sidebar() {
                           <h3 className="post-title h6 m-0">
                             <Link
                               className="text-none"
-                              href={`/blog-details/${post.id}`}
+                              href={post.slug ? `/${post.slug}` : `/${post.id}`}
                             >
                               {post.title}
                             </Link>
@@ -74,15 +111,6 @@ export default function Sidebar() {
                                   <div className="post-date hstack gap-narrow">
                                     <span>{post.date}</span>
                                   </div>
-                                </div>
-                                <div>
-                                  <a
-                                    href="#post_comment"
-                                    className="post-comments text-none hstack gap-narrow"
-                                  >
-                                    <i className="icon-narrow unicon-chat" />
-                                    <span>{post.comments}</span>
-                                  </a>
                                 </div>
                               </div>
                             </div>
@@ -97,23 +125,23 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-      <div className="widget social-widget vstack gap-2 text-center p-2 py-3 lg:p-4 lg:py-5 rounded-1-5 lg:rounded-2 bg-gray-25 dark:bg-gray-800">
+      {/* <div className="widget social-widget vstack gap-2 text-center p-2 py-3 lg:p-4 lg:py-5 rounded-1-5 lg:rounded-2 bg-gray-25 dark:bg-gray-800">
         <div className="widgt-title">
-          <h4 className="fs-7 m-0">Follow @Lexend</h4>
+          <h4 className="fs-7 m-0">Suivre @Lexend</h4>
         </div>
         <div className="widgt-content">
           <form className="vstack gap-1">
             <input
               className="form-control form-control-sm fs-6 fw-medium h-40px w-full rounded-pill bg-white dark:bg-gray-800 dark:bg-gray-800 dark:border-white dark:border-opacity-15 dark:border-opacity-15"
               type="email"
-              placeholder="Your email"
+              placeholder="Votre email"
               required=""
             />
             <button
               className="btn btn-sm btn-primary dark:bg-tertiary dark:text-primary"
               type="submit"
             >
-              Sign up
+              S'inscrire
             </button>
           </form>
           <ul className="nav-x justify-center gap-1 mt-3">
@@ -151,7 +179,7 @@ export default function Sidebar() {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

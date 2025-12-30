@@ -19,6 +19,7 @@ import "photoswipe/dist/photoswipe.css";
 import "rc-slider/assets/index.css";
 import { useEffect } from "react";
 import { ParallaxProvider } from "react-scroll-parallax";
+import "./globals.scss";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
