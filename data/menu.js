@@ -919,7 +919,8 @@ export const sections3 = [
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-02.svg",
         title: "Automatisation CRM",
-        description: "Synchronisez et enrichissez vos données clients automatiquement",
+        description:
+          "Synchronisez et enrichissez vos données clients automatiquement",
       },
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-03.svg",
@@ -929,7 +930,8 @@ export const sections3 = [
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-07.svg",
         title: "Chatbots IA",
-        description: "Répondez à vos clients 24/7 avec l'intelligence artificielle",
+        description:
+          "Répondez à vos clients 24/7 avec l'intelligence artificielle",
       },
     ],
     viewAllText: "Voir toutes les automatisations",
@@ -941,7 +943,8 @@ export const sections3 = [
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-04.svg",
         title: "Génération de Contenu IA",
-        description: "Créez articles, posts et contenus marketing automatiquement",
+        description:
+          "Créez articles, posts et contenus marketing automatiquement",
       },
       {
         iconSrc: "/assets/images/custom-icons/home-8-icon-05.svg",
@@ -1030,8 +1033,7 @@ export const sections4 = [
       {
         icon: "unicon-database",
         title: "Data Management",
-        description:
-          "Synchronisez et nettoyez vos données automatiquement",
+        description: "Synchronisez et nettoyez vos données automatiquement",
       },
     ],
   },
@@ -1077,4 +1079,10 @@ export const categories = [
       { text: "Politique de confidentialité", href: "/page-privacy" },
     ],
   },
+];
+
+export const headerMenuItems = [
+  { href: "/solutions-automatisation-ia", label: "Solutions" },
+  { href: "/cas-clients", label: "Cas clients" },
+  { href: "/blog", label: "Blog" },
 ];

@@ -9,6 +9,7 @@ export const metadata = {
   description:
     "Lexend - Full-featured, professional-looking software, saas and startup nextjs template.",
 };
+
 export default function PrivacyPage() {
   return (
     <>

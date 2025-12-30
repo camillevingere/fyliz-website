@@ -227,6 +227,7 @@ export default async function BlogPost({ params }) {
                     priority
                   />
                 </figure>
+
                 <article
                   className="prose prose-xl dark:prose-invert lg:max-w-[800px] max-w-[350px] prose-lg lg:prose-2xl prose-headings:mb-6 prose-headings:mt-8 prose-p:mb-6 prose-p:text-lg lg:prose-p:text-xl prose-p:leading-relaxed prose-p:font-thin prose-ul:mb-6 prose-ol:mb-6 prose-li:mb-3 prose-blockquote:text-xl prose-blockquote:my-8"
                   dangerouslySetInnerHTML={{ __html: post.source }}

@@ -259,7 +259,7 @@ export const footerLinks6 = [
   {
     links: [
       { text: "Blog", href: "/blog" },
-      { text: "FAQ", href: "#faq" },
+      { text: "FAQ", href: "/#faq" },
       { text: "Contact", href: siteConfig.cta.buttonLink },
     ],
   },

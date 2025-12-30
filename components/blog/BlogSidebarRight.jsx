@@ -1,4 +1,3 @@
-import { posts as staticPosts } from "@/data/blogs";
 import { getSignedImageUrl } from "@/lib/image-utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,25 +5,24 @@ import Sidebar from "./Sidebar";
 
 export default async function BlogSidebarRight({ articles = [] }) {
   const mappedPosts =
-    articles.length > 0
-      ? await Promise.all(
-          articles.map(async (post) => {
-            const signedImage =
-              (await getSignedImageUrl(post.image || null)) ||
-              "/images/default-blog.webp";
+    articles.length > 0 &&
+    (await Promise.all(
+      articles.map(async (post) => {
+        const signedImage =
+          (await getSignedImageUrl(post.image || null)) ||
+          "/images/default-blog.webp";
 
-            return {
-              id: post.slug || post.id,
-              slug: post.slug,
-              image: signedImage,
-              alt: post.title,
-              title: post.title,
-              category: post.tags?.[0] || "Article",
-              excerpt: post.description,
-            };
-          })
-        )
-      : staticPosts;
+        return {
+          id: post.slug || post.id,
+          slug: post.slug,
+          image: signedImage,
+          alt: post.title,
+          title: post.title,
+          category: post.tags?.[0] || "Article",
+          excerpt: post.description,
+        };
+      })
+    ));
 
   return (
     <div className="section panel">

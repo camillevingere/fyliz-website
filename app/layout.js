@@ -8,11 +8,7 @@ import "../public/assets/css/main.scss";
 import "../public/assets/custom.scss";
 
 import BacktoTop from "@/components/common/BacktoTop";
-import Cart from "@/components/common/Cart";
 import MobileMenu from "@/components/headers/component/MobileMenu";
-import ContactModal from "@/components/modals/ContactModal";
-import NewsletterModal from "@/components/modals/NewsletterModal";
-import SearchModal from "@/components/modals/SearchModal";
 import anime from "animejs";
 import { usePathname } from "next/navigation";
 import "photoswipe/dist/photoswipe.css";
@@ -105,16 +101,12 @@ export default function RootLayout({ children }) {
   }, [pathname]);
 
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" dir="ltr" className="theme-5 theme-5-light">
       <body>
         {" "}
         <Context>
           <ParallaxProvider>{children}</ParallaxProvider>
           <MobileMenu />
-          <ContactModal />
-          <NewsletterModal />
-          <SearchModal />
-          <Cart />
           <BacktoTop />
         </Context>
       </body>

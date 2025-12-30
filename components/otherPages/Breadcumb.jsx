@@ -1,10 +1,9 @@
-import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 export default function Breadcumb() {
   return (
     <div
-      style={{ marginTop: "80px" }}
+      style={{ marginTop: "120px" }}
       className="breadcrumbs panel z-1 py-2 bg-secondary dark:bg-gray-100 dark:bg-opacity-5 dark:text-white"
     >
       <div className="container max-w-xl">
@@ -19,13 +18,10 @@ export default function Breadcumb() {
             />
           </li>
           <li>
-            <Link href={`/`}>Home</Link>
+            <Link href={`/`}>Accueil</Link>
           </li>
           <li>
             <i className="unicon-chevron-right fw-medium opacity-50 rtl:rotate-180" />
-          </li>
-          <li>
-            <span className="opacity-50">Sign in</span>
           </li>
         </ul>
       </div>
