@@ -102,11 +102,9 @@ export default function Hero() {
                 className="fs-7 fw-medium py-narrow px-2 text-white rounded-pill mx-auto"
                 style={{ backgroundColor: "#ffd7b8" }}
               >
-                {variant === "test" ? (
-                  "Intelligence Artificielle"
-                ) : (
-                  "🇫🇷 1ère Agence d'automatisation IA en France"
-                )}
+                {variant === "test"
+                  ? "Intelligence Artificielle"
+                  : "🇫🇷 1ère Agence d'automatisation IA en France"}
               </span>
               <h2
                 className="h2 xl:display-5 m-0 text-center"
@@ -118,7 +116,7 @@ export default function Hero() {
                     <span style={{ color: "#ff781a !important" }}>
                       d&apos;automatisation IA
                     </span>{" "}
-                    en France
+                    en France 🇫🇷
                   </>
                 ) : (
                   <>
