@@ -1,11 +1,8 @@
 "use client";
 
-import { useContextElement } from "@/context/Context";
 import { useEffect, useState } from "react";
 
 export default function BacktoTop() {
-  const { isDark, handleToggle } = useContextElement();
-
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

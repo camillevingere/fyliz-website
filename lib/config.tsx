@@ -8,10 +8,11 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3071",
   keywords: [
     "fyliz",
+    "agence d'automatisation IA",
     "automatisation business",
-    "communauté n8n france",
     "n8n blog",
   ],
+  appIcon: "/images/logo.webp",
   links: {
     email: "contact@fyliz.com",
     linkedinUrl:

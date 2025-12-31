@@ -19,7 +19,6 @@ export default function Hero() {
               <div
                 className="position-absolute rounded-circle border border-dark dark:border-white dark:border-opacity-15 dark:bg-gradient-45 from-tertiary to-transparent cstack w-56px h-56px d-none lg:d-block"
                 style={{ top: "10%", right: "10.5%" }}
-                data-anime="translateY: [0, 15]; easing: linear; loop: true; direction: alternate; delay: 50;"
               >
                 <Image
                   className="p-2"
@@ -32,7 +31,6 @@ export default function Hero() {
               <div
                 className="position-absolute rounded-circle border border-dark dark:border-white dark:border-opacity-15 dark:bg-gradient-45 from-tertiary to-transparent cstack w-56px h-56px d-none lg:d-block"
                 style={{ top: "-5%", left: "24%" }}
-                data-anime="translateY: [0, 5]; easing: linear; loop: true; direction: alternate; delay: 25;"
               >
                 <Image
                   className="p-2"
@@ -45,7 +43,6 @@ export default function Hero() {
               <div
                 className="position-absolute rounded-circle border border-dark dark:border-white dark:border-opacity-15 dark:bg-gradient-45 from-tertiary to-transparent cstack w-56px h-56px d-none lg:d-block"
                 style={{ top: "30%", left: "-1.5%" }}
-                data-anime="translateY: [0, 10]; easing: linear; loop: true; direction: alternate; delay: 0;"
               >
                 <Image
                   className="p-2"
@@ -58,7 +55,6 @@ export default function Hero() {
               <div
                 className="position-absolute rounded-circle border border-dark dark:border-white dark:border-opacity-15 dark:bg-gradient-45 from-tertiary to-transparent cstack w-56px h-56px d-none lg:d-block"
                 style={{ top: "45%", right: "-1.5%" }}
-                data-anime="translateY: [0, 5]; easing: linear; loop: true; direction: alternate; delay: 50;"
               >
                 <Image
                   className="p-2 text-dark dark:text-yellow-400"
@@ -72,7 +68,6 @@ export default function Hero() {
               <div
                 className="position-absolute rounded-circle border border-dark dark:border-white dark:border-opacity-15 dark:bg-gradient-45 from-tertiary to-transparent cstack w-56px h-56px d-none lg:d-block"
                 style={{ top: "75%", right: "21%" }}
-                data-anime="translateY: [0, 15]; easing: linear; loop: true; direction: alternate; delay: 25;"
               >
                 <Image
                   className="p-2"
@@ -85,7 +80,6 @@ export default function Hero() {
               <div
                 className="position-absolute rounded-circle border border-dark dark:border-white dark:border-opacity-15 dark:bg-gradient-45 from-tertiary to-transparent cstack w-56px h-56px d-none lg:d-block"
                 style={{ top: "85%", left: "11.5%" }}
-                data-anime="translateY: [0, 10]; easing: linear; loop: true; direction: alternate; delay: 50;"
               >
                 <Image
                   className="p-2"

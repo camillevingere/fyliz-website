@@ -14,20 +14,18 @@ export const metadata = {
 };
 export default function page() {
   return (
-    <>
-      <div className="bp-xs bp-sm bp-md bp-lg bp-xl dom-ready bp-xxl-max uni-body panel bg-white text-gray-900 overflow-x-hidden disable-cursor">
-        <Header8 />
-        <div id="wrapper" className="wrap">
-          <Hero />
-          <Process />
-          <Brands />
-          <ClientSuccess />
-          <Solutions />
-          <Testimonials />
-          <Faqs />
-        </div>
-        <Footer8 />
+    <div className="bp-xs bp-sm bp-md bp-lg bp-xl dom-ready bp-xxl-max uni-body panel bg-white text-gray-900 overflow-x-hidden disable-cursor">
+      <Header8 />
+      <div id="wrapper" className="wrap">
+        <Hero />
+        <Process />
+        <Brands />
+        <ClientSuccess />
+        <Solutions />
+        <Testimonials />
+        <Faqs />
       </div>
-    </>
+      <Footer8 />
+    </div>
   );
 }
