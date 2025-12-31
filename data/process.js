@@ -1,23 +1,23 @@
 export const cards = [
   {
-    src: "/assets/images/custom-icons/home-8-icon-01.svg",
+    src: "/assets/images/custom-icons/time-automation.svg",
     alt: "icon",
-    title: "Enrich Data with Context & Risk Management",
+    title: "Automatisez votre business jusqu'à 80%",
   },
   {
-    src: "/assets/images/custom-icons/home-8-icon-02.svg",
+    src: "/assets/images/custom-icons/roi-growth.svg",
     alt: "icon",
-    title: "Intuitive dashboard for at-a-glance insights",
+    title: "ROI de +30% mesuré dès les 90 premiers jours",
   },
   {
-    src: "/assets/images/custom-icons/home-8-icon-03.svg",
+    src: "/assets/images/custom-icons/adaptive-process.svg",
     alt: "icon",
-    title: "Automated data analysis and reporting",
+    title: "On s'adapte à vos process",
   },
   {
-    src: "/assets/images/custom-icons/home-8-icon-06.svg",
+    src: "/assets/images/custom-icons/lead-pipeline.svg",
     alt: "icon",
-    title: "Scalable plans to fit any business size",
+    title: "+3 leads par jour dans votre pipeline",
   },
 ];
 

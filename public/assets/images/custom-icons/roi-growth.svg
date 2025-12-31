@@ -1,0 +1,14 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Uniform orange background -->
+  <rect width="64" height="64" rx="12" fill="#FF7A3D"/>
+  
+  <!-- Chart bars - larger -->
+  <rect x="16" y="38" width="6" height="12" rx="1.5" fill="#FFFFFF"/>
+  <rect x="24" y="32" width="6" height="18" rx="1.5" fill="#FFFFFF"/>
+  <rect x="32" y="26" width="6" height="24" rx="1.5" fill="#FFFFFF"/>
+  <rect x="40" y="18" width="6" height="32" rx="1.5" fill="#FFFFFF"/>
+  
+  <!-- Trend arrow - larger -->
+  <path d="M14 42L22 36L30 30L38 24L46 16" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M38 16H46V24" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

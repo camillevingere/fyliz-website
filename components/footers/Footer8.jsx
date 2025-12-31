@@ -1,8 +1,7 @@
-import React from "react";
-import LanguageSelect from "../common/LanguageSelect";
-import Link from "next/link";
-import Image from "next/image";
 import { footerLinks6 } from "@/data/footer";
+import { siteConfig } from "@/lib/config";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer8() {
   return (
@@ -20,7 +19,7 @@ export default function Footer8() {
                           href="#"
                           className="btn btn-md xl:btn-lg btn-primary border border-dark dark:border-white dark:border-opacity-15 px-3 lg:px-5 w-auto rounded-pill"
                         >
-                          <span>Start your free trial</span>
+                          <span>{siteConfig.cta.buttonText}</span>
                         </a>
                       </div>
                       <div className="vstack sm:hstack justify-center gap-1 fs-6 text-gray-900 dark:text-white flex-row md-flex-column">
@@ -30,47 +29,41 @@ export default function Footer8() {
                             <div className="hstack justify-center gap-narrow">
                               <i
                                 className="icon unicon-star-filled text-white p-narrow"
-                                style={{ backgroundColor: "#00b67a" }}
+                                style={{
+                                  backgroundColor: siteConfig.brand.primary,
+                                }}
                               />
                               <i
                                 className="icon unicon-star-filled text-white p-narrow"
-                                style={{ backgroundColor: "#00b67a" }}
+                                style={{
+                                  backgroundColor: siteConfig.brand.primary,
+                                }}
                               />
                               <i
                                 className="icon unicon-star-filled text-white p-narrow"
-                                style={{ backgroundColor: "#00b67a" }}
+                                style={{
+                                  backgroundColor: siteConfig.brand.primary,
+                                }}
                               />
                               <i
                                 className="icon unicon-star-filled text-white p-narrow"
-                                style={{ backgroundColor: "#00b67a" }}
+                                style={{
+                                  backgroundColor: siteConfig.brand.primary,
+                                }}
                               />
                               <i
                                 className="icon unicon-star-filled text-white p-narrow"
-                                style={{ backgroundColor: "#00b67a" }}
+                                style={{
+                                  backgroundColor: siteConfig.brand.primary,
+                                }}
                               />
                             </div>
                           </div>
                         </div>
                         <div className="hstack justify-center gap-narrow">
                           <span className="desc rtl:order-first">
-                            5,200+ reviews on
+                            +50 entreprises satisfaites
                           </span>
-                          <div>
-                            <Image
-                              alt="Trustpilot"
-                              className="w-96px dark:d-none"
-                              src="/assets/images/review-logo/05.svg"
-                              width={138}
-                              height={42}
-                            />
-                            <Image
-                              alt="Trustpilot"
-                              className="w-96px d-none dark:d-inline-flex"
-                              src="/assets/images/review-logo/dark-05.svg"
-                              width={138}
-                              height={42}
-                            />
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -80,24 +73,22 @@ export default function Footer8() {
                       <div>
                         <Link
                           className="panel text-none"
-                          href={`/home-9`}
+                          href={`/`}
                           style={{ width: 140 }}
                         >
                           <Image
                             className="text-tertiary dark:text-primary"
-                            alt="Lexend"
-                            data-uc-svg=""
-                            src="/assets/images/common/logo-8-dark.svg"
-                            width={148}
-                            height={39}
+                            alt="Fyliz"
+                            src="/assets/images/logo.webp"
+                            width={60}
+                            height={60}
                           />
                         </Link>
                         <p className="mt-2">
-                          Design amazing digital experiences that create more
-                          happy in the world.
+                          Automatisez vos tâches répétitives avec l&apos;IA et
+                          libérez 40h/mois par employé.
                         </p>
                       </div>
-                      <LanguageSelect />
                     </div>
                   </div>
                   {footerLinks6.map((section, index) => (
@@ -118,38 +109,34 @@ export default function Footer8() {
                 </div>
               </div>
               <div className="uc-footer-bottom panel vstack lg:hstack gap-4 justify-between text-center pt-4 lg:pt-6 mt-6 border-top">
-                <p>Lexend © {new Date().getFullYear()}, All rights reserved.</p>
+                <p>Fyliz © {new Date().getFullYear()}, Tous droits réservés.</p>
                 <ul className="nav-x justify-center gap-2">
-                  <li>
-                    <a className="duration-150 hover:text-primary" href="#">
-                      <i className="icon icon-2 unicon-logo-linkedin" />
-                    </a>
-                  </li>
-                  <li>
-                    <a className="duration-150 hover:text-primary" href="#">
-                      <i className="icon icon-2 unicon-logo-facebook" />
-                    </a>
-                  </li>
-                  <li>
-                    <a className="duration-150 hover:text-primary" href="#">
-                      <i className="icon icon-2 unicon-logo-x-filled" />
-                    </a>
-                  </li>
-                  <li>
-                    <a className="duration-150 hover:text-primary" href="#">
-                      <i className="icon icon-2 unicon-logo-instagram" />
-                    </a>
-                  </li>
-                  <li>
-                    <a className="duration-150 hover:text-primary" href="#">
-                      <i className="icon icon-2 unicon-logo-youtube" />
-                    </a>
-                  </li>
-                  <li>
-                    <a className="duration-150 hover:text-primary" href="#">
-                      <i className="icon icon-2 unicon-logo-dribbble" />
-                    </a>
-                  </li>
+                  {siteConfig.footer
+                    .find((section) => section.title === "Social")
+                    ?.links.map((link, index) => {
+                      const iconMap = {
+                        Youtube: "unicon-logo-youtube",
+                        LinkedIn: "unicon-logo-linkedin",
+                        Twitter: "unicon-logo-x-filled",
+                        Facebook: "unicon-logo-facebook",
+                        Instagram: "unicon-logo-instagram",
+                      };
+                      return (
+                        <li key={index}>
+                          <a
+                            className="duration-150 hover:text-primary"
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={link.text}
+                          >
+                            <i
+                              className={`icon icon-2 ${iconMap[link.text]}`}
+                            />
+                          </a>
+                        </li>
+                      );
+                    })}
                 </ul>
               </div>
             </div>

@@ -1,40 +1,33 @@
 export const accordionItems = [
   {
     id: 1,
-    question: "Do I need to know about how to code?",
+    question: "Combien de temps faut-il pour voir des résultats concrets ?",
     answer:
-      "Yes, you need to have a fair amount of knowledge in dealing with HTML/CSS as well as JavaScript in order to be able to use Lexend.",
+      "Les premiers résultats sont visibles dès 5 jours après le déploiement. Nos clients économisent en moyenne 20 à 40h/mois par employé dès le premier mois. Le ROI moyen de +30% est atteint en 90 jours maximum.",
     controls: "uc-accordion-24",
     expanded: true,
   },
   {
     id: 2,
-    question: "Can I use it for commercial projects?",
+    question: "Est-ce que ça fonctionne avec mes outils actuels ?",
     answer:
-      "Feel free to do so. Lexend does exist to evolve every commercial project. You can also use it to build stunning websites for your own clients (we won’t breathe a word).",
+      "Oui, absolument. Fyliz s'adapte à plus de 200 outils (CRM, ERP, outils marketing, comptabilité, etc.). Si vous utilisez un outil spécifique, nous créons l'intégration personnalisée.",
     controls: "uc-accordion-26",
     expanded: false,
   },
   {
     id: 3,
-    question: "Can I use it for multiple projects?",
-    answer: "Definitely! Please use it however you like; we don’t limit it.",
+    question: "Mes employés vont-ils savoir utiliser l'IA ?",
+    answer:
+      "Garantie formation 100%. Nous formons votre équipe complète en 2 jours chrono avec notre méthode exclusive. 94% de satisfaction client. Si un employé ne maîtrise pas l'outil après formation, nous revenons gratuitement jusqu'à ce qu'il soit opérationnel.",
     controls: "uc-accordion-28",
     expanded: false,
   },
   {
-    id: 4,
-    question: "Can I use this to create and sell a product?",
-    answer: "Do not ever consider doing it.",
-    controls: "uc-accordion-30",
-    expanded: false,
-  },
-  {
-    id: 5,
-    question: "What is your refund policy?",
-    answer:
-      "We understand the importance of customer satisfaction and we strive to provide the best products and services. However, please note that due to the nature of our products and services, we do not offer refunds after a purchase has been made.",
-    controls: "uc-accordion-32",
+    id: 6,
+    question: "Quel est le coût réel comparé aux bénéfices ?",
+    answer: "ROI moyen de 30% en 90 jours prouvé chez +50 clients.",
+    controls: "uc-accordion-34",
     expanded: false,
   },
 ];

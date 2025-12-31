@@ -1,0 +1,14 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Uniform orange background -->
+  <rect width="64" height="64" rx="12" fill="#FF7A3D"/>
+  
+  <!-- Funnel/Pipeline - larger -->
+  <path d="M18 14H46L40 28H24L18 14Z" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M24 28H40L37 40H27L24 28Z" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M27 40H37V50H27V40Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2.5" stroke-linejoin="round"/>
+  
+  <!-- People/Leads entering - larger -->
+  <circle cx="24" cy="10" r="2.5" fill="#FFFFFF"/>
+  <circle cx="32" cy="9" r="2.5" fill="#FFFFFF"/>
+  <circle cx="40" cy="10" r="2.5" fill="#FFFFFF"/>
+</svg>

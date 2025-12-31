@@ -492,33 +492,36 @@ export const features9 = [
 export const features10 = [
   {
     src: "/assets/images/features/home-8-feature-01.png",
-    alt: "",
-    title: "Seamless integrations with your app tools",
+    alt: "E-commerce automatisé",
+    title: "E-commerce : +65% de CA en automatisant le SAV avec l'IA",
   },
   {
     src: "/assets/images/features/home-8-feature-02.png",
-    alt: "",
-    title: "Intuitive dashboard for at-a-glance insights",
+    alt: "Agence marketing",
+    title:
+      "Agence Marketing : 120h/mois économisées sur la création de contenu",
   },
   {
     src: "/assets/images/features/home-8-feature-03.png",
-    alt: "",
-    title: "Get more value from your tools",
+    alt: "SaaS B2B",
+    title: "SaaS B2B : Qualification automatique de 500 leads/jour",
   },
   {
     src: "/assets/images/features/home-8-feature-04.png",
-    alt: "",
-    title: "Enrich Data with Risk Management",
+    alt: "Cabinet comptable",
+    title:
+      "Cabinet Comptable : -80% d'erreurs de saisie grâce à l'automatisation",
   },
   {
     src: "/assets/images/features/home-8-feature-05.png",
-    alt: "",
-    title: "Scalable plans to fit any business size",
+    alt: "PME industrielle",
+    title: "Industrie : Optimisation stock en temps réel, -35% de coûts",
   },
   {
     src: "/assets/images/features/home-8-feature-06.png",
-    alt: "",
-    title: "Automated data analysis and reporting",
+    alt: "Start-up tech",
+    title:
+      "Start-up Tech : De 2 à 20 clients/mois sans recruter de commerciaux",
   },
 ];
 
@@ -527,49 +530,33 @@ export const features11 = [
     order: "order-1 lg:order-0",
     src: "/assets/images/custom-icons/home-8-icon-01.svg",
     alt: "feature-icon",
-    title: "Fast and Reliable",
+    title: "Configuration Express en 5 jours",
     description:
-      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
+      "Nous déployons votre première automatisation rentable en 5 jours ouvrés. Vos concurrents mettent 3 mois, vous prenez l'avance dès maintenant.",
   },
   {
     order: "order-0",
     src: "/assets/images/custom-icons/home-8-icon-02.svg",
     alt: "feature-icon",
-    title: "Discover Data Everywhere",
+    title: "Automatisation Personnalisée sur Mesure",
     description:
-      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
+      "Chaque entreprise est unique. Nos workflows IA s'adaptent à VOS processus métier, pas l'inverse. 94% de satisfaction client prouvée.",
   },
   {
     order: "order-2 sm:order-1 lg:order-0",
     src: "/assets/images/custom-icons/home-8-icon-03.svg",
     alt: "feature-icon",
-    title: "Enrich Data with Context",
+    title: "Support Expert 24/7 Inclus",
     description:
-      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
-  },
-  {
-    order: "order-1 lg:order-0",
-    src: "/assets/images/custom-icons/home-8-icon-07.svg",
-    alt: "feature-icon",
-    title: "Risk Management",
-    description:
-      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
-  },
-  {
-    order: "order-3 lg:order-0",
-    src: "/assets/images/custom-icons/home-8-icon-05.svg",
-    alt: "feature-icon",
-    title: "Privacy Compliance",
-    description:
-      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
+      "Nous répondons en moins de 3 heures. Votre succès ne dort jamais.",
   },
   {
     order: "order-2 lg:order-0",
     src: "/assets/images/custom-icons/home-8-icon-06.svg",
     alt: "feature-icon",
-    title: "Third-Party Management",
+    title: "Formation Équipe Complète",
     description:
-      "Whether you have a team of 2 or 200, our shared team inboxes keep everyone on the same page and in the loop.",
+      "Vos employés maîtrisent l'IA en 2 jours chrono avec notre méthode exclusive. 100% de vos équipes opérationnelles, garantie contractuelle.",
   },
 ];
 

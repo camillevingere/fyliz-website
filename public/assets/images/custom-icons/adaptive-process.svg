@@ -1,0 +1,10 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Uniform orange background -->
+  <rect width="64" height="64" rx="12" fill="#FF7A3D"/>
+  
+  <!-- Puzzle pieces - larger -->
+  <path d="M16 16H28V22C28 22 28 26 25 26C22 26 22 22 22 22V30H16V16Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M34 16H46V30H38C38 30 34 30 34 27C34 24 38 24 38 24H34V16Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M16 36H22C22 36 22 32 25 32C28 32 28 36 28 36H22V48H16V36Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M34 36H46V48H34V36Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>

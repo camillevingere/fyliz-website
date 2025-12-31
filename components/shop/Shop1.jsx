@@ -1,9 +1,9 @@
 "use client";
+import { useContextElement } from "@/context/Context";
 import { products } from "@/data/products";
-import Pagination from "../common/Pagination";
 import Image from "next/image";
 import Link from "next/link";
-import { useContextElement } from "@/context/Context";
+
 export default function Shop1() {
   const { addProductToCart, isAddedToCartProducts } = useContextElement();
   return (
@@ -12,27 +12,27 @@ export default function Shop1() {
         <div className="panel vstack gap-4 lg:gap-6 xl:gap-8">
           <header className="shop-header panel vstack justify-center gap-2 lg:gap-4 text-center">
             <div className="panel">
-              <h1 className="h3 lg:h1 m-0">Shop listing</h1>
+              <h1 className="h3 lg:h1 m-0">Liste des produits</h1>
             </div>
             <div className="vstack sm:hstack justify-between items-center gap-2 sm:gap-4">
               <div className="panel text-center sm:text-start">
                 <span className="fs-6 m-0 opacity-60">
-                  Showed 16 products out of 100 total.
+                  Affichage de 16 produits sur 100 au total.
                 </span>
               </div>
               <div>
                 <div className="hstack gap-1 fs-6">
-                  <span>Filter by:</span>
+                  <span>Filtrer par :</span>
                   <select
                     name="select"
                     id="filter_by"
                     className="form-select form-control-xs fs-6 w-150px dark:bg-gray-900 dark:text-white dark:border-gray-700"
                   >
-                    <option value="">Latest</option>
-                    <option value="">Relevance</option>
-                    <option value="">Most popular</option>
-                    <option value="">Trending</option>
-                    <option value="">Rating</option>
+                    <option value="">Plus récents</option>
+                    <option value="">Pertinence</option>
+                    <option value="">Plus populaires</option>
+                    <option value="">Tendances</option>
+                    <option value="">Note</option>
                   </select>
                 </div>
               </div>
@@ -108,22 +108,14 @@ export default function Shop1() {
                         onClick={() => addProductToCart(product.id)}
                       >
                         {isAddedToCartProducts(product.id)
-                          ? "Already Added"
-                          : "Add To Cart"}
+                          ? "Déjà ajouté"
+                          : "Ajouter au panier"}
                       </a>
                     </div>
                   </div>
                 </article>
               </div>
             ))}
-          </div>
-          <div className="nav-pagination pt-3 border-top border-gray-100 dark:border-gray-800">
-            <ul
-              className="nav-x uc-pagination hstack gap-1 justify-center ft-secondary"
-              data-uc-margin=""
-            >
-              <Pagination />
-            </ul>
           </div>
         </div>
       </div>

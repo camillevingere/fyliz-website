@@ -1,7 +1,8 @@
 "use client";
 import { testimonials5 } from "@/data/testimonials";
+import { siteConfig } from "@/lib/config";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Testimonials() {
   const [isViewAll, setIsViewAll] = useState(false);
@@ -30,26 +31,33 @@ export default function Testimonials() {
   }, []);
   return (
     <div
-      id="clients_feedbacks"
+      id="avis_clients"
       className="clients-feedbacks section panel overflow-hidden"
     >
-      <div className="section-outer panel py-6 xl:py-9">
+      <div
+        className="section-outer panel py-6 md:py-8 xl:py-10 mx-2 border rounded-1-5 lg:rounded-2"
+        style={{
+          backgroundColor: "#fff5ed",
+          borderColor: "#ffddcc",
+        }}
+      >
         <div className="container">
           <div className="section-inner panel">
             <div
-              className="panel vstack gap-4 "
+              className="panel vstack gap-4"
               data-anime="onview: -200; targets: >*; translateY: [48, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 450; delay: anime.stagger(100, {start: 200});"
             >
               <div className="section-header vstack items-center gap-2 lg:gap-3">
-                <span className="fs-7 fw-medium py-narrow px-2 bg-dark text-white dark:bg-primary dark:text-dark rounded-pill">
-                  Clients feedback
+                <span
+                  className="fs-7 fw-medium py-narrow px-2 text-white rounded-pill"
+                  style={{ backgroundColor: "#ffd7b8" }}
+                >
+                  Nos avis
                 </span>
-                <h2 className="h4 sm:h3 lg:h1 m-0 text-center max-w-650px mx-auto">
-                  What our{" "}
-                  <span className="text-tertiary dark:text-primary">
-                    satisfied clients
-                  </span>{" "}
-                  said about us!
+                <h2 className="h4 sm:h3 lg:h1 m-0 text-center max-w-650px mx-auto text-dark">
+                  Ce que nos{" "}
+                  <span style={{ color: "#ff781a" }}>+50 clients actifs</span>{" "}
+                  disent de leur transformation !
                 </h2>
               </div>
               <div
@@ -65,120 +73,91 @@ export default function Testimonials() {
                   data-uc-grid="masonry: true;"
                   ref={isotopContainer}
                 >
-                  {testimonials5.map(({ text, name, imgSrc }, index) => (
-                    <div key={index} className={`isotop-element mt-4`}>
-                      <div className="px-3 sm:px-4 py-4 panel  vstack justify-between gap-3 dark:bg-gradient-45 from-tertiary to-transparent border border-dark dark:border-white dark:border-opacity-15 rounded-1-5 lg:rounded-2">
-                        <div className="panel vstack items-start gap-2">
-                          <p className="fs-6 lg:fs-5">{text}</p>
-                        </div>
-                        <div className="panel hstack gap-2 mt-2">
-                          <Image
-                            className="w-40px rounded-circle"
-                            alt={name}
-                            src={imgSrc}
-                            width={150}
-                            height={150}
-                          />
-                          <div className="panel vstack justify-center gap-narrow">
-                            <ul className="nav-x gap-0 text-warning">
-                              {[...Array(5)].map((_, starIndex) => (
-                                <li key={starIndex}>
-                                  <i className="icon icon-narrow unicon-star-filled" />
-                                </li>
-                              ))}
-                            </ul>
-                            <span className="fw-bold ft-secondary dark:text-white m-0">
-                              {name}
-                            </span>
+                  {testimonials5.map(
+                    ({ text, name, imgSrc, company }, index) => (
+                      <div key={index} className={`isotop-element mt-4`}>
+                        <div
+                          className="px-3 sm:px-4 py-4 panel vstack justify-between gap-3 border rounded-1-5 lg:rounded-2 shadow-sm hover:shadow-md transition-shadow"
+                          style={{
+                            backgroundColor: "#ffffff",
+                            borderColor: "#e5e7eb",
+                          }}
+                        >
+                          <div className="panel vstack items-start gap-2">
+                            <p className="fs-6 lg:fs-5 text-gray-900">{text}</p>
+                          </div>
+                          <div className="panel hstack items-start gap-2 mt-2">
+                            <Image
+                              className="w-40px rounded-circle !self-start"
+                              alt={name}
+                              src={imgSrc}
+                              width={150}
+                              height={150}
+                            />
+                            <div className="panel vstack justify-center gap-narrow">
+                              <ul className="nav-x gap-0">
+                                {[...Array(5)].map((_, starIndex) => (
+                                  <li key={starIndex}>
+                                    <i
+                                      className="icon icon-narrow unicon-star-filled p-narrow"
+                                      style={{
+                                        color: siteConfig.brand.primary,
+                                      }}
+                                    />
+                                  </li>
+                                ))}
+                              </ul>
+                              <span className="fw-bold text-gray-900 m-0">
+                                {name}
+                              </span>
+                              <span className="text-gray-500">{company}</span>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    )
+                  )}
                 </div>
                 <div
                   id="clients-feedback-toggle-area"
                   onClick={() => setIsViewAll((pre) => !pre)}
                   className={
                     !isViewAll
-                      ? "position-absolute bottom-0 start-0 end-0 h-300px vstack items-center justify-end bg-gradient-to-t from-white dark:from-tertiary-800 to-transparent z-1"
-                      : "bottom-0 start-0 end-0 vstack items-center justify-end bg-gradient-to-t from-white dark:from-tertiary-800 to-transparent z-1 mt-8"
+                      ? "position-absolute bottom-0 start-0 end-0 h-300px vstack items-center justify-end z-1"
+                      : "bottom-0 start-0 end-0 vstack items-center justify-end z-1 mt-8"
                   }
+                  style={{
+                    background: !isViewAll
+                      ? "linear-gradient(to top, #fff5ed, transparent)"
+                      : "transparent",
+                  }}
                 >
                   <a
-                    className={
-                      !isViewAll
-                        ? "btn btn-primary border border-dark dark:border-white dark:border-opacity-15 rounded-pill px-3"
-                        : "btn border border-dark dark:border-white dark:border-opacity-15 rounded-pill px-3 btn-secondary"
-                    }
+                    className="btn border rounded-pill px-3 hover:opacity-90 transition-opacity"
+                    style={{
+                      backgroundColor: !isViewAll ? "#ff781a" : "#ffffff",
+                      borderColor: !isViewAll ? "#ff781a" : "#e5e7eb",
+                      color: !isViewAll ? "#ffffff" : "#111827",
+                    }}
                     data-uc-toggle="target: #clients_feedback_area; cls: uc-active"
                   >
-                    {isViewAll ? "Close feedbacks" : " View all feedbacks"}
+                    {isViewAll
+                      ? "Masquer les témoignages"
+                      : " Voir tous les témoignages"}
                   </a>
                 </div>
               </div>
-              <div className="panel max-w-700px mx-auto">
+              {/* <div className="panel max-w-700px mx-auto">
                 <div
                   className="panel vstack gap-3 sm:gap-4 text-center"
                   data-anime="onview: -200; translateY: [-16, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: 350;"
                 >
-                  <p className="fs-6 m-0">
-                    Trusted by over most popular companies worldwide
+                  <p className="fs-6 m-0 text-gray-900">
+                    Rejoignez +50 entreprises qui ont déjà transformé leur
+                    productivité
                   </p>
-                  <div className="panel">
-                    <div className="row child-cols g-6 items-center text-center">
-                      <div>
-                        <div className="panel">
-                          <Image
-                            className="max-w-80px lg:max-w-128px"
-                            alt="brand"
-                            data-uc-svg=""
-                            src="/assets/images/brands/brand-01.svg"
-                            width={165}
-                            height={48}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="panel">
-                          <Image
-                            className="max-w-80px lg:max-w-128px"
-                            alt="brand"
-                            data-uc-svg=""
-                            src="/assets/images/brands/brand-05.svg"
-                            width={179}
-                            height={48}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="panel">
-                          <Image
-                            className="max-w-80px lg:max-w-128px"
-                            alt="brand"
-                            data-uc-svg=""
-                            src="/assets/images/brands/brand-03.svg"
-                            width={178}
-                            height={48}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="panel">
-                          <Image
-                            className="max-w-80px lg:max-w-128px"
-                            alt="brand"
-                            data-uc-svg=""
-                            src="/assets/images/brands/brand-07.svg"
-                            width={170}
-                            height={48}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -267,48 +267,21 @@ export const testimonialsData = [
 
 export const testimonials5 = [
   {
-    text: "“We’re looking for people who share our vision! most of our time used to be taken up by most of alternate to help our employees.”",
-    name: "Mark Zellers",
-    imgSrc: "/assets/images/avatars/01.png",
+    text: "« Ils ont été très réactif. Nous avons pu programmer rapidement notre séance de travail qui a été efficace. Nous avons atteint les objectifs fixés. »",
+    name: "Juliette Brunelot",
+    company: "My Skill Factory",
+    imgSrc: "/assets/images/avatars/mySkillFactory.webp",
   },
   {
-    text: "“This powerful tool eliminates the need to leave Salesforce to get things done as I can create a custom proposal with dynamic pricing tables, and get approval from my boss all within 36 minutes.”",
-    name: "Jason Barella",
-    imgSrc: "/assets/images/avatars/02.png",
+    text: "« Il fallait installer n8n MCP pour Claude. Fyliz connaît parfaitement son sujet et en sus, d'effectuer cette installation, ils ont à cœur de vous former pour vous rendre autonome. Un état d'esprit remarquable à la hauteur de leurs compétences techniques. »",
+    name: "Hervé Debbah",
+    company: "Parness Cruises",
+    imgSrc: "/assets/images/avatars/herve-debbah.webp",
   },
   {
-    text: "“Look for service suppliers that comply with this regulation, and as we look to create our website, this builder is just outstanding!”",
-    name: "Sarah Edrissi",
-    imgSrc: "/assets/images/avatars/03.png",
-  },
-  {
-    text: "“We’re looking for people who share our vision! most of our time used to be taken up by most of alternate administrative work whereas now we can focus on building out to help our employees.”",
-    name: "Anna Yon",
-    imgSrc: "/assets/images/avatars/08.png",
-  },
-  {
-    text: "“We’re looking for people who share our vision! most of our time used to be taken up by most of alternate administrative work whereas now we can focus on building out to help our employees.”",
-    name: "Jaden Karl",
-    imgSrc: "/assets/images/avatars/05.png",
-  },
-  {
-    text: "“This powerful tool eliminates the need to leave Salesforce to get things done as I can create a custom proposal with dynamic pricing tables, and get approval from my boss all within 36 minutes.”",
-    name: "Ederson Hani",
-    imgSrc: "/assets/images/avatars/06.png",
-  },
-  {
-    text: "“We are based in Europe and the latest Data Protection Regulation forces us to look for service suppliers that comply with this regulation and as we look to create our website and this builder is just outstanding!”",
-    name: "Matt Peterson",
-    imgSrc: "/assets/images/avatars/07.png",
-  },
-  {
-    text: "“We’re looking for people who share our vision! Most of our time used to be taken up by most of the alternate administrative work whereas now we can focus on building out to help our employees.”",
-    name: "Natalia Cherry",
-    imgSrc: "/assets/images/avatars/10.png",
-  },
-  {
-    text: "“This powerful tool eliminates the need to leave Salesforce to get things done as I can create a custom proposal with dynamic pricing tables, and get approval from my boss all within 36 minutes.”",
-    name: "Muhammed Khan",
-    imgSrc: "/assets/images/avatars/11.png",
+    text: "« C'est un plaisir de travailler avec Fyliz. Il sont compétents, disponibles. Leur optimisme et leur professionnalisme font d'eux un talent rare! »",
+    name: "Guillaume Olivier",
+    company: "Bloop Automations",
+    imgSrc: "/assets/images/avatars/bloop-automations.webp",
   },
 ];

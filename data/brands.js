@@ -191,54 +191,35 @@ export const brands5 = [
 
 export const brands6 = [
   {
-    src: "/assets/images/brands/brand-01.svg",
-    alt: "brand",
-    width: 165,
+    src: "/assets/images/brands/credit-agricole.webp",
+    alt: "Crédit Agricole",
+    width: 128,
     height: 48,
   },
   {
-    src: "/assets/images/brands/brand-05.svg",
-    alt: "brand",
-    width: 179,
+    src: "/assets/images/brands/La-provence-2026.webp",
+    alt: "La Provence 2026",
+    width: 128,
     height: 48,
   },
   {
-    src: "/assets/images/brands/brand-03.svg",
-    alt: "brand",
-    width: 178,
+    src: "/assets/images/brands/orpi-agence-immobiliere.webp",
+    alt: "Orpi Agence Immobilière",
+    width: 128,
     height: 48,
   },
   {
-    src: "/assets/images/brands/brand-07.svg",
-    alt: "brand",
-    width: 170,
+    src: "/assets/images/brands/mySkillFactory.webp",
+    alt: "My Skill Factory",
+    width: 128,
+    height: 48,
+  },
+  {
+    src: "/assets/images/brands/VIP-Paris-Hotel.webp",
+    alt: "VIP Paris Hotel",
+    width: 128,
     height: 48,
   },
 ];
 
-export const brands7 = [
-  {
-    src: "/assets/images/brands/brand-01.svg",
-    alt: "brand",
-    width: 165,
-    height: 48,
-  },
-  {
-    src: "/assets/images/brands/brand-07.svg",
-    alt: "brand",
-    width: 170,
-    height: 48,
-  },
-  {
-    src: "/assets/images/brands/brand-03.svg",
-    alt: "brand",
-    width: 178,
-    height: 48,
-  },
-  {
-    src: "/assets/images/brands/brand-05.svg",
-    alt: "brand",
-    width: 179,
-    height: 48,
-  },
-];
+export const brands7 = brands6;

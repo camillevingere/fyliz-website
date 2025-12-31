@@ -1,10 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
-export default function Breadcumb3({ pageName = "Blog Sidebar Left" }) {
+export default function Breadcumb3({ pageName = "Blog" }) {
   return (
-    <div className="page-header panel vstack justify-center items-center gap-2 py-6 xl:py-9 mx-2 text-center rounded-2 bg-primary-25 dark:bg-gray-800">
+    <div
+      className="page-header panel vstack justify-center items-center gap-2 py-10 mx-2 text-center rounded-2 dark:bg-gray-800"
+      style={{
+        backgroundColor: "#fff5ed",
+        borderColor: "#ffddcc",
+      }}
+    >
       <ul className="breadcrumb nav-x justify-center items-center gap-1 fs-7 m-0 fw-bold dark:text-white">
         <li>
           <Image
@@ -17,7 +22,7 @@ export default function Breadcumb3({ pageName = "Blog Sidebar Left" }) {
           />
         </li>
         <li>
-          <Link href={`/`}>Home</Link>
+          <Link href={`/`}>Accueil</Link>
         </li>
         <li>
           <i className="unicon-chevron-right fw-medium opacity-50 rtl:rotate-180" />

@@ -1,11 +1,29 @@
-import React from "react";
-import Pagination from "../common/Pagination";
-import Sidebar from "./Sidebar";
-import { posts } from "@/data/blogs";
+import { getSignedImageUrl } from "@/lib/image-utils";
 import Image from "next/image";
 import Link from "next/link";
+import Sidebar from "./Sidebar";
 
-export default function BlogSidebarRight() {
+export default async function BlogSidebarRight({ articles = [] }) {
+  const mappedPosts =
+    articles.length > 0 &&
+    (await Promise.all(
+      articles.map(async (post) => {
+        const signedImage =
+          (await getSignedImageUrl(post.image || null)) ||
+          "/images/default-blog.webp";
+
+        return {
+          id: post.slug || post.id,
+          slug: post.slug,
+          image: signedImage,
+          alt: post.title,
+          title: post.title,
+          category: post.tags?.[0] || "Article",
+          excerpt: post.description,
+        };
+      })
+    ));
+
   return (
     <div className="section panel">
       <div className="container">
@@ -14,7 +32,7 @@ export default function BlogSidebarRight() {
             <div className="md:col-8">
               <div className="uc-main panel" role="main">
                 <div className="row child-cols-12 sm:child-cols-4 col-match g-2 lg:g-4 xl:g-6">
-                  {posts.slice(0, 6).map((elm, i) => (
+                  {mappedPosts.slice(0, 6).map((elm, i) => (
                     <div key={i} className="col-12">
                       <article className="post type-post panel rounded-2 p-2 lg:p-4 bg-gray-25 dark:bg-gray-800">
                         <div className="panel row child-cols-12 lg:child-cols g-2 lg:g-4">
@@ -23,20 +41,27 @@ export default function BlogSidebarRight() {
                               <figure className="featured-image m-0 rounded ratio ratio-16x9 lg:ratio-1x1 rounded-1-5 uc-transition-toggle overflow-hidden">
                                 <Image
                                   className="media-cover image uc-transition-scale-up uc-transition-opaque"
-                                  alt="Unlock productivity potential with AI"
+                                  alt={elm.alt || elm.title}
                                   src={elm.image}
                                   width="768"
                                   height="560"
                                 />
                                 <Link
-                                  href={`/blog-details/${elm.id}`}
+                                  href={
+                                    elm.slug ? `/${elm.slug}` : `/${elm.id}`
+                                  }
                                   className="position-cover"
-                                  data-caption="Unlock productivity potential with AI"
+                                  data-caption={elm.alt || elm.title}
                                 />
                               </figure>
                               <Link
-                                className="post-category text-primary fw-normal text-none fw-bold fs-7 py-narrow px-1 rounded bg-tertiary text-primary position-absolute top-0 start-0 m-2"
-                                href={`/blog-category/${elm.category}`}
+                                className="post-category fw-normal fw-bold fs-7 py-narrow px-1 rounded bg-primary position-absolute top-0 start-0 m-2"
+                                style={{ color: "#ffffff !important" }}
+                                href={
+                                  elm.category
+                                    ? `/category/${elm.category}`
+                                    : "#"
+                                }
                               >
                                 {elm.category}
                               </Link>
@@ -47,7 +72,11 @@ export default function BlogSidebarRight() {
                               <h3 className="h4 sm:h5 md:h4 lh-lg m-0 xl:max-w-3/4 m-0">
                                 <Link
                                   className="text-none"
-                                  href={`/blog-details/${elm.id}`}
+                                  href={
+                                    elm.slug
+                                      ? `/blog/${elm.slug}`
+                                      : `/blog/${elm.id}`
+                                  }
                                 >
                                   {elm.title}
                                 </Link>
@@ -57,9 +86,13 @@ export default function BlogSidebarRight() {
                               </p>
                               <Link
                                 className="btn btn-text text-primary border-bottom d-inline-flex fs-7 md:fs-6 mt-2 md:mt-4 dark:text-tertiary"
-                                href={`/blog-details/${elm.id}`}
+                                href={
+                                  elm.slug
+                                    ? `/blog/${elm.slug}`
+                                    : `/blog/${elm.id}`
+                                }
                               >
-                                Read more
+                                Lire plus
                               </Link>
                             </div>
                           </div>
@@ -68,18 +101,18 @@ export default function BlogSidebarRight() {
                     </div>
                   ))}
                 </div>
-                <div className="nav-pagination mt-4 lg:mt-6 xl:mt-8">
+                {/* <div className="nav-pagination mt-4 lg:mt-6 xl:mt-8">
                   <ul
                     className="nav-x uc-pagination hstack gap-1 justify-center ft-secondary"
                     data-uc-margin=""
                   >
                     <Pagination />
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="md:col-4 sticky-element3">
-              <Sidebar />
+              <Sidebar articles={articles} />
             </div>
           </div>
         </div>
