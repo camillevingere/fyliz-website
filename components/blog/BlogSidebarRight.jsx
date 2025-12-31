@@ -48,7 +48,9 @@ export default async function BlogSidebarRight({ articles = [] }) {
                                 />
                                 <Link
                                   href={
-                                    elm.slug ? `/${elm.slug}` : `/${elm.id}`
+                                    elm.slug
+                                      ? `/blog/${elm.slug}`
+                                      : `/blog/${elm.id}`
                                   }
                                   className="position-cover"
                                   data-caption={elm.alt || elm.title}

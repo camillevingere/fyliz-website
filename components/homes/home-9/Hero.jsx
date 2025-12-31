@@ -1,7 +1,11 @@
+"use client";
 import { siteConfig } from "@/lib/config";
 import Image from "next/image";
+import posthog from "posthog-js";
+import { useFeatureFlagVariantKey } from "posthog-js/react";
 
 export default function Hero() {
+  const variant = useFeatureFlagVariantKey("header");
   return (
     <div id="hero_header" className="hero-header section panel overflow-hidden">
       <div className="section-outer py-6 lg:py-8 xl:py-10 min-h-700px">
@@ -98,14 +102,32 @@ export default function Hero() {
                 className="fs-7 fw-medium py-narrow px-2 text-white rounded-pill mx-auto"
                 style={{ backgroundColor: "#ffd7b8" }}
               >
-                🇫🇷 1ère Agence d&apos;automatisation IA en France
+                {variant === "test" ? (
+                  "Intelligence Artificielle"
+                ) : (
+                  "🇫🇷 1ère Agence d'automatisation IA en France"
+                )}
               </span>
               <h2
                 className="h2 xl:display-5 m-0 text-center"
                 style={{ transform: "translateY(0px)", opacity: 1 }}
               >
-                Libérez 40h/mois par employé avec{" "}
-                <span style={{ color: "#ff781a !important" }}>l&apos;IA</span>
+                {variant === "test" ? (
+                  <>
+                    1ère Agence{" "}
+                    <span style={{ color: "#ff781a !important" }}>
+                      d&apos;automatisation IA
+                    </span>{" "}
+                    en France
+                  </>
+                ) : (
+                  <>
+                    Libérez 40h/mois par employé avec{" "}
+                    <span style={{ color: "#ff781a !important" }}>
+                      l&apos;IA
+                    </span>
+                  </>
+                )}
               </h2>
 
               <p className="fs-5 lg:fs-4 mt-2 md:whitespace-nowrap">
@@ -116,6 +138,12 @@ export default function Hero() {
                 <div className="mb-2 lg:mb-3" style={{ width: "100%" }}>
                   <a
                     href={siteConfig.cta.buttonLink}
+                    onClick={() => {
+                      posthog.capture("cta_clicked", {
+                        cta_name: "Consultation stratégique (offerte)",
+                        page: window.location.pathname,
+                      });
+                    }}
                     className="hero-cta-btn btn btn-md xl:btn-lg btn-primary border border-dark dark:border-white dark:border-opacity-15 rounded-pill"
                   >
                     <span className="hero-cta-text">

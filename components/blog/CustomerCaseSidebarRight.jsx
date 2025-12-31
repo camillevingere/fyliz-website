@@ -48,7 +48,9 @@ export default async function CustomerCaseSidebarRight({ articles = [] }) {
                                 />
                                 <Link
                                   href={
-                                    elm.slug ? `/${elm.slug}` : `/${elm.id}`
+                                    elm.slug
+                                      ? `/cas-clients/${elm.slug}`
+                                      : `/cas-clients/${elm.id}`
                                   }
                                   className="position-cover"
                                   data-caption={elm.alt || elm.title}

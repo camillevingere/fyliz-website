@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/config";
 import { getSignedImageUrl } from "@/lib/image-utils";
 import Image from "next/image";
 import Link from "next/link";
+import posthog from "posthog-js";
 
 export default async function ClientSuccess() {
   const allPosts = await getCustomerCasePosts("fr");
