@@ -1,14 +1,14 @@
-
 import Footer8 from "@/components/footers/Footer8";
 import Header8 from "@/components/headers/Header8";
 import Breadcumb from "@/components/otherPages/Breadcumb";
+import { constructMetadata } from "@/lib/utils";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
-export const metadata = {
-  title: "Politique de Confidentialité || Fyliz - Agence d'automatisation",
+export const metadata = constructMetadata({
+  title: "Politique de Confidentialité",
   description:
     "Fyliz - Agence d'automatisation. Consultez notre politique de confidentialité pour comprendre comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD.",
-};
+});
 
 const markdown = `Mis à jour le 30/12/2025
 

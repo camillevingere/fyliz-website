@@ -8,7 +8,7 @@ import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
   title: "Blog",
-  description: `Derniers articles et actualités sur ${siteConfig.name}.`,
+  description: `Dernières news sur l'automatisation IA.`,
 });
 
 const breadcrumbJsonLd = {
@@ -43,7 +43,7 @@ export default async function Blog() {
     "@type": "Blog",
     name: `${siteConfig.name} Blog`,
     headline: `Blog - ${siteConfig.name}`,
-    description: `Derniers articles et actualités sur ${siteConfig.name}.`,
+    description: `Dernières news sur l'automatisation IA.`,
     image: siteConfig.logo,
     inLanguage: "fr",
     url: `${siteConfig.url}/blog`,

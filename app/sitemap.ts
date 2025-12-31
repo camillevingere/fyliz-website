@@ -1,47 +1,73 @@
-import { getBlogPosts } from "@/lib/blog";
-import { GetTemplates } from "@/lib/templates/templates.action";
+import { getBlogPosts, getCustomerCasePosts } from "@/lib/blog";
+import { siteConfig } from "@/lib/config";
 import { MetadataRoute } from "next";
-import { headers } from "next/headers";
-import { Template } from "@prisma/client";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const allPosts = await getBlogPosts();
-  const templates = await GetTemplates();
-  const headersList = headers();
-  let domain = headersList.get("host") as string;
-  let protocol = "https";
+  const allPosts = await getBlogPosts("fr");
+  const customerCases = await getCustomerCasePosts("fr");
+  const baseUrl = siteConfig.url;
 
-  return [
+  // Static pages
+  const staticPages = [
     {
-      url: `${protocol}://${domain}`,
+      url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
+      priority: 1.0,
     },
     {
-      url: `${protocol}://${domain}/blog`,
+      url: `${baseUrl}/blog`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
     },
     {
-      url: `${protocol}://${domain}/templates`,
+      url: `${baseUrl}/cas-clients`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
     },
-    ...allPosts.map(
-      (post) =>
-        ({
-          url: `${protocol}://${domain}/blog/${post.slug}`,
-          lastModified: new Date(),
-          changeFrequency: "weekly",
-        }) as const
-    ),
-    ...templates.map(
-      (template: Partial<Template>) =>
-        ({
-          url: `${protocol}://${domain}/templates/${template.slug}`,
-          lastModified: new Date(),
-          changeFrequency: "weekly",
-        }) as const
-    ),
+    {
+      url: `${baseUrl}/solutions-automatisation-ia`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/legal/conditions-generales-de-vente`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/legal/mentions-legales`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/legal/politique-de-confidentialite`,
+      lastModified: new Date(),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    },
   ];
+
+  // Dynamic blog posts
+  const blogPosts = allPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.publishedAt),
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  // Dynamic customer case posts
+  const customerCasePosts = customerCases.map((post) => ({
+    url: `${baseUrl}/cas-clients/${post.slug}`,
+    lastModified: new Date(post.publishedAt),
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...blogPosts, ...customerCasePosts];
 }

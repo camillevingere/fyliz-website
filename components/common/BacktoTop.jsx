@@ -33,7 +33,7 @@ export default function BacktoTop() {
 
   return (
     <div
-      className={`backtotop-wrap position-fixed bottom-0 end-0 z-99 m-2 vstack  ${
+      className={`backtotop-wrap position-fixed bottom-0 end-0 z-99 m-10 vstack  ${
         isVisible ? "uc-active" : ""
       }`}
     >

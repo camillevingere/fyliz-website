@@ -73,7 +73,9 @@ export default async function BlogSidebarRight({ articles = [] }) {
                                 <Link
                                   className="text-none"
                                   href={
-                                    elm.slug ? `/${elm.slug}` : `/${elm.id}`
+                                    elm.slug
+                                      ? `/blog/${elm.slug}`
+                                      : `/blog/${elm.id}`
                                   }
                                 >
                                   {elm.title}
@@ -84,7 +86,11 @@ export default async function BlogSidebarRight({ articles = [] }) {
                               </p>
                               <Link
                                 className="btn btn-text text-primary border-bottom d-inline-flex fs-7 md:fs-6 mt-2 md:mt-4 dark:text-tertiary"
-                                href={elm.slug ? `/${elm.slug}` : `/${elm.id}`}
+                                href={
+                                  elm.slug
+                                    ? `/blog/${elm.slug}`
+                                    : `/blog/${elm.id}`
+                                }
                               >
                                 Lire plus
                               </Link>

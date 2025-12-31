@@ -1,14 +1,27 @@
 import Home9 from "@/components/home-9/page";
+import { siteConfig } from "@/lib/config";
 
-
-export const metadata = {
-  title:
-    "Fyliz - Libérez 40h/mois par employé avec l'IA | Automatisation Garantie en 48h",
-  description:
-    "Fyliz automatise vos tâches répétitives et booste votre croissance de 327% en 90 jours. ROI garanti ou remboursé. 247 entreprises nous font confiance.",
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  headline: siteConfig.title,
+  description: siteConfig.description,
+  image: `${siteConfig.url}/og.png`,
+  inLanguage: "fr",
+  url: siteConfig.url,
 };
+
 export default function page() {
   return (
-    <Home9 />
+    <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+      <Home9 />
+    </main>
+
   );
 }

@@ -43,7 +43,7 @@ export default async function CasClients() {
     "@type": "Blog",
     name: `${siteConfig.name} - Nos cas clients`,
     headline: `Nos cas clients - ${siteConfig.name}`,
-    description: `Derniers cas clients et témoignages sur ${siteConfig.name}.`,
+    description: `Derniers cas clients d'automatisation IA de ${siteConfig.name}.`,
     image: siteConfig.logo,
     inLanguage: "fr",
     url: `${siteConfig.url}/cas-clients`,

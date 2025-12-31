@@ -8,12 +8,19 @@ import { env } from "@/lib/env";
 import { getBootstrapData } from "@/lib/posthog/getBootstrapData";
 import { constructMetadata } from "@/lib/utils";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.scss";
 import PHProvider from "./posthog-provider";
 
 export const metadata: Metadata = constructMetadata({});
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+  ],
+};
 
 export default async function RootLayout({ children }) {
   const bootstrapData = await getBootstrapData();

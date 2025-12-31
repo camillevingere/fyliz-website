@@ -4,12 +4,22 @@ import Footer8 from "@/components/footers/Footer8";
 import Header8 from "@/components/headers/Header8";
 import { getSolutionsPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
+import { constructMetadata } from "@/lib/utils";
 
-export const metadata = {
-  title: "Solutions d'automatisation IA || Fyliz - Agence d'automatisation",
+export const metadata = constructMetadata({
+  title: "Solutions d'automatisation IA",
   description:
     "Fyliz - Agence d'automatisation. Découvrez nos solutions d'automatisation et d'intelligence artificielle pour optimiser vos processus métier.",
-};
+  keywords: [
+    "solutions automatisation",
+    "automatisation IA",
+    "intelligence artificielle",
+    "automatisation processus métier",
+    "workflow automatisé",
+    "automatisation business",
+    "IA entreprise",
+  ],
+});
 
 const breadcrumbJsonLd = {
   "@context": "https://schema.org",
@@ -39,7 +49,7 @@ export default async function SolutionsAutomatisationIA() {
     "@type": "CollectionPage",
     name: `${siteConfig.name} - Solutions d'automatisation IA`,
     headline: `Solutions d'automatisation IA - ${siteConfig.name}`,
-    description: `Découvrez nos solutions d'automatisation et d'intelligence artificielle pour optimiser vos processus métier.`,
+    description: `Solutions d'automatisation et d'intelligence artificielle pour optimiser vos processus métier.`,
     image: siteConfig.logo,
     inLanguage: "fr",
     url: `${siteConfig.url}/solutions-automatisation-ia`,

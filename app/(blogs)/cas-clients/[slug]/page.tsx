@@ -1,48 +1,93 @@
 import Footer8 from "@/components/footers/Footer8";
 import Header8 from "@/components/headers/Header8";
-import { getBlogPosts, getPost, getPostById } from "@/lib/blog";
+import { getCustomerCasePosts, getPost, getPostById } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 import { getSignedImageUrl } from "@/lib/image-utils";
-import { constructMetadata } from "@/lib/utils";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
-  const posts = await getBlogPosts("fr");
+  const posts = await getCustomerCasePosts("fr");
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export async function generateMetadata({ params }) {
-  const { slug } = params;
-  let post = await getPostById(slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: {
+    slug: string;
+  };
+}): Promise<Metadata | undefined> {
+  let post = await getPost(params.slug, "customer_cases");
   if (!post || !post.metadata || !post.source) {
-    post = await getPost(slug);
+    notFound();
   }
+  let {
+    title,
+    publishedAt: publishedTime,
+    description: description,
+    image,
+    author,
+    tags,
+    keywords,
+  } = post.metadata;
 
-  if (!post || !post.metadata) {
-    return constructMetadata({
-      title: "Article non trouvé",
-      description: "Cet article n'existe pas ou n'est plus disponible.",
-    });
-  }
+  const postSlug = post.metadata.slug || post.slug || params.slug;
+  const postUrl = `${siteConfig.url}/cas-clients/${postSlug}`;
 
-  return constructMetadata({
-    title: post.metadata.title,
-    description: post.metadata.description,
-    image: post.metadata.image,
-    keywords: post.metadata.keywords,
-  });
+  return {
+    title,
+    description,
+    keywords,
+    authors: author
+      ? [
+        {
+          name: author,
+          url: siteConfig.url,
+        },
+      ]
+      : undefined,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      publishedTime,
+      url: postUrl,
+      images: [
+        {
+          url: image,
+        },
+      ],
+      tags,
+    },
+    alternates: {
+      canonical: postUrl,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
+  };
 }
 
-export default async function BlogPost({ params }) {
+export default async function BlogPost({
+  params,
+}: {
+  params: {
+    slug: string;
+  };
+}) {
   const { slug } = params;
 
-  let post = await getPostById(slug);
+  let post = await getPostById(slug, "customer_cases");
   if (!post || !post.metadata || !post.source) {
-    post = await getPost(slug);
+    post = await getPost(slug, "customer_cases");
   }
 
   if (!post || !post.metadata || !post.source) {
@@ -73,7 +118,7 @@ export default async function BlogPost({ params }) {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${siteConfig.url}/blog/${metadata.slug}`,
+      "@id": `${siteConfig.url}/cas-clients/${metadata.slug}`,
     },
   };
 
@@ -90,14 +135,14 @@ export default async function BlogPost({ params }) {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Blog",
-        item: `${siteConfig.url}/blog`,
+        name: "Cas Clients",
+        item: `${siteConfig.url}/cas-clients`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: metadata.title,
-        item: `${siteConfig.url}/blog/${metadata.slug}`,
+        item: `${siteConfig.url}/cas-clients/${metadata.slug}`,
       },
     ],
   };
@@ -142,7 +187,7 @@ export default async function BlogPost({ params }) {
                     <i className="unicon-chevron-right fw-medium opacity-50 rtl:rotate-180" />
                   </li>
                   <li>
-                    <Link href="/blog">Blog</Link>
+                    <Link href="/cas-clients">Cas Clients</Link>
                   </li>
                   <li>
                     <i className="unicon-chevron-right fw-medium opacity-50 rtl:rotate-180" />
@@ -180,25 +225,6 @@ export default async function BlogPost({ params }) {
                     {metadata.description}
                   </p>
                   <ul className="post-meta nav-x ft-tertiary justify-start gap-1 fs-7 text-gray-900 dark:text-white text-opacity-60 d-none lg:d-flex">
-                    {metadata.author && (
-                      <>
-                        <li>
-                          <div className="hstack gap-narrow ft-tertiary">
-                            {metadata.authorImage && (
-                              <Image
-                                src={metadata.authorImage}
-                                width={32}
-                                height={32}
-                                alt={metadata.author}
-                                className="w-32px h-32px rounded-circle me-narrow"
-                              />
-                            )}
-                            <span>{metadata.author}</span>
-                          </div>
-                        </li>
-                        <li className="opacity-50">•</li>
-                      </>
-                    )}
                     <li>
                       <time dateTime={metadata.publishedAt}>
                         {new Date(metadata.publishedAt).toLocaleDateString(
@@ -238,10 +264,10 @@ export default async function BlogPost({ params }) {
             {/* Back to Blog Link */}
             <div className="container max-w-lg mb-6">
               <Link
-                href="/blog"
+                href="/cas-clients"
                 className="btn btn-md btn-primary rounded-default shadow-xs"
               >
-                ← Retour au blog
+                ← Retour aux cas clients
               </Link>
             </div>
           </div>
@@ -251,3 +277,4 @@ export default async function BlogPost({ params }) {
     </>
   );
 }
+

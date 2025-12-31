@@ -1,14 +1,14 @@
-
 import Footer8 from "@/components/footers/Footer8";
 import Header8 from "@/components/headers/Header8";
 import Breadcumb from "@/components/otherPages/Breadcumb";
+import { constructMetadata } from "@/lib/utils";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
-export const metadata = {
-  title: "Conditions Générales de Vente || Fyliz - Agence d'automatisation",
+export const metadata = constructMetadata({
+  title: "Conditions Générales de Vente",
   description:
     "Fyliz - Agence d'automatisation. Consultez nos conditions générales de vente pour nos prestations de conseil, développement et automatisation.",
-};
+});
 
 const markdown = `Mis à jour le 30/12/2025
 

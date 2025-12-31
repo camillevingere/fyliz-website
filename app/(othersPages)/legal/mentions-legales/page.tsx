@@ -1,14 +1,14 @@
-
 import Footer8 from "@/components/footers/Footer8";
 import Header8 from "@/components/headers/Header8";
 import Breadcumb from "@/components/otherPages/Breadcumb";
+import { constructMetadata } from "@/lib/utils";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
-export const metadata = {
-  title: "Mentions Légales || Fyliz - Agence d'automatisation",
+export const metadata = constructMetadata({
+  title: "Mentions Légales",
   description:
     "Fyliz - Agence d'automatisation. Consultez nos mentions légales : informations sur l'éditeur, l'hébergeur et les conditions d'utilisation du site.",
-};
+});
 
 const markdown = `Mis à jour le 30/12/2025
 

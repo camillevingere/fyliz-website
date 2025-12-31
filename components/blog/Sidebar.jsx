@@ -59,13 +59,13 @@ export default async function Sidebar({ articles = [] }) {
                   <Link
                     className="position-cover"
                     data-caption={post.imgAlt}
-                    href={post.slug ? `/${post.slug}` : `/${post.id}`}
+                    href={post.slug ? `/blog/${post.slug}` : `/blog/${post.id}`}
                   />
                 </div>
                 <h4 className="h5 mt-3">
                   <Link
                     className="text-none"
-                    href={post.slug ? `/${post.slug}` : `/${post.id}`}
+                    href={post.slug ? `/blog/${post.slug}` : `/blog/${post.id}`}
                   >
                     {post.title}
                   </Link>
@@ -73,7 +73,7 @@ export default async function Sidebar({ articles = [] }) {
                 <p className="fs-6">{post.description}</p>
                 <Link
                   className="btn btn-text text-primary dark:text-tertiary border-bottom mt-3"
-                  href={post.slug ? `/${post.slug}` : `/${post.id}`}
+                  href={post.slug ? `/blog/${post.slug}` : `/blog/${post.id}`}
                 >
                   Lire plus
                 </Link>
@@ -102,7 +102,9 @@ export default async function Sidebar({ articles = [] }) {
                               <Link
                                 className="text-none"
                                 href={
-                                  post.slug ? `/${post.slug}` : `/${post.id}`
+                                  post.slug
+                                    ? `/blog/${post.slug}`
+                                    : `/blog/${post.id}`
                                 }
                               >
                                 {post.title}
