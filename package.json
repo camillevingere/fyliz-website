@@ -27,7 +27,7 @@
     "imagesloaded": "^5.0.0",
     "isotope-layout": "^3.0.6",
     "lucide-react": "^0.562.0",
-    "next": "15.1.7",
+    "next": "15.2.3",
     "next-mdx-remote": "^5.0.0",
     "posthog-js": "^1.311.0",
     "posthog-node": "^5.18.1",

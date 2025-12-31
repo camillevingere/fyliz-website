@@ -3,9 +3,9 @@ import { supabase } from "@/lib/supabase";
 import { notFound } from "next/navigation";
 
 interface EditorPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 async function getArticleBySlug(slug: string) {
@@ -47,7 +47,8 @@ export default async function EditorPage({ params }: EditorPageProps) {
   if (process.env.ENABLE_MDX_EDITOR !== "1") {
     return notFound();
   }
-  const article = await getArticleBySlug(params.slug);
+  const { slug } = await params;
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     notFound();

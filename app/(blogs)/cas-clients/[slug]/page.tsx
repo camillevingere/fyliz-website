@@ -18,11 +18,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }): Promise<Metadata | undefined> {
-  let post = await getPost(params.slug, "customer_cases");
+  const { slug } = await params;
+  let post = await getPost(slug, "customer_cases");
   if (!post || !post.metadata || !post.source) {
     notFound();
   }
@@ -36,7 +37,7 @@ export async function generateMetadata({
     keywords,
   } = post.metadata;
 
-  const postSlug = post.metadata.slug || post.slug || params.slug;
+  const postSlug = post.metadata.slug || post.slug || slug;
   const postUrl = `${siteConfig.url}/cas-clients/${postSlug}`;
 
   return {
@@ -79,11 +80,11 @@ export async function generateMetadata({
 export default async function BlogPost({
   params,
 }: {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   let post = await getPostById(slug, "customer_cases");
   if (!post || !post.metadata || !post.source) {

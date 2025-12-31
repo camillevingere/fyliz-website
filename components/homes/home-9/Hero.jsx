@@ -108,7 +108,7 @@ export default function Hero() {
                 <span style={{ color: "#ff781a !important" }}>l&apos;IA</span>
               </h2>
 
-              <p className="fs-5 lg:fs-4 mt-2 whitespace-nowrap">
+              <p className="fs-5 lg:fs-4 mt-2 md:whitespace-nowrap">
                 Fyliz automatise vos tâches répétitives et booste votre
                 croissance de +30% en 90 jours
               </p>
