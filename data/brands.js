@@ -215,6 +215,12 @@ export const brands6 = [
     height: 48,
   },
   {
+    src: "/assets/images/brands/cma-cgm-logo.webp",
+    alt: "CMA CGM",
+    width: 128,
+    height: 48,
+  },
+  {
     src: "/assets/images/brands/VIP-Paris-Hotel.webp",
     alt: "VIP Paris Hotel",
     width: 128,

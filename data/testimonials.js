@@ -270,7 +270,7 @@ export const testimonials5 = [
     text: "« Ils ont été très réactif. Nous avons pu programmer rapidement notre séance de travail qui a été efficace. Nous avons atteint les objectifs fixés. »",
     name: "Juliette Brunelot",
     company: "My Skill Factory",
-    imgSrc: "/assets/images/avatars/mySkillFactory.webp",
+    imgSrc: "/assets/images/avatars/myskillfactory.webp",
   },
   {
     text: "« Il fallait installer n8n MCP pour Claude. Fyliz connaît parfaitement son sujet et en sus, d'effectuer cette installation, ils ont à cœur de vous former pour vous rendre autonome. Un état d'esprit remarquable à la hauteur de leurs compétences techniques. »",
