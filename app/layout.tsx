@@ -4,6 +4,7 @@ import "../public/assets/custom.scss";
 import AnimationHandler from "@/components/common/AnimationHandler";
 import BacktoTop from "@/components/common/BacktoTop";
 import MobileMenu from "@/components/headers/component/MobileMenu";
+import BrevoScript from "@/lib/brevo/BrevoScript";
 import { env } from "@/lib/env";
 import { getBootstrapData } from "@/lib/posthog/getBootstrapData";
 import { constructMetadata } from "@/lib/utils";
@@ -17,9 +18,7 @@ export const metadata: Metadata = constructMetadata({});
 
 export const viewport: Viewport = {
   colorScheme: "light",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-  ],
+  themeColor: [{ media: "(prefers-color-scheme: light)", color: "white" }],
 };
 
 export default async function RootLayout({ children }) {
@@ -28,6 +27,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="fr" dir="ltr" className="theme-5 theme-5-light">
       <head>
+        <BrevoScript />
         <GoogleAnalytics gaId={env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
         <Script
           type="text/javascript"

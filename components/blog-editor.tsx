@@ -14,7 +14,11 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useDebounceFn } from "@/hooks/useDebounceFn";
-import { deleteImagesFromS3, getImagePresignedUrl, uploadImageAction } from "@/lib/images.action";
+import {
+  deleteImagesFromS3,
+  getImagePresignedUrl,
+  uploadImageAction,
+} from "@/lib/images.action";
 import {
   extractNewS3Keys,
   extractRemovedS3Keys,
@@ -40,6 +44,7 @@ export type BlogEditorProps = {
   keywords: string[];
   currentImage?: string | null;
   type?: string;
+  workflowJson?: string | null;
 };
 
 type SyncState = "sync" | "not-sync" | "syncing";
@@ -67,7 +72,8 @@ export const BlogEditor = ({
   tags: initialTags,
   keywords: initialKeywords,
   currentImage,
-  type = "articles"
+  type = "articles",
+  workflowJson: initialWorkflowJson,
 }: BlogEditorProps) => {
   const [syncState, setSyncState] = useState<SyncState>("sync");
   const [title, setTitle] = useState(initialTitle);
@@ -80,9 +86,14 @@ export const BlogEditor = ({
   const [processedMarkdown, setProcessedMarkdown] = useState<string>("");
   const [previousMarkdown, setPreviousMarkdown] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string | null>(currentImage || null);
-  const [presignedImageUrl, setPresignedImageUrl] = useState<string | null>(null);
+  const [presignedImageUrl, setPresignedImageUrl] = useState<string | null>(
+    null,
+  );
   const [isUploadingImage, setIsUploadingImage] = useState(false);
   const [dragActive, setDragActive] = useState(false);
+  const [workflowJson, setWorkflowJson] = useState<string>(
+    initialWorkflowJson || "",
+  );
 
   const updateArticle = async (updates: any) => {
     setSyncState("syncing");
@@ -125,15 +136,15 @@ export const BlogEditor = ({
   // Generate presigned URL for current image
   useEffect(() => {
     const generatePresignedUrl = async () => {
-      if (imageUrl && !imageUrl.startsWith('http')) {
+      if (imageUrl && !imageUrl.startsWith("http")) {
         try {
           const { url } = await getImagePresignedUrl({ key: imageUrl });
           setPresignedImageUrl(url);
         } catch (error) {
-          console.error('Error generating presigned URL:', error);
+          console.error("Error generating presigned URL:", error);
           setPresignedImageUrl(null);
         }
-      } else if (imageUrl && imageUrl.startsWith('http')) {
+      } else if (imageUrl && imageUrl.startsWith("http")) {
         setPresignedImageUrl(imageUrl);
       } else {
         setPresignedImageUrl(null);
@@ -163,7 +174,7 @@ export const BlogEditor = ({
           await deleteImagesFromS3(removedS3Keys);
           console.log(
             `Deleted ${removedS3Keys.length} unused S3 images:`,
-            removedS3Keys
+            removedS3Keys,
           );
         } catch (error) {
           console.error("Error deleting unused S3 images:", error);
@@ -239,9 +250,17 @@ export const BlogEditor = ({
       const formData = new FormData();
       formData.append("file", file);
 
+      // Determine folder based on type
+      let folder = "blog";
+      if (type === "customer_cases") {
+        folder = "cas-clients";
+      } else if (type === "n8n_workflows") {
+        folder = "automatisations-n8n";
+      }
+
       const result = await uploadImageAction({
         formData,
-        key: `blog/${articleId}/cover/${nanoid()}.${file.type.split("/")[1]}`,
+        key: `${folder}/${articleId}/cover/${nanoid()}.${file.type.split("/")[1]}`,
       });
 
       await updateArticle({ image: result.key });
@@ -317,6 +336,19 @@ export const BlogEditor = ({
     onMetadataChange("keywords", keywordArray);
   };
 
+  const handleWorkflowJsonChange = (value: string) => {
+    setWorkflowJson(value);
+    setSyncState("not-sync");
+    try {
+      // Validate JSON
+      JSON.parse(value);
+      updateArticle({ workflow_json: value });
+    } catch (error) {
+      // Invalid JSON, but still save it
+      updateArticle({ workflow_json: value });
+    }
+  };
+
   const handlePublish = async () => {
     setSyncState("syncing");
 
@@ -390,10 +422,11 @@ export const BlogEditor = ({
           </div>
         ) : (
           <div
-            className={`relative w-full h-64 border-2 border-dashed rounded-lg transition-colors ${dragActive
-              ? "border-blue-500 bg-blue-50"
-              : "border-gray-300 hover:border-gray-400"
-              } ${isUploadingImage ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+            className={`relative w-full h-64 border-2 border-dashed rounded-lg transition-colors ${
+              dragActive
+                ? "border-blue-500 bg-blue-50"
+                : "border-gray-300 hover:border-gray-400"
+            } ${isUploadingImage ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
             onDrop={handleDrop}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -406,11 +439,11 @@ export const BlogEditor = ({
             <div className="flex flex-col items-center justify-center h-full text-gray-500">
               <Upload className="h-12 w-12 mb-4" />
               <p className="text-lg font-medium mb-2">
-                {isUploadingImage ? "Téléchargement..." : "Glissez une image ici"}
+                {isUploadingImage
+                  ? "Téléchargement..."
+                  : "Glissez une image ici"}
               </p>
-              <p className="text-sm">
-                ou cliquez pour sélectionner un fichier
-              </p>
+              <p className="text-sm">ou cliquez pour sélectionner un fichier</p>
               <p className="text-xs mt-2 text-gray-400">
                 PNG, JPG, GIF jusqu&apos;à 5MB
               </p>
@@ -429,7 +462,9 @@ export const BlogEditor = ({
         {presignedImageUrl && (
           <div className="flex gap-2 mt-4">
             <Button
-              onClick={() => document.getElementById("cover-image-upload")?.click()}
+              onClick={() =>
+                document.getElementById("cover-image-upload")?.click()
+              }
               variant="outline"
               disabled={isUploadingImage}
             >
@@ -522,6 +557,20 @@ export const BlogEditor = ({
             </Select>
           </div>
 
+          {type === "n8n_workflows" && (
+            <div className="md:col-span-2">
+              <Label htmlFor="workflowJson">Workflow JSON (n8n)</Label>
+              <Textarea
+                id="workflowJson"
+                value={workflowJson}
+                onChange={(e) => handleWorkflowJsonChange(e.target.value)}
+                placeholder='{"nodes": [], "connections": {}}'
+                rows={10}
+                className="font-mono text-sm"
+              />
+            </div>
+          )}
+
           <div className="flex items-end">
             {status === "draft" && (
               <Button onClick={handlePublish} className="w-full">
@@ -552,6 +601,7 @@ export const BlogEditor = ({
               }}
               articleId={articleId}
               markdown={processedMarkdown}
+              type={type}
             />
           ) : (
             <div className="p-8 text-center text-gray-500">
