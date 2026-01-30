@@ -1,4 +1,5 @@
 "use client";
+import { uploadImageAction } from "@/lib/images.action";
 import type { JsxComponentDescriptor } from "@mdxeditor/editor";
 import {
   BoldItalicUnderlineToggles,
@@ -28,7 +29,6 @@ import {
 import "@mdxeditor/editor/style.css";
 import { nanoid } from "nanoid";
 import { toast } from "sonner";
-import { uploadImageAction } from "@/lib/images.action";
 import styles from "./mdx-editor-theme.module.css";
 
 const jsxComponentDescriptors: JsxComponentDescriptor[] = [
@@ -49,10 +49,12 @@ const jsxComponentDescriptors: JsxComponentDescriptor[] = [
 
 export interface InitializedMDXEditorProps extends MDXEditorProps {
   articleId: string;
+  type?: string;
 }
 
 export function InitializedMDXEditor({
   articleId,
+  type = "articles",
   ...props
 }: InitializedMDXEditorProps) {
   return (
@@ -65,17 +67,17 @@ export function InitializedMDXEditor({
         quotePlugin(),
         codeBlockPlugin({ defaultCodeBlockLanguage: "js" }),
         codeMirrorPlugin({
-          codeBlockLanguages: { 
-            js: "JavaScript", 
+          codeBlockLanguages: {
+            js: "JavaScript",
             jsx: "JSX",
-            ts: "TypeScript", 
+            ts: "TypeScript",
             tsx: "TSX",
             css: "CSS",
             html: "HTML",
             json: "JSON",
             bash: "Bash",
             python: "Python",
-            yaml: "YAML"
+            yaml: "YAML",
           },
         }),
         thematicBreakPlugin(),
@@ -87,14 +89,22 @@ export function InitializedMDXEditor({
             try {
               const formData = new FormData();
               formData.append("file", file);
-              
+
               console.log("Uploading image:", file.name);
-              
+
+              // Determine folder based on type
+              let folder = "blog";
+              if (type === "customer_cases") {
+                folder = "cas-clients";
+              } else if (type === "n8n_workflows") {
+                folder = "automatisations-n8n";
+              }
+
               const result = await uploadImageAction({
                 formData,
-                key: `blog/${articleId}/${nanoid()}.${file.type.split("/")[1]}`,
+                key: `${folder}/${articleId}/${nanoid()}.${file.type.split("/")[1]}`,
               });
-              
+
               toast.success("Image téléchargée avec succès");
               return result.key;
             } catch (error) {

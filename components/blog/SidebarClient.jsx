@@ -1,10 +1,15 @@
-import { getSignedImageUrl } from "@/lib/image-utils";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
 const FALLBACK_IMAGE = "/images/default-blog.webp";
 
-export default async function Sidebar({ articles = [], title = null }) {
+export default function SidebarClient({
+  articles = [],
+  title = null,
+  basePath = "/blog",
+}) {
   // Find the article with isFavorite=true, fallback to first article if none found
   const featuredArticle = articles.find((a) => a.isFavorite) || articles[0];
 
@@ -15,9 +20,7 @@ export default async function Sidebar({ articles = [], title = null }) {
           slug: featuredArticle.slug,
           title: featuredArticle.title,
           description: featuredArticle.description,
-          imgSrc:
-            (await getSignedImageUrl(featuredArticle.image || null)) ||
-            FALLBACK_IMAGE,
+          imgSrc: featuredArticle.image || FALLBACK_IMAGE,
           imgAlt: featuredArticle.title,
         },
       ]
@@ -59,13 +62,21 @@ export default async function Sidebar({ articles = [], title = null }) {
                   <Link
                     className="position-cover"
                     data-caption={post.imgAlt}
-                    href={post.slug ? `/blog/${post.slug}` : `/blog/${post.id}`}
+                    href={
+                      post.slug
+                        ? `${basePath}/${post.slug}`
+                        : `${basePath}/${post.id}`
+                    }
                   />
                 </div>
                 <h4 className="h5 mt-3">
                   <Link
                     className="text-none"
-                    href={post.slug ? `/blog/${post.slug}` : `/blog/${post.id}`}
+                    href={
+                      post.slug
+                        ? `${basePath}/${post.slug}`
+                        : `${basePath}/${post.id}`
+                    }
                   >
                     {post.title}
                   </Link>
@@ -73,7 +84,11 @@ export default async function Sidebar({ articles = [], title = null }) {
                 <p className="fs-6">{post.description}</p>
                 <Link
                   className="btn btn-text text-primary dark:text-tertiary border-bottom mt-3"
-                  href={post.slug ? `/blog/${post.slug}` : `/blog/${post.id}`}
+                  href={
+                    post.slug
+                      ? `${basePath}/${post.slug}`
+                      : `${basePath}/${post.id}`
+                  }
                 >
                   Lire plus
                 </Link>
@@ -103,8 +118,8 @@ export default async function Sidebar({ articles = [], title = null }) {
                                 className="text-none"
                                 href={
                                   post.slug
-                                    ? `/blog/${post.slug}`
-                                    : `/blog/${post.id}`
+                                    ? `${basePath}/${post.slug}`
+                                    : `${basePath}/${post.id}`
                                 }
                               >
                                 {post.title}
@@ -132,61 +147,6 @@ export default async function Sidebar({ articles = [], title = null }) {
           </div>
         </div>
       )}
-      {/* <div className="widget social-widget vstack gap-2 text-center p-2 py-3 lg:p-4 lg:py-5 rounded-1-5 lg:rounded-2 bg-gray-25 dark:bg-gray-800">
-        <div className="widgt-title">
-          <h4 className="fs-7 m-0">Suivre @Lexend</h4>
-        </div>
-        <div className="widgt-content">
-          <form className="vstack gap-1">
-            <input
-              className="form-control form-control-sm fs-6 fw-medium h-40px w-full rounded-pill bg-white dark:bg-gray-800 dark:bg-gray-800 dark:border-white dark:border-opacity-15 dark:border-opacity-15"
-              type="email"
-              placeholder="Votre email"
-              required=""
-            />
-            <button
-              className="btn btn-sm btn-primary dark:bg-tertiary dark:text-primary"
-              type="submit"
-            >
-              S'inscrire
-            </button>
-          </form>
-          <ul className="nav-x justify-center gap-1 mt-3">
-            <li>
-              <a
-                href="#fb"
-                className="cstack w-32px h-32px border rounded-circle hover:text-black dark:hover:text-white hover:scale-110 transition-all duration-150"
-              >
-                <i className="icon icon-1 unicon-logo-facebook" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#x"
-                className="cstack w-32px h-32px border rounded-circle hover:text-black dark:hover:text-white hover:scale-110 transition-all duration-150"
-              >
-                <i className="icon icon-1 unicon-logo-x-filled" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#in"
-                className="cstack w-32px h-32px border rounded-circle hover:text-black dark:hover:text-white hover:scale-110 transition-all duration-150"
-              >
-                <i className="icon icon-1 unicon-logo-instagram" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#yt"
-                className="cstack w-32px h-32px border rounded-circle hover:text-black dark:hover:text-white hover:scale-110 transition-all duration-150"
-              >
-                <i className="icon icon-1 unicon-logo-youtube" />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div> */}
     </div>
   );
 }

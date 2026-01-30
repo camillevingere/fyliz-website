@@ -98,10 +98,11 @@ export async function getPost(slug: string, type = "articles") {
   const preprocessedMarkdown = await preprocessMarkdown(article.content);
   const content = await markdownToHTML(preprocessedMarkdown);
   const defaultImage = `${siteConfig.url}/og?title=${encodeURIComponent(
-    article.title
+    article.title,
   )}`;
 
-  const postSlug = generateSlugFromTitle(article.title);
+  // Use slug from DB if available, otherwise generate from title
+  const postSlug = article.slug || generateSlugFromTitle(article.title);
 
   return {
     source: content,
@@ -118,7 +119,8 @@ export async function getPost(slug: string, type = "articles") {
       image: article.image || defaultImage,
       status: article.status,
       slug: postSlug,
-    } as Post,
+      workflowJson: article.workflow_json || null,
+    } as Post & { workflowJson?: string | null },
     slug: postSlug,
   };
 }
@@ -142,9 +144,10 @@ async function getAllPosts(type = "articles") {
       const preprocessedMarkdown = await preprocessMarkdown(article.content);
       const content = await markdownToHTML(preprocessedMarkdown);
       const defaultImage = `${siteConfig.url}/og?title=${encodeURIComponent(
-        article.title
+        article.title,
       )}`;
-      const postSlug = generateSlugFromTitle(article.title);
+      // Use slug from DB if available, otherwise generate from title
+      const postSlug = article.slug || generateSlugFromTitle(article.title);
 
       return {
         id: article.id,
@@ -161,7 +164,7 @@ async function getAllPosts(type = "articles") {
         slug: postSlug,
         source: content,
       };
-    })
+    }),
   );
 
   return posts;
@@ -181,6 +184,13 @@ export async function getCustomerCasePosts(locale: string) {
   return getAllPosts("customer_cases");
 }
 
+export async function getN8nWorkflowPosts(locale: string) {
+  if (locale !== "fr") {
+    return [];
+  }
+  return getAllPosts("n8n_workflows");
+}
+
 export async function getSolutionsPosts() {
   const { solutions } = await import("@/data/solutions");
 
@@ -188,7 +198,7 @@ export async function getSolutionsPosts() {
     .filter((solution) => solution.status === "published")
     .map((solution) => {
       const defaultImage = `${siteConfig.url}/og?title=${encodeURIComponent(
-        solution.title
+        solution.title,
       )}`;
 
       return {
@@ -232,9 +242,10 @@ export async function getPostById(id: string, type = "articles") {
   const preprocessedMarkdown = await preprocessMarkdown(article.content);
   const content = await markdownToHTML(preprocessedMarkdown);
   const defaultImage = `${siteConfig.url}/og?title=${encodeURIComponent(
-    article.title
+    article.title,
   )}`;
-  const postSlug = generateSlugFromTitle(article.title);
+  // Use slug from DB if available, otherwise generate from title
+  const postSlug = article.slug || generateSlugFromTitle(article.title);
 
   return {
     source: content,
@@ -251,7 +262,8 @@ export async function getPostById(id: string, type = "articles") {
       image: article.image || defaultImage,
       status: article.status,
       slug: postSlug,
-    } as Post,
+      workflowJson: article.workflow_json || null,
+    } as Post & { workflowJson?: string | null },
     slug: postSlug,
   };
 }
