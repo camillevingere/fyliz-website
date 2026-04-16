@@ -1,7 +1,7 @@
 import Footer8 from "@/components/footers/Footer8";
 import Header8 from "@/components/headers/Header8";
 import DownloadButton from "@/components/workflows/DownloadButton";
-import { getN8nWorkflowPosts, getPost, getPostById } from "@/lib/blog";
+import { getN8nWorkflowSlugs, getPost, getPostById } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 import { getSignedImageUrl } from "@/lib/image-utils";
 import { Metadata } from "next";
@@ -9,11 +9,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+export const revalidate = 432000; // 5 days — regenerate before presigned URLs expire (7 days)
+
 export async function generateStaticParams() {
-  const posts = await getN8nWorkflowPosts("fr");
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  return getN8nWorkflowSlugs();
 }
 
 export async function generateMetadata({
