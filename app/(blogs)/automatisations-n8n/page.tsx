@@ -7,6 +7,8 @@ import { getSignedImageUrl } from "@/lib/image-utils";
 import { constructMetadata } from "@/lib/utils";
 import AutomatisationsN8nClient from "./page-client";
 
+export const revalidate = 432000; // 5 days — regenerate before presigned URLs expire (7 days)
+
 export const metadata = constructMetadata({
   title: "Automatisations n8n",
   description: `Automatisations n8n | ${siteConfig.name}.`,

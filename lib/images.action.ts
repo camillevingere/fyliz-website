@@ -103,9 +103,9 @@ export async function getImagePresignedUrl({ key }: { key: string }) {
       Key: key,
     });
 
-    // Generate presigned URL that expires in 1 hour
+    // Generate presigned URL that expires in 7 days
     const presignedUrl = await getSignedUrl(s3Client, getCommand, {
-      expiresIn: 3600, // 1 hour
+      expiresIn: 604800, // 7 days
     });
     
     console.log(`Successfully generated presigned URL for key: ${key}`);

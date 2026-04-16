@@ -191,6 +191,23 @@ export async function getN8nWorkflowPosts(locale: string) {
   return getAllPosts("n8n_workflows");
 }
 
+export async function getN8nWorkflowSlugs(): Promise<{ slug: string }[]> {
+  const { data: articles, error } = await supabase
+    .from("n8n_workflows")
+    .select("slug, title")
+    .eq("status", "published")
+    .lte("published_at", new Date().toISOString());
+
+  if (error || !articles) {
+    console.error("Erreur lors de la récupération des slugs n8n:", error);
+    return [];
+  }
+
+  return articles.map((article) => ({
+    slug: article.slug || generateSlugFromTitle(article.title),
+  }));
+}
+
 export async function getSolutionsPosts() {
   const { solutions } = await import("@/data/solutions");
 
