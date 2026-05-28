@@ -191,26 +191,26 @@ export const brands5 = [
 
 export const brands6 = [
   {
-    src: "/assets/images/brands/credit-agricole.webp",
+    src: "/assets/images/brands/credit-agricole-logo.webp",
     alt: "Crédit Agricole",
     width: 128,
     height: 48,
   },
   {
-    src: "/assets/images/brands/La-provence-2026.webp",
+    src: "/assets/images/brands/La-provence-2026-logo.webp",
     alt: "La Provence 2026",
     width: 128,
     height: 48,
   },
   {
-    src: "/assets/images/brands/orpi-agence-immobiliere.webp",
-    alt: "Orpi Agence Immobilière",
+    src: "/assets/images/brands/montblanc-logo.webp",
+    alt: "Montblanc",
     width: 128,
     height: 48,
   },
   {
-    src: "/assets/images/brands/mySkillFactory.webp",
-    alt: "My Skill Factory",
+    src: "/assets/images/brands/ford-motor-company-logo.webp",
+    alt: "Ford Motor Company",
     width: 128,
     height: 48,
   },
@@ -221,8 +221,14 @@ export const brands6 = [
     height: 48,
   },
   {
-    src: "/assets/images/brands/VIP-Paris-Hotel.webp",
+    src: "/assets/images/brands/VIP-Paris-Hotel-logo.webp",
     alt: "VIP Paris Hotel",
+    width: 128,
+    height: 48,
+  },
+  {
+    src: "/assets/images/brands/groupe-m6-logo.webp",
+    alt: "Groupe M6",
     width: 128,
     height: 48,
   },

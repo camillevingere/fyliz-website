@@ -2,7 +2,8 @@
 @import url(https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..700;1,300..700&family=Inter:wght@300..700&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap);
 @font-face {
   font-family: Graphik;
-  src: local("Graphik Regular"), url(../../fonts/graphik/Graphik-Regular.woff2),
+  src:
+    local("Graphik Regular"), url(../../fonts/graphik/Graphik-Regular.woff2),
     url(../../fonts/graphik/Graphik-Regular.woff);
   font-weight: 400;
   text-rendering: optimizeLegibility;
@@ -11,7 +12,8 @@
 }
 @font-face {
   font-family: Graphik;
-  src: local("Graphik Medium"), url(../../fonts/graphik/Graphik-Medium.woff2),
+  src:
+    local("Graphik Medium"), url(../../fonts/graphik/Graphik-Medium.woff2),
     url(../../fonts/graphik/Graphik-Medium.woff);
   font-weight: 500;
   text-rendering: optimizeLegibility;
@@ -20,8 +22,8 @@
 }
 @font-face {
   font-family: Graphik;
-  src: local("Graphik Semibold"),
-    url(../../fonts/graphik/Graphik-Semibold.woff2),
+  src:
+    local("Graphik Semibold"), url(../../fonts/graphik/Graphik-Semibold.woff2),
     url(../../fonts/graphik/Graphik-Semibold.woff);
   font-weight: 700;
   text-rendering: optimizeLegibility;
@@ -30,7 +32,8 @@
 }
 @font-face {
   font-family: "Mabry Pro";
-  src: local("Mabry Pro Regular"),
+  src:
+    local("Mabry Pro Regular"),
     url(../../fonts/mabry-pro/MabryPro-Regular.woff2),
     url(../../fonts/mabry-pro/MabryPro-Regular.woff);
   font-weight: 400;
@@ -40,7 +43,8 @@
 }
 @font-face {
   font-family: "Mabry Pro";
-  src: local("Mabry Pro Bold"), url(../../fonts/mabry-pro/MabryPro-Bold.woff2),
+  src:
+    local("Mabry Pro Bold"), url(../../fonts/mabry-pro/MabryPro-Bold.woff2),
     url(../../fonts/mabry-pro/MabryPro-Bold.woff);
   font-weight: 700;
   text-rendering: optimizeLegibility;
@@ -49,7 +53,8 @@
 }
 @font-face {
   font-family: "Degular Display";
-  src: local("Degular Display Semidbold"),
+  src:
+    local("Degular Display Semidbold"),
     url(../../fonts/degular-display/DegularDisplay-Semibold.woff2);
   font-weight: 600;
   text-rendering: optimizeLegibility;
@@ -58,7 +63,8 @@
 }
 @font-face {
   font-family: "Sharp Grotesk";
-  src: local("Sharp Grotesk Medium"),
+  src:
+    local("Sharp Grotesk Medium"),
     url(../../fonts/sharp-grotesk/SharpGrotesk-Medium.woff2);
   font-weight: 600;
   text-rendering: optimizeLegibility;
@@ -86,14 +92,14 @@
   --font-family-secondary: "PolySans", "IBM Plex Sans Arabic", serif;
   --font-family-tertiary: "PolySans", "IBM Plex Sans Arabic", serif;
   --font-family-serif: "Playfair Display", "IBM Plex Sans Arabic", serif;
-  --font-family-script: Segoe Script, "IBM Plex Sans Arabic", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
-  --font-family-mono: monospace, "IBM Plex Sans Arabic", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
+  --font-family-script:
+    Segoe Script, "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-mono:
+    monospace, "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-weight-ultralight: 100;
   --font-weight-lighter: 200;
   --font-weight-light: 300;
@@ -1360,11 +1366,13 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --bs-font-sans-serif:
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans",
+    "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-monospace:
+    SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
   --bs-gradient: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.15),
@@ -2794,7 +2802,8 @@
     will-change: clip-path, transform;
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0.4s cubic-bezier(0.87, 0, 0.13, 1),
+    transition:
+      visibility 0.4s cubic-bezier(0.87, 0, 0.13, 1),
       opacity 0.4s cubic-bezier(0.87, 0, 0.13, 1),
       clip-path 0.4s cubic-bezier(0.87, 0, 0.13, 1);
     clip-path: inset(0 0 0 100%);
@@ -3780,8 +3789,8 @@
     --grid-gap: var(--bs-gutter-x);
     --scroll-width: var(--body-scroll-width, 17px);
     --container-width: calc(
-      (100% + var(--grid-gap)) * var(--grid-total) / var(--grid-count) -
-        var(--grid-gap)
+      (100% + var(--grid-gap)) * var(--grid-total) /
+        var(--grid-count) - var(--grid-gap)
     );
     --expand-size: calc(
       (100vw - var(--scroll-width) - var(--container-width)) / -2
@@ -4423,8 +4432,8 @@
     --bs-btn-border-color: transparent;
     --bs-btn-border-radius: var(--radius);
     --bs-btn-hover-border-color: transparent;
-    --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),
-      0 1px 1px rgba(0, 0, 0, 0.075);
+    --bs-btn-box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
     --bs-btn-disabled-opacity: 0.65;
     --bs-btn-focus-box-shadow: 0 0 0 0.25rem
       rgba(var(--bs-btn-focus-shadow-rgb), 0.5);
@@ -4443,8 +4452,11 @@
     border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
     border-radius: var(--bs-btn-border-radius);
     background-color: var(--bs-btn-bg);
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition:
+      color 0.15s ease-in-out,
+      background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out;
   }
   @media (prefers-reduced-motion: reduce) {
     .btn {
@@ -4762,9 +4774,10 @@
   .accordion {
     --bs-accordion-color: #212529;
     --bs-accordion-bg: #fff;
-    --bs-accordion-transition: color 0.15s ease-in-out,
-      background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-      box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+    --bs-accordion-transition:
+      color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+      border-radius 0.15s ease;
     --bs-accordion-border-color: var(--bs-border-color);
     --bs-accordion-border-width: 1px;
     --bs-accordion-border-radius: 0.375rem;
@@ -4831,7 +4844,9 @@
     border: 1px solid #ced4da;
     appearance: none;
     border-radius: var(--radius);
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition:
+      border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out;
   }
   @media (prefers-reduced-motion: reduce) {
     .form-control {
@@ -4868,8 +4883,11 @@
     border-width: 0;
     border-inline-end-width: 1px;
     border-radius: 0;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition:
+      color 0.15s ease-in-out,
+      background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out;
   }
   @media (prefers-reduced-motion: reduce) {
     .form-control::file-selector-button {
@@ -4946,7 +4964,9 @@
     background-size: 16px 12px;
     border: 1px solid #ced4da;
     border-radius: 0.375rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition:
+      border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out;
     appearance: none;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -5044,10 +5064,14 @@
     outline: 0;
   }
   .form-range:focus::-webkit-slider-thumb {
-    box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    box-shadow:
+      0 0 0 1px #fff,
+      0 0 0 0.25rem rgba(13, 110, 253, 0.25);
   }
   .form-range:focus::-moz-range-thumb {
-    box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    box-shadow:
+      0 0 0 1px #fff,
+      0 0 0 0.25rem rgba(13, 110, 253, 0.25);
   }
   .form-range::-moz-focus-outer {
     border: 0;
@@ -5059,8 +5083,10 @@
     background-color: var(--color-primary);
     border: 0;
     border-radius: 1rem;
-    transition: background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition:
+      background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out;
     appearance: none;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -5086,8 +5112,10 @@
     background-color: var(--color-primary);
     border: 0;
     border-radius: 1rem;
-    transition: background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition:
+      background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out;
     appearance: none;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -7508,16 +7536,16 @@
     letter-spacing: -4px !important;
   }
   .transition {
-    transition-property: color, background-color, border-color,
-      text-decoration-color, fill, stroke, opacity, box-shadow, transform,
-      filter !important;
+    transition-property:
+      color, background-color, border-color, text-decoration-color, fill,
+      stroke, opacity, box-shadow, transform, filter !important;
   }
   .transition-all {
     transition-property: all !important;
   }
   .transition-colors {
-    transition-property: color, background-color, border-color,
-      text-decoration-color, fill, stroke !important;
+    transition-property:
+      color, background-color, border-color, text-decoration-color, fill, stroke !important;
   }
   .transition-transform {
     transition-property: transform !important;
@@ -8883,8 +8911,8 @@
     --uc-gradient-stops: var(--uc-gradient-from), var(--uc-gradient-to);
   }
   .via-transparent {
-    --uc-gradient-stops: var(--uc-gradient-from), transparent,
-      var(--uc-gradient-to) !important;
+    --uc-gradient-stops:
+      var(--uc-gradient-from), transparent, var(--uc-gradient-to) !important;
   }
   .from-black {
     --uc-gradient-from: #000;
@@ -8983,6 +9011,9 @@
     --uc-gradient-from: #052128;
     --uc-gradient-stops: var(--uc-gradient-from), var(--uc-gradient-to);
   }
+}
+.force-underline {
+  text-decoration: underline !important;
 }
 html[dir="rtl"] .theme-5 .uc-navbar-right {
   margin-left: unset;
