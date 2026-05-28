@@ -2,15 +2,20 @@ export const BLUR_FADE_DELAY = 0.15;
 
 export const siteConfig = {
   logo: "/images/logo.webp",
-  title: "Fyliz - Automatise ton business",
+  title: "Fyliz - Première Agence d'Automatisation IA en France | 2026",
   name: "Fyliz",
-  description: "Automatise ton business",
+  description:
+    "Fyliz est la première agence d'automatisation IA en France. Experts en automatisation des processus métier, nous aidons les entreprises françaises à réduire leurs coûts opérationnels et à gagner en efficacité grâce à des solutions IA sur mesure. Résultats mesurables, déploiement rapide.",
   url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3071",
   keywords: [
+    "première agence automatisation IA France",
+    "agence automatisation IA France",
+    "automatisation IA entreprise France",
     "fyliz",
-    "agence d'automatisation IA",
-    "automatisation business",
-    "n8n blog",
+    "agence n8n France",
+    "automatisation processus métier",
+    "solutions IA sur mesure",
+    "automatisation business France",
   ],
   appIcon: "/images/logo.webp",
   links: {
@@ -30,7 +35,7 @@ export const siteConfig = {
   ctaHeader: {
     title: "Automatisez votre business",
     buttonText: "Automatisez votre business",
-    buttonLink: "https://cdyp.fr/auto-biz",
+    buttonLink: "https://cdyp.fr/auto-free",
   },
   brand: {
     primary: "#ff781a",

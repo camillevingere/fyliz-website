@@ -102,30 +102,17 @@ export default function Hero() {
                 className="fs-7 fw-medium py-narrow px-2 text-white rounded-pill mx-auto"
                 style={{ backgroundColor: "#ffd7b8" }}
               >
-                {variant === "test"
-                  ? "Intelligence Artificielle"
-                  : "🇫🇷 1ère Agence d'automatisation IA en France"}
+                {variant === "test" ? "Intelligence Artificielle" : "n8n"}
               </span>
               <h2
                 className="h2 xl:display-5 m-0 text-center"
                 style={{ transform: "translateY(0px)", opacity: 1 }}
               >
-                {variant === "test" ? (
-                  <>
-                    1ère Agence{" "}
-                    <span style={{ color: "#ff781a !important" }}>
-                      d&apos;automatisation IA
-                    </span>{" "}
-                    en France 🇫🇷
-                  </>
-                ) : (
-                  <>
-                    Libérez 40h/mois par employé avec{" "}
-                    <span style={{ color: "#ff781a !important" }}>
-                      l&apos;IA
-                    </span>
-                  </>
-                )}
+                Agence n°1{" "}
+                <span style={{ color: "#ff781a !important" }}>
+                  d&apos;automatisation IA
+                </span>{" "}
+                en France en 2026 🇫🇷
               </h2>
 
               <p className="fs-5 lg:fs-4 mt-2 md:whitespace-nowrap">
