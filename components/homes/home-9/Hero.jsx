@@ -5,7 +5,7 @@ import posthog from "posthog-js";
 import { useFeatureFlagVariantKey } from "posthog-js/react";
 
 export default function Hero() {
-  const variant = useFeatureFlagVariantKey("header");
+  const variant = useFeatureFlagVariantKey("tag");
   return (
     <div id="hero_header" className="hero-header section panel overflow-hidden">
       <div className="section-outer py-6 lg:py-8 xl:py-10 min-h-700px">
