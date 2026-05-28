@@ -191,13 +191,13 @@ export const brands5 = [
 
 export const brands6 = [
   {
-    src: "/assets/images/brands/credit-agricole.webp",
+    src: "/assets/images/brands/credit-agricole-logo.webp",
     alt: "Crédit Agricole",
     width: 128,
     height: 48,
   },
   {
-    src: "/assets/images/brands/La-provence-2026.webp",
+    src: "/assets/images/brands/La-provence-2026-logo.webp",
     alt: "La Provence 2026",
     width: 128,
     height: 48,

@@ -18,7 +18,7 @@ export default function Footer8() {
                     <div className="panel vstack items-center gap-1 max-w-400px lg:max-w-750px mx-auto text-center mb-6 xl:mb-8">
                       <div className="mb-2 lg:mb-3">
                         <a
-                          href="#"
+                          href={siteConfig.cta.buttonLink}
                           className="btn btn-md xl:btn-lg btn-primary border border-dark dark:border-white dark:border-opacity-15 px-3 lg:px-5 w-auto rounded-pill"
                           onClick={() => {
                             posthog.capture("cta_clicked", {

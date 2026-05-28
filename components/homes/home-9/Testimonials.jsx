@@ -74,8 +74,12 @@ export default function Testimonials() {
                   ref={isotopContainer}
                 >
                   {testimonials5.map(
-                    ({ text, name, imgSrc, company }, index) => (
-                      <div key={index} className={`isotop-element mt-4`}>
+                    ({ text, name, imgSrc, company, linkedinUrl }, index) => (
+                      <a
+                        href={linkedinUrl || "#"}
+                        key={index}
+                        className={`isotop-element mt-4`}
+                      >
                         <div
                           className="px-3 sm:px-4 py-4 panel vstack justify-between gap-3 border rounded-1-5 lg:rounded-2 shadow-sm hover:shadow-md transition-shadow"
                           style={{
@@ -83,9 +87,13 @@ export default function Testimonials() {
                             borderColor: "#e5e7eb",
                           }}
                         >
-                          <div className="panel vstack items-start gap-2">
-                            <p className="fs-6 lg:fs-5 text-gray-900">{text}</p>
-                          </div>
+                          {text && (
+                            <div className="panel vstack items-start gap-2">
+                              <p className="fs-6 lg:fs-5 text-gray-900">
+                                {text}
+                              </p>
+                            </div>
+                          )}
                           <div className="panel hstack items-start gap-2 mt-2">
                             <Image
                               className="w-40px rounded-circle !self-start"
@@ -108,14 +116,25 @@ export default function Testimonials() {
                                 ))}
                               </ul>
                               <span className="fw-bold text-gray-900 m-0">
-                                {name}
+                                {linkedinUrl ? (
+                                  <a
+                                    href={linkedinUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="force-underline"
+                                  >
+                                    {name}
+                                  </a>
+                                ) : (
+                                  name
+                                )}
                               </span>
                               <span className="text-gray-500">{company}</span>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    )
+                      </a>
+                    ),
                   )}
                 </div>
                 <div
