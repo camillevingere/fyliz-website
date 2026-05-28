@@ -306,7 +306,7 @@ export const testimonials5 = [
     text: "",
     name: "Yves N.",
     company: "La Provence",
-    imgSrc: "/assets/images/brands/la-provence-2026-logo.webp",
+    imgSrc: "/assets/images/brands/La-provence-2026-logo.webp",
     linkedinUrl: "https://www.linkedin.com/in/yves-nevchehirlian-2627658/",
   },
   {
