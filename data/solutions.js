@@ -2,6 +2,27 @@ import { siteConfig } from "@/lib/config";
 
 export const solutions = [
   {
+    id: "2",
+    title: "Automatise 80% de ton business en 30 jours.",
+    description: "Avec n8n, le RAG, le MCP et les agents IA.",
+    image:
+      "https://www.media.codympia.com/wp-content/uploads/2025/10/automatise-ton-business-1-1-1.webp",
+    publishedAt: "2026-06-19T10:00:00Z",
+    author: "Camille Vingere",
+    tags: ["n8n", "Formation", "Automatisation", "IA"],
+    keywords: [
+      "n8n",
+      "automatisation",
+      "ia",
+      "formation",
+      "workflow",
+      "business",
+    ],
+    status: "published",
+    link: "https://cdyp.fr/auto-biz",
+    isFavorite: true,
+  },
+  {
     id: "1",
     title: "L'usine SEO",
     description:
@@ -14,7 +35,7 @@ export const solutions = [
     keywords: ["seo", "automatisation", "ia", "productivité"],
     status: "published",
     link: "https://cdyp.fr/usine-seo",
-    isFavorite: true,
+    isFavorite: false,
   },
   {
     id: "2",
