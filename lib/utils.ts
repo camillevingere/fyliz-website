@@ -23,10 +23,13 @@ export function constructMetadata({
   [key: string]: Metadata[keyof Metadata];
 }): Metadata {
   return {
-    title: {
-      template: "%s | " + siteConfig.name,
-      default: siteConfig.name,
-    },
+    title:
+      title !== siteConfig.name
+        ? title
+        : {
+            template: "%s | " + siteConfig.name,
+            default: siteConfig.name,
+          },
     description: description || siteConfig.description,
     keywords: siteConfig.keywords,
     openGraph: {
