@@ -8,7 +8,7 @@ import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import { siteConfig } from "./config";
 import { preprocessMarkdown } from "./mdx-utils";
-import { supabase } from "./supabase";
+import { assertContentTable, sql } from "./db";
 
 export type Post = {
   id: string;
@@ -59,24 +59,22 @@ export async function markdownToHTML(markdown: string) {
 }
 
 export async function getPost(slug: string, type = "articles") {
+  const table = assertContentTable(type);
   // Essayer d'abord de chercher par slug exact (si la colonne slug existe dans la DB)
-  let { data: article } = await supabase
-    .from(type)
-    .select("*")
-    .eq("status", "published")
-    .eq("slug", slug) // Utilise la colonne slug si elle existe
-    .maybeSingle();
+  const hasSlugColumn = table !== "customer_cases";
+  let [article] = hasSlugColumn
+    ? await sql`
+        select * from ${sql(table)}
+        where status = 'published' and slug = ${slug}
+        limit 1
+      `
+    : [];
 
   // Si pas trouvé par slug exact, rechercher par titre et générer le slug
   if (!article) {
-    const { data: articles, error: articlesError } = await supabase
-      .from(type)
-      .select("*")
-      .eq("status", "published");
-
-    if (articlesError || !articles) {
-      return { metadata: null, source: null };
-    }
+    const articles = await sql`
+      select * from ${sql(table)} where status = 'published'
+    `;
 
     // Trouver l'article qui correspond au slug généré
     article = articles.find((article) => {
@@ -126,14 +124,14 @@ export async function getPost(slug: string, type = "articles") {
 }
 
 async function getAllPosts(type = "articles") {
-  const { data: articles, error } = await supabase
-    .from(type)
-    .select("*")
-    .eq("status", "published")
-    .lte("published_at", new Date().toISOString())
-    .order("published_at", { ascending: false });
-
-  if (error || !articles) {
+  let articles;
+  try {
+    articles = await sql`
+      select * from ${sql(assertContentTable(type))}
+      where status = 'published' and published_at <= now()
+      order by published_at desc
+    `;
+  } catch (error) {
     console.error("Erreur lors de la récupération des articles:", error);
     return [];
   }
@@ -192,13 +190,13 @@ export async function getN8nWorkflowPosts(locale: string) {
 }
 
 export async function getN8nWorkflowSlugs(): Promise<{ slug: string }[]> {
-  const { data: articles, error } = await supabase
-    .from("n8n_workflows")
-    .select("slug, title")
-    .eq("status", "published")
-    .lte("published_at", new Date().toISOString());
-
-  if (error || !articles) {
+  let articles;
+  try {
+    articles = await sql`
+      select slug, title from n8n_workflows
+      where status = 'published' and published_at <= now()
+    `;
+  } catch (error) {
     console.error("Erreur lors de la récupération des slugs n8n:", error);
     return [];
   }
@@ -239,14 +237,12 @@ export async function getSolutionsPosts() {
 
 // Nouvelle fonction pour récupérer un article par ID
 export async function getPostById(id: string, type = "articles") {
-  const { data: article, error } = await supabase
-    .from(type)
-    .select("*")
-    .eq("id", id)
-    .eq("status", "published")
-    .single();
+  const [article] = await sql`
+    select * from ${sql(assertContentTable(type))}
+    where id::text = ${id} and status = 'published'
+  `;
 
-  if (error || !article) {
+  if (!article) {
     return { metadata: null, source: null };
   }
 
@@ -283,4 +279,32 @@ export async function getPostById(id: string, type = "articles") {
     } as Post & { workflowJson?: string | null },
     slug: postSlug,
   };
+}
+
+// Récupère un article (quel que soit son statut) pour l'éditeur, par ID, slug ou titre
+export async function getArticleForEditor(slugOrId: string, type = "articles") {
+  const table = assertContentTable(type);
+
+  const [articleById] = await sql`
+    select * from ${sql(table)} where id::text = ${slugOrId}
+  `;
+  if (articleById) {
+    return articleById;
+  }
+
+  if (table !== "customer_cases") {
+    const [articleBySlug] = await sql`
+      select * from ${sql(table)} where slug = ${slugOrId} limit 1
+    `;
+    if (articleBySlug) {
+      return articleBySlug;
+    }
+  }
+
+  const articles = await sql`select * from ${sql(table)}`;
+  return (
+    articles.find(
+      (article) => generateSlugFromTitle(article.title) === slugOrId,
+    ) ?? null
+  );
 }

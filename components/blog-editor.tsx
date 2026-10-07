@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useDebounceFn } from "@/hooks/useDebounceFn";
+import { updateArticleAction } from "@/lib/articles.action";
 import {
   deleteImagesFromS3,
   getImagePresignedUrl,
@@ -25,7 +26,6 @@ import {
   postprocessMarkdown,
   preprocessMarkdown,
 } from "@/lib/mdx-utils";
-import { supabase } from "@/lib/supabase";
 import { Upload, X } from "lucide-react";
 import { nanoid } from "nanoid";
 import Image from "next/image";
@@ -99,21 +99,7 @@ export const BlogEditor = ({
     setSyncState("syncing");
 
     try {
-      const { error } = await supabase
-        .from(type)
-        .update({
-          ...updates,
-          updated_at: new Date().toISOString(),
-        })
-        .eq("id", articleId);
-
-      if (error) {
-        toast.error("Erreur lors de la sauvegarde");
-        setSyncState("not-sync");
-        console.error("Update error:", error);
-        return;
-      }
-
+      await updateArticleAction({ type, articleId, updates });
       setSyncState("sync");
     } catch (error) {
       console.error("Error updating article:", error);
@@ -353,20 +339,14 @@ export const BlogEditor = ({
     setSyncState("syncing");
 
     try {
-      const { error } = await supabase
-        .from(type)
-        .update({
+      await updateArticleAction({
+        type,
+        articleId,
+        updates: {
           status: "published",
           published_at: publishedAt || new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        })
-        .eq("id", articleId);
-
-      if (error) {
-        toast.error("Erreur lors de la publication");
-        setSyncState("not-sync");
-        return;
-      }
+        },
+      });
 
       setStatus("published");
       toast.success("Article publié avec succès");

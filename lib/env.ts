@@ -1,4 +1,5 @@
 export const env = {
+  DATABASE_URL: process.env.DATABASE_URL!,
   AWS_REGION: process.env.AWS_REGION!,
   AWS_ENDPOINT: process.env.AWS_ENDPOINT,
   AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID!,
