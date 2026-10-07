@@ -27,7 +27,6 @@ export default function WorkflowSidebarRightClient({
       sidebarArticles={allWorkflows || workflows}
       basePath="/automatisations-n8n"
       defaultCategory="Workflow"
-      categoryBasePath="/automatisations-n8n/category"
       linkText="Lire plus"
       title="Nos meilleures automatisations"
     />

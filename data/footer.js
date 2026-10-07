@@ -253,7 +253,7 @@ export const footerLinks6 = [
     links: [
       { text: "Solutions", href: "/solutions-automatisation-ia" },
       { text: "Cas clients", href: "/cas-clients" },
-      { text: "Avis", href: "#avis_clients" },
+      { text: "Avis", href: "/#avis_clients" },
     ],
   },
   {

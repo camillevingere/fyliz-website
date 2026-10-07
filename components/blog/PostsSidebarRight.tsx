@@ -70,7 +70,12 @@ export default async function PostsSidebarRight({
               </div>
             </div>
             <div className="md:col-4 sticky-element3">
-              <Sidebar articles={articles} title={title} />
+              <Sidebar
+                articles={articles}
+                title={title}
+                basePath={basePath}
+                useExternalLinks={useExternalLinks}
+              />
             </div>
           </div>
         </div>

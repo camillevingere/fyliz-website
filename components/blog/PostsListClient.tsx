@@ -39,10 +39,9 @@ export default function PostsListClient({
     return elm.slug ? `${basePath}/${elm.slug}` : `${basePath}/${elm.id}`;
   };
 
-  const getCategoryUrl = (category: string) => {
-    if (!categoryBasePath) return "#";
-    return `${categoryBasePath}/${category}`;
-  };
+  // Sans page catégorie, le badge reste un simple libellé (pas de lien vers une 404).
+  const categoryClassName =
+    "post-category fw-normal fw-bold fs-7 py-narrow px-1 rounded bg-primary position-absolute top-0 start-0 m-2";
 
   const visiblePosts = posts.slice(0, visibleCount);
   const hasMore = visibleCount < posts.length;
@@ -70,13 +69,22 @@ export default function PostsListClient({
                         data-caption={elm.alt || elm.title}
                       />
                     </figure>
-                    <Link
-                      className="post-category fw-normal fw-bold fs-7 py-narrow px-1 rounded bg-primary position-absolute top-0 start-0 m-2"
-                      style={{ color: "#ffffff !important" }}
-                      href={getCategoryUrl(elm.category)}
-                    >
-                      {elm.category}
-                    </Link>
+                    {categoryBasePath ? (
+                      <Link
+                        className={categoryClassName}
+                        style={{ color: "#ffffff !important" }}
+                        href={`${categoryBasePath}/${elm.category}`}
+                      >
+                        {elm.category}
+                      </Link>
+                    ) : (
+                      <span
+                        className={categoryClassName}
+                        style={{ color: "#ffffff !important" }}
+                      >
+                        {elm.category}
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div>

@@ -4,7 +4,15 @@ import Link from "next/link";
 
 const FALLBACK_IMAGE = "/images/default-blog.webp";
 
-export default async function Sidebar({ articles = [], title = null }) {
+export default async function Sidebar({
+  articles = [],
+  title = null,
+  basePath = "/blog",
+  useExternalLinks = false,
+}) {
+  const getPostUrl = (post) =>
+    useExternalLinks && post.link ? post.link : `${basePath}/${post.slug || post.id}`;
+
   // Find the article with isFavorite=true, fallback to first article if none found
   const featuredArticle = articles.find((a) => a.isFavorite) || articles[0];
 
@@ -13,6 +21,7 @@ export default async function Sidebar({ articles = [], title = null }) {
         {
           id: featuredArticle.slug || featuredArticle.id,
           slug: featuredArticle.slug,
+          link: featuredArticle.link,
           title: featuredArticle.title,
           description: featuredArticle.description,
           imgSrc:
@@ -28,6 +37,7 @@ export default async function Sidebar({ articles = [], title = null }) {
     articles.slice(3, 8).map((post) => ({
       id: post.slug || post.id,
       slug: post.slug,
+      link: post.link,
       title: post.title,
       date: post.publishedAt
         ? new Date(post.publishedAt).toLocaleDateString("fr-FR", {
@@ -59,13 +69,13 @@ export default async function Sidebar({ articles = [], title = null }) {
                   <Link
                     className="position-cover"
                     data-caption={post.imgAlt}
-                    href={post.slug ? `/blog/${post.slug}` : `/blog/${post.id}`}
+                    href={getPostUrl(post)}
                   />
                 </div>
                 <h4 className="h5 mt-3">
                   <Link
                     className="text-none"
-                    href={post.slug ? `/blog/${post.slug}` : `/blog/${post.id}`}
+                    href={getPostUrl(post)}
                   >
                     {post.title}
                   </Link>
@@ -73,7 +83,7 @@ export default async function Sidebar({ articles = [], title = null }) {
                 <p className="fs-6">{post.description}</p>
                 <Link
                   className="btn btn-text text-primary dark:text-tertiary border-bottom mt-3"
-                  href={post.slug ? `/blog/${post.slug}` : `/blog/${post.id}`}
+                  href={getPostUrl(post)}
                 >
                   Lire plus
                 </Link>
@@ -101,11 +111,7 @@ export default async function Sidebar({ articles = [], title = null }) {
                             <h3 className="post-title h6 m-0">
                               <Link
                                 className="text-none"
-                                href={
-                                  post.slug
-                                    ? `/blog/${post.slug}`
-                                    : `/blog/${post.id}`
-                                }
+                                href={getPostUrl(post)}
                               >
                                 {post.title}
                               </Link>

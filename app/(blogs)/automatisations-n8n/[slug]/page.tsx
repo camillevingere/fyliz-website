@@ -77,6 +77,10 @@ export async function generateMetadata({
   };
 }
 
+// Le contenu en base commence par un « # Titre » : le H1 de la page est déjà dans l'en-tête.
+const demoteH1 = (html: string) =>
+  html.replace(/<h1(\s|>)/g, "<h2$1").replace(/<\/h1>/g, "</h2>");
+
 export default async function WorkflowPost({
   params,
 }: {
@@ -267,7 +271,7 @@ export default async function WorkflowPost({
 
                 <article
                   className="prose dark:prose-invert lg:prose-2xl prose-headings:mb-6 prose-headings:mt-8 prose-p:mb-6 prose-p:text-lg lg:prose-p:text-xl prose-p:leading-relaxed prose-p:font-thin prose-ul:mb-6 prose-ol:mb-6 prose-li:mb-3 prose-blockquote:text-xl prose-blockquote:my-8"
-                  dangerouslySetInnerHTML={{ __html: post.source }}
+                  dangerouslySetInnerHTML={{ __html: demoteH1(post.source) }}
                 />
               </div>
             </article>

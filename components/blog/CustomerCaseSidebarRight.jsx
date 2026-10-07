@@ -6,7 +6,6 @@ export default async function CustomerCaseSidebarRight({ articles = [] }) {
       articles={articles}
       basePath="/cas-clients"
       defaultCategory="Article"
-      categoryBasePath="/cas-clients/category"
       linkText="Lire plus"
       title="Nos meilleurs clients"
     />

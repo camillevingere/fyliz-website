@@ -6,7 +6,6 @@ export default async function BlogSidebarRight({ articles = [] }) {
       articles={articles}
       basePath="/blog"
       defaultCategory="Article"
-      categoryBasePath="/category"
       linkText="Lire plus"
       title="Articles à la une"
     />
