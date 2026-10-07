@@ -20,9 +20,10 @@ const nextConfig = {
         destination: "/cas-clients",
         permanent: true,
       },
+      // Hub des fiches templates retiré (les fiches répondent 410, voir middleware.ts)
       {
-        source: "/automatisations-n8n/category/:slug*",
-        destination: "/automatisations-n8n",
+        source: "/automatisations-n8n",
+        destination: "/solutions-automatisation-ia",
         permanent: true,
       },
       {

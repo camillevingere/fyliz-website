@@ -1,7 +1,6 @@
 import {
   getBlogPosts,
   getCustomerCasePosts,
-  getN8nWorkflowPosts,
 } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 import { MetadataRoute } from "next";
@@ -9,7 +8,6 @@ import { MetadataRoute } from "next";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const allPosts = await getBlogPosts("fr");
   const customerCases = await getCustomerCasePosts("fr");
-  const n8nWorkflows = await getN8nWorkflowPosts("fr");
   const baseUrl = siteConfig.url;
 
   // Static pages
@@ -37,12 +35,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/automatisations-n8n`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
     },
     {
       url: `${baseUrl}/legal/conditions-generales-de-vente`,
@@ -80,18 +72,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  // Dynamic n8n workflow posts
-  const n8nWorkflowPosts = n8nWorkflows.map((workflow) => ({
-    url: `${baseUrl}/automatisations-n8n/${workflow.slug}`,
-    lastModified: new Date(workflow.publishedAt),
-    changeFrequency: "weekly" as const,
-    priority: 0.6,
-  }));
 
   return [
     ...staticPages,
     ...blogPosts,
     ...customerCasePosts,
-    ...n8nWorkflowPosts,
   ];
 }

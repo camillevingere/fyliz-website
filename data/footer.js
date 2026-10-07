@@ -258,7 +258,6 @@ export const footerLinks6 = [
   },
   {
     links: [
-      { text: "Automatisations", href: "/automatisations-n8n" },
       { text: "Blog", href: "/blog" },
       { text: "FAQ", href: "/#faq" },
       { text: "Contact", href: siteConfig.cta.buttonLink },

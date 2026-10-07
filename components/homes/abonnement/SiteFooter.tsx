@@ -18,7 +18,6 @@ const columns = [
     links: [
       { href: "/solutions-automatisation-ia", label: "Solutions" },
       { href: "/cas-clients", label: "Cas clients" },
-      { href: "/automatisations-n8n", label: "Automatisations n8n" },
       { href: "/blog", label: "Blog" },
     ],
   },
