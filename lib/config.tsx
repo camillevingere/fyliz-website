@@ -25,7 +25,6 @@ export const siteConfig = {
   },
   company: {
     name: "Fyliz",
-    address: "200 Rue de la Croix Nivert, 75015 Paris",
     office: {
       street: "19 place Jean Jaurès",
       postalCode: "13005",

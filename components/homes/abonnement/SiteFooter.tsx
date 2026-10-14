@@ -78,7 +78,7 @@ export default function SiteFooter() {
 
         <div className={s.footerBottom}>
           <span>
-            © {new Date().getFullYear()} {siteConfig.company.name} · Siège social : {siteConfig.company.address}
+            © {new Date().getFullYear()} {siteConfig.company.name}
           </span>
           <ul className={s.footerLinks} style={{ flexDirection: "row", gap: 20 }}>
             {social.map((link) => (
