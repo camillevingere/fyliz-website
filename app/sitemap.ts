@@ -5,6 +5,9 @@ import {
 import { siteConfig } from "@/lib/config";
 import { MetadataRoute } from "next";
 
+// Régénéré toutes les heures : un nouvel article ou cas client publié en base y apparaît sans redéploiement.
+export const revalidate = 3600;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const allPosts = await getBlogPosts("fr");
   const customerCases = await getCustomerCasePosts("fr");
