@@ -1,7 +1,6 @@
-import Breadcumb3 from "@/components/blog/Breadcumb3";
-import CustomerCaseSidebarRight from "@/components/blog/CustomerCaseSidebarRight";
-import Footer8 from "@/components/footers/Footer8";
-import Header8 from "@/components/headers/Header8";
+import ListPage from "@/components/site/ListPage";
+import PostCards from "@/components/site/PostCards";
+import { toPostCards } from "@/components/site/toPostCards";
 import { getCustomerCasePosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 import { constructMetadata } from "@/lib/utils";
@@ -79,19 +78,14 @@ export default async function CasClients() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <div className="theme-5 theme-5-light">
-        <div
-          className="bp-xs page-wrapper bp-sm bp-md bp-lg bp-xl dom-ready bp-xxl-max uni-body panel bg-white text-gray-900 dark:bg-black dark:text-gray-200"
-          style={{ overflowX: "clip" }}
-        >
-          <Header8 />
-          <div id="wrapper" className="wrap">
-            <Breadcumb3 pageName="Nos cas clients" />
-            <CustomerCaseSidebarRight articles={articles} />
-          </div>
-          <Footer8 />
-        </div>
-      </div>
+      <ListPage
+        crumb="Cas clients"
+        title="Nos cas"
+        accent="clients"
+        intro="Workflows n8n et agents IA en production chez nos clients : le problème de départ, ce qu'on a construit, les résultats."
+      >
+        <PostCards posts={await toPostCards(articles, "/cas-clients", { defaultCategory: "Cas client" })} />
+      </ListPage>
     </>
   );
 }

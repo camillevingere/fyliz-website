@@ -8,9 +8,9 @@ const columns = [
     title: "Offre",
     links: [
       { href: "/agence-n8n", label: "Agence n8n" },
-      { href: "#methode", label: "Méthode" },
-      { href: "#tarif", label: "Tarif" },
-      { href: "#faq", label: "FAQ" },
+      { href: "/#methode", label: "Méthode" },
+      { href: "/#tarif", label: "Tarif" },
+      { href: "/#faq", label: "FAQ" },
       { href: siteConfig.cta.buttonLink, label: "Réserver un appel" },
     ],
   },

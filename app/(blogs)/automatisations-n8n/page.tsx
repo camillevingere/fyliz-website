@@ -1,6 +1,4 @@
-import Breadcumb3 from "@/components/blog/Breadcumb3";
-import Footer8 from "@/components/footers/Footer8";
-import Header8 from "@/components/headers/Header8";
+import ListPage from "@/components/site/ListPage";
 import { getN8nWorkflowPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 import { getSignedImageUrl } from "@/lib/image-utils";
@@ -92,19 +90,14 @@ export default async function AutomatisationsN8n() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <div className="theme-5 theme-5-light">
-        <div
-          className="bp-xs page-wrapper bp-sm bp-md bp-lg bp-xl dom-ready bp-xxl-max uni-body panel bg-white text-gray-900 dark:bg-black dark:text-gray-200"
-          style={{ overflowX: "clip" }}
-        >
-          <Header8 />
-          <div id="wrapper" className="wrap">
-            <Breadcumb3 pageName="Automatisations n8n" />
-            <AutomatisationsN8nClient workflows={workflows} />
-          </div>
-          <Footer8 />
-        </div>
-      </div>
+      <ListPage
+        crumb="Automatisations n8n"
+        title="Automatisations"
+        accent="n8n"
+        intro="Des workflows n8n en français, expliqués pas à pas et prêts à importer dans ton instance."
+      >
+        <AutomatisationsN8nClient workflows={workflows} />
+      </ListPage>
     </>
   );
 }

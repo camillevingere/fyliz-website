@@ -1,6 +1,4 @@
-import Footer8 from "@/components/footers/Footer8";
-import Header8 from "@/components/headers/Header8";
-import Breadcumb from "@/components/otherPages/Breadcumb";
+import TextPage from "@/components/site/TextPage";
 import { constructMetadata } from "@/lib/utils";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
@@ -120,27 +118,9 @@ Le site FYLIZ vous souhaite une excellente navigation.
 export default function ConditionsGeneralesDeVentePage() {
   return (
     <>
-      <div className="page-wrapper uni-body panel bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-200 overflow-x-hidden bp-xs bp-sm bp-md bp-lg bp-xl bp-xxl dom-ready">
-        <Header8 />
-        <div id="wrapper" className="wrap">
-          <Breadcumb />
-          <div className="section py-4 lg:py-6 xl:py-8">
-            <div className="container max-w-lg">
-              <div className="page-wrap panel vstack gap-4 lg:gap-6 xl:gap-8">
-                <header className="page-header panel vstack justify-center gap-2 lg:gap-4 text-center">
-                  <div className="panel">
-                    <h1 className="h3 lg:h1 m-0">Mentions Légales</h1>
-                  </div>
-                </header>
-              </div>
-            </div>
-          </div>
-          <div className="pb-10 container max-w-lg prose prose-xl dark:prose-invert lg:max-w-[800px] max-w-[350px] prose-lg lg:prose-2xl prose-headings:mb-6 prose-headings:mt-8 prose-p:mb-6 prose-p:text-lg lg:prose-p:text-xl prose-p:leading-relaxed prose-p:font-thin prose-ul:mb-6 prose-ol:mb-6 prose-li:mb-3 prose-blockquote:text-xl prose-blockquote:my-8">
-            <MDXRemote source={markdown} />
-          </div>
-        </div>
-        <Footer8 />
-      </div>
+      <TextPage title="Mentions Légales">
+        <MDXRemote source={markdown} />
+      </TextPage>
     </>
   );
 }

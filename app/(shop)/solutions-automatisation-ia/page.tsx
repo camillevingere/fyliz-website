@@ -1,7 +1,6 @@
-import Breadcumb3 from "@/components/blog/Breadcumb3";
-import SolutionsSidebarRight from "@/components/blog/SolutionsSidebarRight";
-import Footer8 from "@/components/footers/Footer8";
-import Header8 from "@/components/headers/Header8";
+import ListPage from "@/components/site/ListPage";
+import PostCards from "@/components/site/PostCards";
+import { toPostCards } from "@/components/site/toPostCards";
 import { getSolutionsPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 import { constructMetadata } from "@/lib/utils";
@@ -73,19 +72,14 @@ export default async function SolutionsAutomatisationIA() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <div className="theme-5 theme-5-light">
-        <div
-          className="bp-xs page-wrapper bp-sm bp-md bp-lg bp-xl dom-ready bp-xxl-max uni-body panel bg-white text-gray-900 dark:bg-black dark:text-gray-200"
-          style={{ overflowX: "clip" }}
-        >
-          <Header8 />
-          <div id="wrapper" className="wrap">
-            <Breadcumb3 pageName="Solutions d'automatisation IA" />
-            <SolutionsSidebarRight articles={allPosts} />
-          </div>
-          <Footer8 />
-        </div>
-      </div>
+      <ListPage
+        crumb="Solutions d'automatisation IA"
+        title="Solutions d'automatisation"
+        accent="IA"
+        intro="Des automatisations prêtes à l'emploi pour gagner du temps sur tes processus métier."
+      >
+        <PostCards posts={await toPostCards(allPosts, "", { external: true, defaultCategory: "Solution" })} />
+      </ListPage>
     </>
   );
 }

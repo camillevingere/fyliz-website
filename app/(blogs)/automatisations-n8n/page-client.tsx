@@ -1,7 +1,7 @@
 "use client";
 
-import SearchBar from "@/components/workflows/SearchBar";
-import WorkflowSidebarRightClient from "@/components/workflows/WorkflowSidebarRightClient";
+import PostCards from "@/components/site/PostCards";
+import s from "@/components/site/site.module.scss";
 import { useMemo, useState } from "react";
 
 interface Workflow {
@@ -44,15 +44,29 @@ export default function AutomatisationsN8nClient({
 
   return (
     <>
-      <div className="container">
-        <div className="py-4 lg:py-6 xl:py-8">
-          <SearchBar onSearch={setSearchQuery} />
-        </div>
+      <div className={s.search}>
+        <input
+          type="search"
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+          placeholder="Rechercher un workflow (CRM, Gmail, agent IA…)"
+          aria-label="Rechercher un workflow n8n"
+        />
       </div>
-      <WorkflowSidebarRightClient
-        workflows={filteredWorkflows}
-        allWorkflows={workflows}
-      />
+      {filteredWorkflows.length === 0 ? (
+        <p className={s.empty}>Aucun workflow ne correspond à « {searchQuery} ».</p>
+      ) : (
+        <PostCards
+          posts={filteredWorkflows.map((workflow) => ({
+            key: workflow.slug || workflow.id || workflow.title,
+            href: `/automatisations-n8n/${workflow.slug || workflow.id}`,
+            image: workflow.image || "/images/default-blog.webp",
+            title: workflow.title,
+            category: workflow.tags?.[0] || "Workflow n8n",
+            excerpt: workflow.description,
+          }))}
+        />
+      )}
     </>
   );
 }

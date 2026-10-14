@@ -5,10 +5,10 @@ export const subscription = {
 };
 
 export const navLinks = [
-  { href: "#automatisations", label: "Ce qu'on automatise" },
-  { href: "#methode", label: "Méthode" },
-  { href: "#cas-clients", label: "Cas clients" },
-  { href: "#tarif", label: "Tarif" },
+  { href: "/#automatisations", label: "Ce qu'on automatise" },
+  { href: "/#methode", label: "Méthode" },
+  { href: "/#cas-clients", label: "Cas clients" },
+  { href: "/#tarif", label: "Tarif" },
   { href: "/blog", label: "Blog" },
 ];
 

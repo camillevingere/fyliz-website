@@ -1,12 +1,9 @@
-import Footer8 from "@/components/footers/Footer8";
-import Header8 from "@/components/headers/Header8";
+import ArticleView from "@/components/site/ArticleView";
 import DownloadButton from "@/components/workflows/DownloadButton";
 import { getN8nWorkflowSlugs, getPost, getPostById } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 import { getSignedImageUrl } from "@/lib/image-utils";
 import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export const revalidate = 432000; // 5 days — regenerate before presigned URLs expire (7 days)
@@ -163,132 +160,29 @@ export default async function WorkflowPost({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <div className="theme-5 theme-5-light">
-        <div
-          className=" bp-xs page-wrapper bp-sm bp-md bp-lg bp-xl dom-ready bp-xxl-max uni-body panel bg-white text-gray-900 dark:bg-black dark:text-gray-200"
-          style={{ overflowX: "clip" }}
-        >
-          <Header8 />
-          <div id="wrapper" className="wrap">
-            {/* Breadcrumbs */}
-            <div
-              style={{ marginTop: "120px" }}
-              className="breadcrumbs panel z-1 py-2 bg-secondary dark:bg-gray-100 dark:bg-opacity-5 dark:text-white"
-            >
-              <div className="container max-w-xl">
-                <ul className="breadcrumb nav-x justify-center items-center gap-1 fs-7 m-0 fw-bold">
-                  <li>
-                    <Image
-                      alt="icon"
-                      className="me-1"
-                      src="/assets/images/common/icons/home.svg"
-                      width="18"
-                      height="18"
-                    />
-                  </li>
-                  <li>
-                    <Link href="/">Accueil</Link>
-                  </li>
-                  <li>
-                    <i className="unicon-chevron-right fw-medium opacity-50 rtl:rotate-180" />
-                  </li>
-                  <li>
-                    <Link href="/automatisations-n8n">Automatisations n8n</Link>
-                  </li>
-                  <li>
-                    <i className="unicon-chevron-right fw-medium opacity-50 rtl:rotate-180" />
-                  </li>
-                  <li>
-                    <span className="opacity-50">{metadata.title}</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Article Content */}
-            <article className="post type-post single-post py-4 lg:py-6 xl:py-9">
-              <div className="container max-w-lg">
-                <div className="post-header panel vstack gap-2 lg:gap-4 mb-4 lg:mb-6 xl:mb-3">
-                  <div className="panel">
-                    <ul className="post-share-icons nav-x gap-1 dark:text-white">
-                      {metadata.tags &&
-                        metadata.tags.map((tag, idx) => (
-                          <li key={idx}>
-                            <span
-                              className="badge bg-primary px-2 py-1 fs-7 rounded"
-                              style={{ color: "#ffffff !important" }}
-                            >
-                              {tag}
-                            </span>
-                          </li>
-                        ))}
-                    </ul>
-                  </div>
-                  <h1 className="h3 sm:h2 lg:display-6 xl:display-5 m-0">
-                    {metadata.title}
-                  </h1>
-                  <p className="fs-5 lg:fs-4 text-muted">
-                    {metadata.description}
-                  </p>
-                  {workflowJson && (
-                    <div className="mt-4 lg:mt-6">
-                      <DownloadButton
-                        workflowJson={workflowJson}
-                        workflowName={metadata.title}
-                        workflowSlug={metadata.slug}
-                      />
-                    </div>
-                  )}
-                  <ul className="post-meta nav-x ft-tertiary justify-start gap-1 fs-7 text-gray-900 dark:text-white text-opacity-60 d-none lg:d-flex mt-4">
-                    <li>
-                      <time dateTime={metadata.publishedAt}>
-                        {new Date(metadata.publishedAt).toLocaleDateString(
-                          "fr-FR",
-                          {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          },
-                        )}
-                      </time>
-                    </li>
-                  </ul>
-                </div>
-                <figure className="featured-image m-0 rounded ratio ratio-2x1 rounded-2 uc-transition-toggle overflow-hidden mb-4 lg:mb-6">
-                  <Image
-                    className="media-cover image uc-transition-scale-up uc-transition-opaque"
-                    alt={metadata.title}
-                    src={
-                      signedImageUrl ||
-                      metadata.image ||
-                      "/images/default-blog.webp"
-                    }
-                    width={1200}
-                    height={600}
-                    priority
-                  />
-                </figure>
-
-                <article
-                  className="prose dark:prose-invert lg:prose-2xl prose-headings:mb-6 prose-headings:mt-8 prose-p:mb-6 prose-p:text-lg lg:prose-p:text-xl prose-p:leading-relaxed prose-p:font-thin prose-ul:mb-6 prose-ol:mb-6 prose-li:mb-3 prose-blockquote:text-xl prose-blockquote:my-8"
-                  dangerouslySetInnerHTML={{ __html: demoteH1(post.source) }}
-                />
-              </div>
-            </article>
-
-            {/* Back to Workflows Link */}
-            <div className="container max-w-lg mb-6">
-              <Link
-                href="/automatisations-n8n"
-                className="btn btn-md btn-primary rounded-default shadow-xs"
-              >
-                ← Retour aux automatisations
-              </Link>
-            </div>
-          </div>
-          <Footer8 />
-        </div>
-      </div>
+      <ArticleView
+        crumbs={[
+          { href: "/", label: "Accueil" },
+          { href: "/automatisations-n8n", label: "Automatisations n8n" },
+          { label: metadata.title },
+        ]}
+        tags={metadata.tags}
+        title={metadata.title}
+        description={metadata.description}
+        author={metadata.author}
+        authorImage={metadata.authorImage}
+        publishedAt={metadata.publishedAt}
+        cover={signedImageUrl || metadata.image || "/images/default-blog.webp"}
+        html={demoteH1(post.source)}
+        back={{ href: "/automatisations-n8n", label: "Toutes les automatisations" }}
+        actions={workflowJson ? (
+          <DownloadButton
+            workflowJson={workflowJson}
+            workflowName={metadata.title}
+            workflowSlug={metadata.slug}
+          />
+        ) : undefined}
+      />
     </>
   );
 }
