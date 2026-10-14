@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 680" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a8178"/>
+    </marker>
+  </defs>
+  <rect width="1280" height="680" rx="36" fill="#f7f3ec"/>
+  <text x="80" y="96" font-size="34" font-weight="700" fill="#17130f">À qui appartient quoi</text>
+  <text x="80" y="134" font-size="20" fill="#8a8178">Si l'abonnement s'arrête, tout ce qui est dans le cadre orange reste chez toi</text>
+
+  <!-- cadre client -->
+  <rect x="80" y="180" width="760" height="440" rx="28" fill="#fffdf9" stroke="#ff781a" stroke-width="4"/>
+  <rect x="110" y="160" width="300" height="44" rx="22" fill="#ff781a"/>
+  <text x="260" y="189" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">Tes comptes, hébergés en UE</text>
+
+  <g>
+    <rect x="120" y="240" width="330" height="160" rx="20" fill="#ffe4cf"/>
+    <rect x="148" y="270" width="64" height="44" rx="10" fill="#fff" stroke="#e35d00" stroke-width="3"/>
+    <circle cx="166" cy="292" r="6" fill="#e35d00"/>
+    <circle cx="194" cy="292" r="6" fill="#e35d00"/>
+    <text x="148" y="350" font-size="21" font-weight="700" fill="#17130f">Instance n8n</text>
+    <text x="148" y="376" font-size="16" fill="#8a8178">et tous les workflows</text>
+  </g>
+  <g>
+    <rect x="470" y="240" width="340" height="160" rx="20" fill="#e9e5ff"/>
+    <circle cx="510" cy="292" r="16" fill="none" stroke="#6e56ff" stroke-width="4"/>
+    <path d="M526 292 h40 m-12 0 v12 m-14 -12 v8" stroke="#6e56ff" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <text x="498" y="350" font-size="21" font-weight="700" fill="#17130f">Clés API</text>
+    <text x="498" y="376" font-size="16" fill="#8a8178">OpenAI, Mistral, Google…</text>
+  </g>
+  <g>
+    <rect x="120" y="420" width="330" height="170" rx="20" fill="#dcf3e6"/>
+    <rect x="148" y="448" width="22" height="36" rx="4" fill="#17945b"/>
+    <rect x="176" y="458" width="22" height="26" rx="4" fill="#17945b" opacity=".7"/>
+    <rect x="204" y="438" width="22" height="46" rx="4" fill="#17945b" opacity=".85"/>
+    <text x="148" y="530" font-size="21" font-weight="700" fill="#17130f">CRM et outils métier</text>
+    <text x="148" y="556" font-size="16" fill="#8a8178">et les données qu'ils contiennent</text>
+  </g>
+  <g>
+    <rect x="470" y="420" width="340" height="170" rx="20" fill="#e1eaff"/>
+    <rect x="498" y="440" width="40" height="50" rx="5" fill="#fff" stroke="#2f6bff" stroke-width="3"/>
+    <path d="M506 456 h24 M506 466 h24 M506 476 h16" stroke="#2f6bff" stroke-width="3"/>
+    <text x="498" y="530" font-size="21" font-weight="700" fill="#17130f">Documentation</text>
+    <text x="498" y="556" font-size="16" fill="#8a8178">de chaque automatisation</text>
+  </g>
+
+  <!-- Fyliz à l'extérieur -->
+  <rect x="930" y="300" width="270" height="200" rx="28" fill="#17130f"/>
+  <text x="1065" y="372" font-size="26" font-weight="700" fill="#fff" text-anchor="middle">Fyliz</text>
+  <text x="1065" y="404" font-size="17" fill="#d8cfc2" text-anchor="middle">construit et maintient</text>
+  <rect x="975" y="432" width="180" height="38" rx="19" fill="#ff781a"/>
+  <text x="1065" y="457" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">DPA signé</text>
+
+  <path d="M928 400 H 850" stroke="#8a8178" stroke-width="3" stroke-dasharray="10 8" fill="none" marker-end="url(#a)"/>
+  <text x="1065" y="250" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">Accès délégué</text>
+  <text x="1065" y="276" font-size="16" fill="#8a8178" text-anchor="middle">révocable à tout moment</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1280" height="720" rx="36" fill="#f7f3ec"/>
+  <text x="80" y="96" font-size="34" font-weight="700" fill="#17130f">Ce que coûte l'automatisation quand le volume grimpe</text>
+  <text x="80" y="134" font-size="20" fill="#8a8178">Illustration de principe, sans échelle chiffrée</text>
+
+  <!-- axes -->
+  <line x1="140" y1="600" x2="1180" y2="600" stroke="#17130f" stroke-width="3"/>
+  <line x1="140" y1="600" x2="140" y2="190" stroke="#17130f" stroke-width="3"/>
+  <path d="M1180 600 l-14 -8 v16 z" fill="#17130f"/>
+  <path d="M140 190 l-8 14 h16 z" fill="#17130f"/>
+  <text x="1180" y="640" font-size="19" font-weight="700" fill="#17130f" text-anchor="end">Volume d'exécutions par mois</text>
+  <text x="104" y="400" font-size="19" font-weight="700" fill="#17130f" text-anchor="middle" transform="rotate(-90 104 400)">Coût de l'outil</text>
+
+  <!-- graduations légères -->
+  <g stroke="#e5dccd" stroke-width="2">
+    <line x1="140" y1="500" x2="1170" y2="500"/>
+    <line x1="140" y1="400" x2="1170" y2="400"/>
+    <line x1="140" y1="300" x2="1170" y2="300"/>
+  </g>
+
+  <!-- zone écart -->
+  <path d="M600 470 L 600 470 C 760 420, 900 330, 1120 230 L 1120 470 Z" fill="#ffe4cf" opacity="0.7"/>
+
+  <!-- courbe tarif par opération -->
+  <path d="M150 585 C 380 560, 600 470, 760 400 S 1000 280, 1120 230" fill="none" stroke="#ff781a" stroke-width="7" stroke-linecap="round"/>
+  <!-- palier par paliers (marches) -->
+  <!-- ligne plate n8n auto-hébergé -->
+  <path d="M150 470 H 1120" fill="none" stroke="#17945b" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- étiquettes -->
+  <rect x="820" y="190" width="330" height="70" rx="16" fill="#fffdf9"/>
+  <circle cx="846" cy="225" r="9" fill="#ff781a"/>
+  <text x="866" y="219" font-size="19" font-weight="700" fill="#17130f">Tarif à l'opération</text>
+  <text x="866" y="244" font-size="16" fill="#8a8178">Make, Zapier : la facture suit le volume</text>
+
+  <rect x="180" y="380" width="330" height="70" rx="16" fill="#fffdf9"/>
+  <circle cx="206" cy="415" r="9" fill="#17945b"/>
+  <text x="226" y="409" font-size="19" font-weight="700" fill="#17130f">n8n auto-hébergé</text>
+  <text x="226" y="434" font-size="16" fill="#8a8178">coût du serveur, quasi fixe</text>
+
+  <text x="930" y="420" font-size="22" font-weight="700" fill="#e35d00" text-anchor="middle">L'écart se creuse</text>
+  <text x="930" y="446" font-size="16" fill="#e35d00" text-anchor="middle">avec chaque nouveau workflow</text>
+
+  <text x="150" y="680" font-size="16" fill="#8a8178">À faible volume, l'écart est négligeable : la question devient décisive quand les workflows se multiplient.</text>
+</svg>

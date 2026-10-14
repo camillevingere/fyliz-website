@@ -9,9 +9,9 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-const title = "Agence n8n pour PME : workflows illimités à 3 000 € HT/mois";
+const title = "Agence n8n : des workflows qui tiennent, à 3 000 € HT/mois";
 const description =
-  "Agence n8n : on construit et maintient tes workflows, sans limite de demandes, sur tes comptes, à 3 000 € HT/mois sans engagement. Voici ce qui est inclus.";
+  "Workflow cassé, freelance injoignable, facture Make qui grimpe ? Ce que change une agence n8n, son prix (3 000 € HT/mois) et quand n8n ne convient pas.";
 const pageUrl = "https://fyliz.com/agence-n8n";
 
 export const metadata: Metadata = {
@@ -231,113 +231,6 @@ function Quote({ children, author }: { children: ReactNode; author: string }) {
   );
 }
 
-// Schémas en HTML plutôt qu'en image : nets à toutes les tailles et lisibles par Google
-function Flow({
-  steps,
-  label,
-}: {
-  steps: { title: string; text: string }[];
-  label: string;
-}) {
-  return (
-    <figure className="not-prose my-6 lg:my-8" aria-label={label}>
-      <ol className="flex flex-col md:flex-row items-stretch gap-2 m-0 p-0 list-none">
-        {steps.map((step, index) => (
-          <li
-            key={step.title}
-            className="flex flex-col md:flex-row items-center gap-2 flex-1"
-          >
-            <div
-              className="w-full h-full rounded-xl p-3 text-center"
-              style={{
-                background: index === 1 ? "#ff781a" : "#f7f3ec",
-                color: index === 1 ? "#ffffff" : "#17130f",
-              }}
-            >
-              <p className="m-0 text-base" style={{ fontWeight: 700 }}>
-                {step.title}
-              </p>
-              <p className="m-0 text-sm" style={{ opacity: 0.8 }}>
-                {step.text}
-              </p>
-            </div>
-            {index < steps.length - 1 && (
-              <span
-                aria-hidden
-                className="fs-4 md:-rotate-90 rotate-0"
-                style={{ color: "#e35d00" }}
-              >
-                ↓
-              </span>
-            )}
-          </li>
-        ))}
-      </ol>
-      <figcaption
-        className="text-sm text-center mt-2"
-        style={{ color: "#8a8178" }}
-      >
-        {label}
-      </figcaption>
-    </figure>
-  );
-}
-
-function Steps({
-  steps,
-  caption,
-}: {
-  steps: { title: string; text: string }[];
-  caption?: string;
-}) {
-  return (
-    <figure className="not-prose my-6 lg:my-8">
-      <ol
-        className="m-0 p-0 list-none"
-        style={{
-          display: "grid",
-          gap: 12,
-          gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-        }}
-      >
-        {steps.map((step, index) => (
-          <li
-            key={step.title}
-            className="rounded-xl p-3"
-            style={{ background: "#fffdf9", border: "1px solid #ffe4cf" }}
-          >
-            <span
-              className="d-inline-flex items-center justify-center rounded-circle fw-bold mb-1"
-              style={{
-                width: 32,
-                height: 32,
-                background: "#ff781a",
-                color: "#ffffff",
-              }}
-            >
-              {index + 1}
-            </span>
-            <p className="m-0 text-base" style={{ fontWeight: 700 }}>
-              {step.title}
-            </p>
-            <p className="m-0 text-sm" style={{ color: "#5c544c" }}>
-              {step.text}
-            </p>
-          </li>
-        ))}
-      </ol>
-      {caption && (
-        <figcaption
-          className="text-sm text-center mt-2"
-          style={{ color: "#8a8178" }}
-        >
-          {caption}
-        </figcaption>
-      )}
-    </figure>
-  );
-}
-
 function ClientLogos() {
   return (
     <div
@@ -376,38 +269,67 @@ function ClientLogos() {
   );
 }
 
-// Le lecteur BFM interdit l'intégration hors de ses domaines : carte cliquable vers le replay
-function VideoCard({
-  href,
-  title,
-  source,
+// Illustrations 1280 px de large : défilement horizontal sur mobile pour garder le texte lisible
+function Illustration({
+  src,
+  alt,
+  width,
+  height,
+  caption,
 }: {
-  href: string;
-  title: string;
-  source: string;
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
 }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="not-prose flex items-center gap-3 rounded-xl p-3 my-6 text-decoration-none"
-      style={{ background: "#17130f", color: "#ffffff" }}
-    >
-      <span
-        aria-hidden
-        className="flex items-center justify-center rounded-circle flex-shrink-0"
-        style={{ width: 56, height: 56, background: "#ff781a", fontSize: 22 }}
+    <figure className="not-prose my-6 lg:my-8">
+      <div className="overflow-x-auto rounded-xl">
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          className="block w-full h-auto min-w-[680px] md:min-w-0"
+        />
+      </div>
+      {caption && (
+        <figcaption
+          className="text-sm text-center mt-2"
+          style={{ color: "#8a8178" }}
+        >
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+// Le lecteur BFM interdit l'intégration hors de ses domaines : miniature cliquable vers le replay
+function BfmReplay() {
+  return (
+    <figure className="not-prose my-6 lg:my-8">
+      <a
+        href="https://www.bfmtv.com/economie/replay-emissions/l-hebdo-des-pme/video-herve-debbah-j-a-ime-j-a-ime-solution-a-base-d-ia-pour-l-hotellerie-20-12_VN-202512200140.html"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        ▶
-      </span>
-      <span className="vstack">
-        <span className="text-sm" style={{ opacity: 0.7 }}>
-          {source}
-        </span>
-        <span className="fw-bold text-base">{title}</span>
-      </span>
-    </a>
+        <Image
+          src="/assets/images/press/bfm-business-j-aime-replay.webp"
+          alt="Hervé Debbah présente J'aime, solution à base d'IA pour l'hôtellerie, sur BFM Business : voir le replay"
+          width={1280}
+          height={720}
+          className="block w-full h-auto rounded-xl"
+        />
+      </a>
+      <figcaption
+        className="text-sm text-center mt-2"
+        style={{ color: "#8a8178" }}
+      >
+        L&apos;hebdo des PME, BFM Business : voir le replay sur bfmtv.com
+      </figcaption>
+    </figure>
   );
 }
 
@@ -458,107 +380,232 @@ export default function AgenceN8nPage() {
             <article className="post type-post single-post py-4 lg:py-6 xl:py-9">
               <div className="container max-w-lg">
                 <header className="post-header panel vstack gap-2 lg:gap-4 mb-4 lg:mb-6">
-                  <p className="fs-7 text-gray-900 text-opacity-60 m-0">
-                    <em>
-                      Mis à jour le{" "}
-                      <time dateTime="2026-10-14">14 octobre 2026</time>
-                    </em>
-                  </p>
                   <h1 className="h3 sm:h2 lg:display-6 xl:display-5 m-0">
-                    Agence n8n en France : ton équipe qui construit et maintient
-                    tes automatisations
+                    Agence n8n en France : enfin quelqu&apos;un pour construire
+                    et maintenir tes automatisations
                   </h1>
+                  <div className="hstack items-center gap-2">
+                    <Image
+                      src="/assets/images/team/camille-vingere-fondateur-fyliz.webp"
+                      alt=""
+                      width={40}
+                      height={40}
+                      className="rounded-circle flex-shrink-0"
+                    />
+                    <p className="fs-7 text-gray-900 text-opacity-60 m-0">
+                      Par Camille Vingere, fondateur de Fyliz. Mis à jour le{" "}
+                      <time dateTime="2026-10-14">14 octobre 2026</time>.
+                    </p>
+                  </div>
                 </header>
 
                 <div className="prose prose-xl dark:prose-invert prose-lg lg:prose-2xl max-w-none prose-headings:mb-6 prose-headings:mt-8 prose-p:mb-6 prose-p:text-lg lg:prose-p:text-xl prose-p:leading-relaxed prose-p:font-thin prose-ul:mb-6 prose-ol:mb-6 prose-li:mb-3 prose-blockquote:text-xl prose-blockquote:my-8 prose-table:text-base">
                   <p>
-                    Fyliz est une <strong>agence n8n</strong> pour PME : on
-                    conçoit, déploie et maintient tes workflows n8n et tes
-                    agents IA, hébergés sur tes comptes. Abonnement de 3 000 €
-                    HT/mois, demandes illimitées, maintenance incluse, sans
-                    engagement.
+                    Une <strong>agence n8n</strong> conçoit, déploie et
+                    maintient les automatisations qui relient tes outils : CRM,
+                    facturation, e-mails, agents IA. Fyliz en est une. On
+                    travaille en abonnement, à 3 000 € HT/mois sans engagement,
+                    avec des demandes illimitées et des workflows hébergés sur
+                    tes comptes.
                   </p>
                   <p>
-                    Tu sais déjà quoi automatiser. Les relances de devis, la
-                    saisie des factures, le tri des demandes clients. Mais
-                    personne n&apos;a le temps de s&apos;y mettre. Ou un
-                    freelance a livré un workflow, puis il a disparu au premier
-                    bug. Et tu ne veux pas que tes données clients partent chez
-                    un prestataire.
+                    Ça, c&apos;est la réponse courte. La longue commence un
+                    lundi matin.
                   </p>
                   <p>
-                    On fonctionne comme ton{" "}
-                    <Link href="/">équipe IA externalisée</Link> : un seul
-                    prestataire pour la mise en place, l&apos;hébergement sur
-                    tes outils et la maintenance. Fyliz a été fondée par Camille
-                    Vingere et a accompagné plus de 50 entreprises. Nos projets
-                    sont nommés et décrits, pas inventés.
+                    Lundi, 9 h 10. Ton commercial t&apos;apprend que les
+                    relances de devis ne partent plus depuis jeudi. Personne
+                    n&apos;a rien vu. Le workflow s&apos;est arrêté parce
+                    qu&apos;un champ du CRM a changé de nom, et le freelance qui
+                    l&apos;avait monté ne répond plus. Dans ta boîte mail, la
+                    facture Make du mois a encore grimpé, parce que ton volume a
+                    augmenté.
                   </p>
                   <p>
-                    Sur cette page : ce qu&apos;on automatise, comment marche
-                    l&apos;abonnement, ce qu&apos;il coûte, ce qu&apos;on a
-                    livré, et quand n8n n&apos;est pas le bon choix.
+                    Si une de ces scènes te parle, lis la suite : les options
+                    que tu as sans doute essayées, ce qu&apos;une agence n8n
+                    change vraiment, à quel prix, et quand n8n ne convient pas.
+                  </p>
+                  <p>
+                    Je dirige Fyliz, une{" "}
+                    <Link href="/">équipe IA externalisée</Link> qui a
+                    accompagné plus de 50 entreprises. Je prêche donc pour ma
+                    paroisse : autant le dire, et te laisser juger sur pièces.
                   </p>
 
-                  <Cta note="30 min pour auditer ton activité et tes priorités d'automatisation." />
-
+                  <h2>
+                    Le vrai problème : construire une automatisation, puis la
+                    faire tenir
+                  </h2>
                   <p>
-                    <strong>Points à retenir :</strong>
+                    Construire une automatisation est rarement le problème. La
+                    faire tenir dans le temps, oui, parce que tes outils, tes
+                    process et les modèles d&apos;IA bougent sans prévenir.
                   </p>
-                  <ul>
-                    <li>
-                      3 000 € HT/mois : construction, maintenance et évolutions
-                      de tes workflows n8n comprises.
-                    </li>
-                    <li>
-                      Démarrage 48 h après le premier appel, dépannage pris en
-                      charge sous 24 h.
-                    </li>
-                    <li>
-                      Tout tourne sur tes comptes, hébergé dans l&apos;UE, et
-                      reste à toi même si tu arrêtes.
-                    </li>
-                    <li>
-                      n8n quand c&apos;est le bon outil, autre chose quand ça ne
-                      l&apos;est pas.
-                    </li>
-                  </ul>
+                  <p>
+                    Tu sais déjà quoi automatiser : les relances de devis, la
+                    saisie des factures, le tri des demandes clients. Ce qui
+                    manque, c&apos;est quelqu&apos;un pour s&apos;y mettre. Et
+                    surtout quelqu&apos;un pour rester.
+                  </p>
+                  <p>
+                    Car un workflow n&apos;est pas un meuble qu&apos;on monte
+                    une fois. C&apos;est de la plomberie entre tes logiciels.
+                    Une API change de version, un champ du CRM est renommé, un
+                    modèle d&apos;IA évolue. Quelque chose casse. Souvent en
+                    silence.
+                  </p>
+                  <p>
+                    La facture, elle, n&apos;est pas technique. Une relance qui
+                    ne part pas, c&apos;est un devis qui refroidit. Une facture
+                    mal saisie, c&apos;est un rapprochement à refaire en fin de
+                    mois. Un client sans réponse, c&apos;est un client qui va
+                    voir ailleurs.
+                  </p>
+                  <p>
+                    Reste une inquiétude plus discrète : tes données. Si ton
+                    prestataire héberge tes workflows chez lui, le jour où tu
+                    veux partir, tu récupères quoi ?
+                  </p>
+                  <p>
+                    Alors tu as cherché des solutions. Probablement plusieurs.
+                  </p>
+
+                  <h2>
+                    Expert n8n freelance, agence au projet, Make : ce que tu as
+                    sans doute déjà essayé
+                  </h2>
+                  <p>
+                    Avant de chercher une agence n8n, cinq options reviennent
+                    presque toujours, et aucune n&apos;est mauvaise. Mais toutes
+                    laissent un trou au même endroit : l&apos;après-livraison.
+                  </p>
+
+                  <h3>Le faire soi-même avec des tutos n8n</h3>
+                  <p>
+                    C&apos;est le réflexe le plus sain. n8n self-hosted est
+                    gratuit pour un usage interne, les tutos abondent (on en
+                    publie aussi, liens en bas de page), et un profil curieux
+                    sort un premier workflow en quelques soirées.
+                  </p>
+                  <p>
+                    Le hic, c&apos;est tout ce qui vient après. Un tuto ne dit
+                    pas quoi automatiser en premier, ni comment savoir
+                    qu&apos;un workflow a planté cette nuit. Et celui qui a tout
+                    construit devient le seul point de passage. Le jour où il
+                    part, ton automatisation devient une boîte noire.
+                  </p>
+
+                  <h3>Un expert n8n freelance</h3>
+                  <p>
+                    Un expert ou consultant n8n indépendant est souvent
+                    excellent techniquement, et pour un besoin ponctuel bien
+                    défini, c&apos;est souvent le bon choix.
+                  </p>
+                  <p>
+                    Mais il est seul. S&apos;il part en vacances, ton workflow
+                    attend. S&apos;il signe un gros client, tu passes après.
+                    Pour comparer honnêtement un freelance n8n à une autre
+                    option, additionne sur un an les jours de construction, de
+                    maintenance et d&apos;évolution. C&apos;est ce total qui
+                    compte, pas le prix d&apos;une journée.
+                  </p>
+
+                  <h3>Une agence au projet</h3>
+                  <p>
+                    L&apos;agence au projet règle la question des compétences :
+                    une équipe, une méthode, un livrable testé. Puis elle
+                    s&apos;en va.
+                  </p>
+                  <p>
+                    La maintenance est souvent en option, et chaque nouvelle
+                    idée appelle un nouveau devis. Résultat : on
+                    n&apos;automatise que les gros sujets. Les petits gains du
+                    quotidien restent sur la table, parce qu&apos;ils ne valent
+                    pas un bon de commande.
+                  </p>
+
+                  <h3>Recruter en interne</h3>
+                  <p>
+                    Sur le papier, c&apos;est l&apos;option la plus solide. Mais
+                    recruter un profil IA expérimenté prend du temps et coûte un
+                    salaire chargé, pour une seule personne censée couvrir n8n,
+                    l&apos;IA et le développement.
+                  </p>
+                  <p>
+                    C&apos;est le calcul qu&apos;a fait Equity Family : plutôt
+                    que de recruter un développeur et un spécialiste de
+                    l&apos;automatisation, le groupe a choisi un abonnement. On
+                    compare les deux options dans notre article internaliser ou
+                    externaliser l&apos;IA.
+                  </p>
+
+                  <h3>Make ou Zapier, facturés à l&apos;opération</h3>
+                  <p>
+                    Make et Zapier sont de bons outils, simples à prendre en
+                    main, et on intervient aussi sur Make quand il fait le
+                    travail. Pour quelques scénarios à faible volume, ils
+                    suffisent.
+                  </p>
+                  <p>
+                    Le problème apparaît quand ton activité grandit : la
+                    facturation à l&apos;opération suit le volume. Plus
+                    d&apos;inscrits, plus de commandes, plus de frais. n8n
+                    facture à l&apos;exécution du workflow, pas à chaque étape
+                    (voir la{" "}
+                    <a href="https://n8n.io/pricing/" {...external}>
+                      page tarifs de n8n
+                    </a>
+                    ). En self-hosted, tu paies ton serveur, quel que soit le
+                    nombre d&apos;opérations.
+                  </p>
+                  <Illustration
+                    src="/assets/images/agence-n8n/cout-n8n-vs-tarif-par-operation.svg"
+                    alt="Agence n8n : coût à l'opération de Make et Zapier face au coût fixe de n8n self-hosted"
+                    width={1280}
+                    height={720}
+                  />
+                  <p>
+                    Côte à côte, tout se joue sur trois questions : qui
+                    maintient, combien ça coûtera, et à quelle vitesse ça
+                    démarre.
+                  </p>
+                  <Illustration
+                    src="/assets/images/agence-n8n/alternatives-agence-n8n.svg"
+                    alt="Comparatif des alternatives à une agence n8n : faire soi-même, freelance, agence au projet, recrutement, Make ou Zapier, abonnement"
+                    width={1280}
+                    height={860}
+                  />
+                  <p>
+                    Il manque donc un modèle où la même équipe construit,
+                    maintient et fait évoluer, pour un prix connu d&apos;avance.
+                    C&apos;est le rôle d&apos;une agence n8n au mois.
+                  </p>
 
                   <h2>Ce que fait une agence n8n pour une PME</h2>
                   <p>
-                    Une agence n8n conçoit, connecte, héberge et maintient les
-                    automatisations entre tes outils. Là où un tuto
-                    s&apos;arrête à l&apos;installation, elle prend en charge
-                    tout le cycle : choisir quoi automatiser, construire,
-                    tester, documenter, puis réparer et faire évoluer.
+                    Une agence n8n prend en charge tout le cycle de tes
+                    automatisations : choisir quoi automatiser, construire,
+                    tester, documenter, héberger sur tes comptes, puis réparer
+                    et faire évoluer.
                   </p>
                   <p>
-                    Tu décris un problème métier : « on perd des leads parce que
-                    personne ne relance ». On le traduit en workflow n8n. Tu
-                    n&apos;as pas à apprendre l&apos;outil.
+                    Tu décris un problème métier : « on perd des devis parce que
+                    personne ne relance ». On le traduit en workflow n8n : un
+                    déclencheur à chaque nouveau devis, une attente, une
+                    vérification dans le CRM, puis une relance rédigée par un
+                    agent IA. Tu n&apos;as pas à apprendre l&apos;outil.
                   </p>
-                  <Flow
-                    label="Tes outils connectés par n8n, hébergé sur ton compte"
-                    steps={[
-                      {
-                        title: "Tes outils",
-                        text: "CRM, compta, e-mails, agenda",
-                      },
-                      {
-                        title: "n8n, sur ton compte",
-                        text: "les workflows qui les relient",
-                      },
-                      {
-                        title: "Agents IA",
-                        text: "pour lire, trier et rédiger",
-                      },
-                    ]}
+                  <Illustration
+                    src="/assets/images/agence-n8n/workflow-relance-devis-n8n.svg"
+                    alt="Exemple de workflow n8n de relance de devis construit par une agence n8n"
+                    width={1280}
+                    height={700}
                   />
 
                   <h3>Ce qu&apos;on automatise avec n8n, par tâche</h3>
                   <p>
-                    On raisonne par tâche, pas par outil. Voici les familles de
-                    tâches les plus fréquentes (exemples types, pas des
+                    Par tâche plutôt que par outil (exemples types, pas des
                     résultats clients) :
                   </p>
                   <ul>
@@ -583,99 +630,93 @@ export default function AgenceN8nPage() {
                     </li>
                   </ul>
                   <p>
-                    D&apos;autres idées sont dans nos{" "}
+                    D&apos;autres idées dans nos{" "}
                     <Link href="/solutions-automatisation-ia">
                       cas d&apos;usage de l&apos;automatisation IA
                     </Link>
                     .
                   </p>
-                  <Table
-                    head={["Pôle", "Tâche automatisée", "Outils connectés"]}
-                    rows={[
-                      [
-                        "Ventes et prospection",
-                        "Enrichissement et relance des leads",
-                        "HubSpot, Pipedrive, Gmail",
-                      ],
-                      [
-                        "Admin et finance",
-                        "Collecte des factures et relance des impayés",
-                        "Pennylane, Google Drive, Stripe",
-                      ],
-                      [
-                        "Opérations",
-                        "Synchronisation d'outils et reporting hebdomadaire",
-                        "Notion, Airtable, Google Workspace, Slack",
-                      ],
-                      [
-                        "Support",
-                        "Tri et préparation des réponses",
-                        "Boîte mail, Slack",
-                      ],
-                    ]}
-                    caption="Exemples types, pas des résultats clients."
-                  />
 
                   <h3>Des agents IA dans tes workflows n8n</h3>
                   <p>
-                    Un workflow classique suit des règles fixes. Un agent IA
-                    ajoute du jugement : il lit un e-mail, le classe, en extrait
-                    l&apos;essentiel et rédige une réponse. Dans n8n, on branche
-                    OpenAI ou Claude, on leur donne ta documentation via un RAG,
-                    et on les relie à tes logiciels par MCP. L&apos;agent répond
-                    avec tes données, pas avec des généralités. Plus de détails
+                    Un workflow suit des règles fixes ; un agent IA ajoute du
+                    jugement. Il lit un e-mail, le classe, rédige la réponse.
+                    Dans n8n, on branche OpenAI ou Claude, on leur donne ta
+                    documentation via un RAG et on les relie à tes logiciels par
+                    MCP : l&apos;agent répond avec tes données. Plus de détails
                     sur notre page agence agents IA.
+                  </p>
+
+                  <h3>Agence ou intégrateur n8n : quelle différence ?</h3>
+                  <p>
+                    Le métier technique est le même : connecter tes outils avec
+                    n8n. Un intégrateur n8n exécute un cahier des charges ; une
+                    agence n8n ajoute le conseil en amont (quoi automatiser
+                    d&apos;abord) et le suivi une fois le workflow en
+                    production.
+                  </p>
+
+                  <h2>
+                    n8n, Make ou Zapier : pourquoi on travaille surtout avec n8n
+                  </h2>
+                  <p>
+                    On choisit n8n par défaut : open source, hébergeable chez
+                    toi, facturé à l&apos;exécution, avec des nœuds IA natifs
+                    (agents, RAG, OpenAI ou Claude dans le même workflow).
+                  </p>
+                  <p>
+                    Mais <strong>n8n est un outil, pas une fin en soi</strong>.
+                    Deux des quatre projets présentés plus bas ne tournent pas
+                    sur n8n : quand un agent IA connecté par MCP ou du code fait
+                    mieux le travail, c&apos;est ce qu&apos;on livre. Une
+                    migration depuis Make ou Zapier se cadre dès le premier
+                    appel.
+                  </p>
+                  <p>
+                    Pour un comparatif détaillé, lis{" "}
+                    <a
+                      href="https://n8n-france.com/n8n-vs-make-vs-zapier/"
+                      {...external}
+                    >
+                      n8n vs Make vs Zapier
+                    </a>{" "}
+                    sur n8n-france.com, un site édité par la même équipe que
+                    Fyliz.
                   </p>
 
                   <h2>Comment fonctionne l&apos;abonnement agence n8n Fyliz</h2>
                   <p>
                     Un prix fixe par mois, une file de demandes sans plafond
-                    traitées par priorité, et tout ce qui est livré reste à toi.
-                    Une agence n8n classique facture chaque projet, puis la
+                    traitée par priorité, la maintenance comprise, et tout ce
+                    qui est livré reste à toi. C&apos;est la différence avec une
+                    agence n8n classique, qui facture chaque projet, puis la
                     maintenance à part.
                   </p>
-                  <Steps
-                    caption="Un point de priorisation chaque mois, puis la boucle recommence."
-                    steps={[
-                      {
-                        title: "Tu ajoutes une demande",
-                        text: "dans le tableau partagé",
-                      },
-                      {
-                        title: "On estime et on priorise",
-                        text: "ensemble, avant de démarrer",
-                      },
-                      { title: "On livre", text: "testé et documenté" },
-                      {
-                        title: "On maintient",
-                        text: "dépannage sous 24 h, évolutions incluses",
-                      },
-                    ]}
-                  />
 
                   <h3>Des demandes illimitées, traitées par priorité</h3>
                   <p>
                     Tu ajoutes tes demandes dans un tableau partagé, autant que
-                    tu veux. On les classe ensemble et chacune est estimée avant
-                    de démarrer. Un gros projet est découpé en livrables.
+                    tu veux. On les classe ensemble, chacune est estimée avant
+                    de démarrer, et un gros projet est découpé en livrables.
                   </p>
                   <p>
                     Illimité ne veut pas dire simultané. Les demandes passent
                     une par une, dans l&apos;ordre que tu choisis. Mais il
                     n&apos;y a ni quota, ni avenant, ni devis à chaque nouvelle
-                    idée.
+                    idée. Les petites demandes ont enfin leur place dans la
+                    file.
                   </p>
 
                   <h3>
                     Maintenance, dépannage sous 24 h et évolutions incluses
                   </h3>
                   <p>
-                    Un workflow casse un jour : une API change, un champ du CRM
-                    est renommé, un modèle d&apos;IA évolue. On prend alors en
-                    charge le dépannage sous 24 h. Corrections et évolutions
-                    sont incluses. Chaque mois, on fait un point de priorisation
-                    avec toi. Chaque livrable est documenté, et on forme tes
-                    équipes.
+                    Revenons au lundi matin. Champ renommé, API modifiée, modèle
+                    d&apos;IA qui évolue : le dépannage est pris en charge sous
+                    24 h. Corrections et évolutions sont incluses, sans facture
+                    supplémentaire. Chaque mois, on fait un point de
+                    priorisation avec toi. Chaque livrable est documenté, et on
+                    forme tes équipes.
                   </p>
 
                   <h3>Sans engagement, avec pause possible</h3>
@@ -687,54 +728,66 @@ export default function AgenceN8nPage() {
                     comptes.
                   </p>
                   <p>
-                    Pourquoi un abonnement ? Parce qu&apos;une automatisation
-                    n&apos;est jamais finie : tes outils changent, tes besoins
-                    aussi.
+                    Pourquoi un abonnement plutôt qu&apos;un projet ? Parce
+                    qu&apos;une automatisation n&apos;est jamais finie. Tes
+                    outils changent, tes besoins aussi.
                   </p>
+                  <Illustration
+                    src="/assets/images/agence-n8n/abonnement-n8n-cycle.webp"
+                    alt="Fonctionnement de l'abonnement agence n8n Fyliz : demande, priorisation, livraison, maintenance"
+                    width={1280}
+                    height={660}
+                    caption="Un point de priorisation chaque mois, puis la boucle recommence."
+                  />
 
                   <h2>Notre méthode en 4 étapes</h2>
                   <p>
                     On démarre 48 h après le premier appel, et ta première
-                    automatisation simple tourne en quelques jours :
+                    automatisation simple tourne en quelques jours. Voici le
+                    déroulé :
                   </p>
-                  <Steps
-                    steps={[
-                      {
-                        title: "Consultation stratégique (30 min)",
-                        text: "On audite ton activité et tes priorités d'automatisation.",
-                      },
-                      {
-                        title: "Onboarding, sous 48 h",
-                        text: "Tu nous donnes accès à tes outils, on crée ou on reprend ton instance n8n sur ton compte, et on fixe la feuille de route du premier mois.",
-                      },
-                      {
-                        title: "Demandes et livraisons",
-                        text: "Chaque automatisation est estimée, construite, testée, puis documentée avant sa mise en production.",
-                      },
-                      {
-                        title: "Maintenance et amélioration",
-                        text: "On corrige, on dépanne sous 24 h, on fait évoluer. Les priorités sont revues chaque mois.",
-                      },
-                    ]}
-                  />
+                  <ol>
+                    <li>
+                      <strong>Consultation (30 min).</strong> On audite ton
+                      activité et tes priorités d&apos;automatisation.
+                    </li>
+                    <li>
+                      <strong>Onboarding, sous 48 h.</strong> Tu nous donnes
+                      accès à tes outils, on crée ou on reprend ton instance n8n
+                      sur ton compte, et on fixe la feuille de route du premier
+                      mois.
+                    </li>
+                    <li>
+                      <strong>Demandes et livraisons.</strong> Chaque
+                      automatisation est estimée, construite, testée, puis
+                      documentée avant sa mise en production.
+                    </li>
+                    <li>
+                      <strong>Maintenance et amélioration.</strong> On corrige,
+                      on dépanne sous 24 h, on fait évoluer. Les priorités sont
+                      revues chaque mois.
+                    </li>
+                  </ol>
                   <p>
-                    La consultation ne t&apos;engage à rien. L&apos;abonnement
+                    La consultation ne t&apos;engage à rien, l&apos;abonnement
                     non plus : tu peux t&apos;arrêter à la fin du premier mois.
                   </p>
+                  <Illustration
+                    src="/assets/images/agence-n8n/timeline-abonnement-n8n.svg"
+                    alt="Méthode de l'agence n8n Fyliz, de la consultation à la revue mensuelle"
+                    width={1280}
+                    height={600}
+                  />
 
                   <h2>Combien coûte une agence n8n ?</h2>
                   <p>
                     Chez Fyliz, 3 000 € HT par mois, prestation tout compris, ou
-                    un projet au forfait sur devis. Les logiciels et l&apos;IA
-                    que tu utilises restent payés sur tes propres comptes.
+                    un projet au forfait sur devis. Logiciels et IA restent
+                    payés sur tes propres comptes, ce qui te garantit d&apos;en
+                    rester propriétaire.
                   </p>
 
                   <h3>Ce qui est inclus et ce qui ne l&apos;est pas</h3>
-                  <p>
-                    Le prix couvre le travail de l&apos;équipe. Les outils sont
-                    à ton nom : c&apos;est ce qui te garantit de rester
-                    propriétaire.
-                  </p>
                   <Table
                     head={[
                       "Élément",
@@ -749,14 +802,16 @@ export default function AgenceN8nPage() {
                       ],
                       ["Agents IA sur mesure", "Oui", "Non"],
                       [
-                        "Maintenance, corrections et dépannage sous 24 h",
+                        "Maintenance, corrections, dépannage sous 24 h",
                         "Oui",
                         "Non",
                       ],
                       ["Évolutions des workflows existants", "Oui", "Non"],
-                      ["Point mensuel de priorisation", "Oui", "Non"],
-                      ["Documentation de chaque livrable", "Oui", "Non"],
-                      ["Formation des équipes", "Oui", "Non"],
+                      [
+                        "Point mensuel, documentation, formation des équipes",
+                        "Oui",
+                        "Non",
+                      ],
                       [
                         "Abonnement n8n (Cloud ou serveur self-hosted)",
                         "Non",
@@ -771,8 +826,6 @@ export default function AgenceN8nPage() {
                     ]}
                   />
 
-                  <Cta note="30 min pour auditer ton activité et voir si l'abonnement se justifie, ou si un projet sur devis suffit." />
-
                   <h3>Le projet ponctuel sur devis</h3>
                   <p>
                     Un seul besoin, bien délimité ? On diagnostique ton
@@ -780,25 +833,68 @@ export default function AgenceN8nPage() {
                     automatisation testée et documentée. Pas d&apos;abonnement.
                   </p>
 
-                  <h3>Comment se situent les autres modèles du marché</h3>
+                  <h3>
+                    Freelance, agence au projet ou abonnement : le comparatif
+                  </h3>
                   <p>
                     La plupart des prestataires séparent deux factures : la
-                    construction, vendue au projet ou « sur devis », et un
-                    forfait mensuel de maintenance qui ne comprend pas les
-                    nouveaux workflows. Notre prix mensuel inclut la
-                    construction. Compare donc 3 000 € HT à la somme des deux,
-                    pas au seul forfait de maintenance. Le détail est sur la
-                    page tarifs et fonctionnement de l&apos;abonnement.
+                    construction, au projet ou sur devis, et un forfait de
+                    maintenance qui ne comprend pas les nouveaux workflows.
+                    Notre prix mensuel inclut la construction : compare 3 000 €
+                    HT à la somme des deux, pas au seul forfait de maintenance.
                   </p>
+                  <Table
+                    head={[
+                      "Critère",
+                      "Expert ou consultant n8n freelance",
+                      "Agence au projet",
+                      "Abonnement Fyliz",
+                    ]}
+                    rows={[
+                      [
+                        "Coût",
+                        "Taux journalier, construction puis maintenance au temps passé",
+                        "Forfait par projet + maintenance à part",
+                        "3 000 € HT/mois, construction comprise",
+                      ],
+                      [
+                        "Continuité si absence",
+                        "Dépend d'une personne",
+                        "Équipe, pendant le projet",
+                        "Équipe en continu, dépannage sous 24 h",
+                      ],
+                      [
+                        "Maintenance",
+                        "À négocier",
+                        "Souvent en option",
+                        "Incluse",
+                      ],
+                      [
+                        "Engagement",
+                        "À la mission",
+                        "Au projet",
+                        "Sans engagement, fin de mois",
+                      ],
+                      [
+                        "Qui garde la main",
+                        "Selon le contrat",
+                        "Selon le contrat",
+                        "Toi, sur tes comptes",
+                      ],
+                    ]}
+                  />
+                  <p>
+                    Le détail est sur la page tarifs et fonctionnement de
+                    l&apos;abonnement.
+                  </p>
+
+                  <Cta note="30 min pour auditer ton activité et voir si l'abonnement se justifie, ou si un projet sur devis suffit." />
 
                   <h2>Nos cas clients : ce qu&apos;on a vraiment livré</h2>
                   <p>
-                    Voici quatre projets nommés, décrits tels qu&apos;ils ont
-                    été livrés. Deux tournent sur n8n, deux non, et c&apos;est
-                    assumé :{" "}
-                    <strong>n8n est un outil, pas une fin en soi</strong>. On
-                    choisit l&apos;outil adapté à ton problème, et n8n quand
-                    c&apos;est le bon choix.
+                    Une agence n8n se juge sur pièces. Voici quatre projets
+                    nommés, décrits tels qu&apos;ils ont été livrés : deux sur
+                    n8n, deux sans. Aucun scénario inventé.
                   </p>
 
                   <h3>
@@ -806,48 +902,39 @@ export default function AgenceN8nPage() {
                     Make vers n8n
                   </h3>
                   <p>
-                    Equity Family vend des programmes de coaching par webinaire
-                    live. L&apos;entreprise fait partie du groupe MLX MEDIA,
-                    avec notamment Lexa et Blink. Plutôt que de recruter un
-                    développeur et un spécialiste de l&apos;automatisation, le
-                    groupe a choisi l&apos;abonnement Fyliz.
-                  </p>
-                  <p>
+                    Equity Family, du groupe MLX MEDIA (avec notamment Lexa et
+                    Blink), vend des programmes de coaching par webinaire live.
                     Ses automatisations tournaient sur Make, facturé à
-                    l&apos;opération : plus d&apos;inscrits, plus de frais. On a
-                    tout migré sur n8n, auto-hébergé sur un serveur dédié du
-                    client. Puis, demande après demande, on a construit :
+                    l&apos;opération : plus d&apos;inscrits, plus de frais.
                   </p>
-                  <ul>
-                    <li>
-                      la synchronisation de l&apos;emailing, du CRM, de
-                      l&apos;agenda et de la plateforme de webinaire à chaque
-                      inscription ;
-                    </li>
-                    <li>
-                      une chauffe WhatsApp avant chaque webinaire, pilotée par
-                      l&apos;équipe marketing ;
-                    </li>
-                    <li>
-                      des e-mails ActiveCampaign adaptés au comportement de
-                      chaque inscrit ;
-                    </li>
-                    <li>
-                      « Setia », un setter IA sur mesure qui remplace un SaaS et
-                      amène les prospects à réserver un appel ;
-                    </li>
-                    <li>
-                      « Tracking », une plateforme d&apos;analyse qui remplace
-                      un tableur rempli à la main ;
-                    </li>
-                    <li>
-                      une interface Airtable de suivi des clients coachés, et «
-                      MLX Compta » pour les factures et échéanciers.
-                    </li>
-                  </ul>
                   <p>
-                    Quand Equity Family a changé de plateforme de webinaire, on
-                    a tout adapté sans nouveau devis. Lire le{" "}
+                    On a tout migré sur n8n, auto-hébergé sur un serveur dédié
+                    du client. Puis, demande après demande, on a construit la
+                    synchronisation de l&apos;emailing, du CRM, de l&apos;agenda
+                    et de la plateforme de webinaire à chaque inscription, une
+                    chauffe WhatsApp pilotée par l&apos;équipe marketing avant
+                    chaque webinaire, et des e-mails ActiveCampaign adaptés au
+                    comportement de chaque inscrit.
+                  </p>
+                  <p>
+                    Sont venus ensuite les outils sur mesure : « Setia », un
+                    setter IA qui remplace un SaaS et amène les prospects à
+                    réserver un appel ; « Tracking », une plateforme
+                    d&apos;analyse qui remplace un tableur rempli à la main ;
+                    une interface Airtable de suivi des clients coachés ; « MLX
+                    Compta » pour les factures et échéanciers.
+                  </p>
+                  <Illustration
+                    src="/assets/images/agence-n8n/equity-family-tunnel-webinaire-n8n.webp"
+                    alt="Tunnel webinaire Equity Family automatisé sur n8n"
+                    width={1280}
+                    height={840}
+                    caption="Le tunnel d'Equity Family, de l'inscription à la vente."
+                  />
+                  <p>
+                    Le détail qui résume tout : quand Equity Family a changé de
+                    plateforme de webinaire, on a tout adapté sans nouveau
+                    devis. Lire le{" "}
                     <Link href="/cas-clients/equity-family-automatiser-un-tunnel-de-vente-par-webinaire">
                       cas Equity Family
                     </Link>
@@ -865,9 +952,9 @@ export default function AgenceN8nPage() {
                     l&apos;analyse des questionnaires de satisfaction, une
                     veille du droit notarial qui recommande les programmes à
                     mettre à jour (avec validation humaine) et des e-mails
-                    personnalisés par profil de notaire. Pourquoi n8n ?
-                    C&apos;est open source et sans code : l&apos;équipe du
-                    client modifie ses workflows sans développeur. Lire le{" "}
+                    personnalisés par profil de notaire. Pourquoi n8n ? Open
+                    source et sans code, il permet à l&apos;équipe du client de
+                    modifier ses workflows sans développeur. Lire le{" "}
                     <Link href="/cas-clients/myskillfactory-agents-ia-pour-organisme-de-formation">
                       cas MySkillFactory et INAFON
                     </Link>
@@ -882,18 +969,20 @@ export default function AgenceN8nPage() {
                   <h3>J&apos;aime : un SAV hôtelier géré par un agent IA</h3>
                   <p>
                     Pour l&apos;hôtel J&apos;aime, on a construit un agent IA
-                    qui répond aux e-mails et aux messages WhatsApp. Il consulte
-                    réservations et disponibilités via un MCP connecté au
-                    logiciel de réservation, puis formule la réponse. Pas de n8n
-                    ici : un agent IA connecté par MCP faisait mieux le travail.
-                    Le client a présenté la solution dans L&apos;hebdo des PME
-                    sur BFM Business :
+                    qui répond aux e-mails et aux messages WhatsApp en
+                    consultant réservations et disponibilités via un MCP
+                    connecté au logiciel de réservation. Pas de n8n ici :
+                    l&apos;agent connecté par MCP faisait mieux le travail. Le
+                    client a présenté la solution dans{" "}
+                    <a
+                      href="https://www.bfmtv.com/economie/replay-emissions/l-hebdo-des-pme/video-herve-debbah-j-a-ime-j-a-ime-solution-a-base-d-ia-pour-l-hotellerie-20-12_VN-202512200140.html"
+                      {...external}
+                    >
+                      L&apos;hebdo des PME sur BFM Business
+                    </a>
+                    .
                   </p>
-                  <VideoCard
-                    href="https://www.bfmtv.com/economie/replay-emissions/l-hebdo-des-pme/video-herve-debbah-j-a-ime-j-a-ime-solution-a-base-d-ia-pour-l-hotellerie-20-12_VN-202512200140.html"
-                    source="BFM Business, L'hebdo des PME"
-                    title="J'aime, une solution à base d'IA pour l'hôtellerie : voir le replay"
-                  />
+                  <BfmReplay />
                   <p>
                     Voir le{" "}
                     <Link href="/cas-clients/j-aime-sav-ia-pour-lhotellerie">
@@ -911,17 +1000,19 @@ export default function AgenceN8nPage() {
                     automatisés
                   </h3>
                   <p>
-                    Ce n&apos;est pas un projet n8n, c&apos;est une mission de
+                    Pas de n8n non plus : c&apos;est une mission de
                     développement. Sur Linxo Connect, service de Linxo (groupe
                     Crédit Agricole), on a développé des fonctionnalités en
                     React et Express et automatisé les tests d&apos;intégration
-                    avec une machine à états. Ces tests couvrent environ 70 %
-                    des cas de figure, selon le{" "}
+                    avec une machine à états. Ils couvrent environ 70 % des cas
+                    de figure, selon le{" "}
                     <Link href="/cas-clients/credit-agricole-automatisation-des-tests-dintegration">
                       cas Crédit Agricole
                     </Link>
                     . Quand un besoin dépasse n8n, la même équipe écrit le code.
                   </p>
+
+                  <h3>Ce qu&apos;en disent d&apos;autres clients</h3>
                   <Quote author="Hervé, Parness Cruises, 13/08/2025">
                     « Il fallait installer n8n MCP pour Claude. Camille connaît
                     parfaitement son sujet et, en sus d&apos;effectuer cette
@@ -943,6 +1034,49 @@ export default function AgenceN8nPage() {
                     <Link href="/cas-clients">cas clients</Link>.
                   </p>
                   <ClientLogos />
+
+                  <h2>Tes données et tes comptes restent chez toi</h2>
+                  <p>
+                    Tout est hébergé sur tes comptes, dans l&apos;Union
+                    européenne, documenté, et t&apos;appartient, même si tu
+                    arrêtes.
+                  </p>
+                  <p>
+                    Tu te souviens de la question du début : le jour où tu pars,
+                    tu récupères quoi ? Tout. Une agence n8n qui héberge tes
+                    workflows chez elle te rend dépendant ; chez nous,
+                    l&apos;instance n8n, les clés d&apos;API et la documentation
+                    sont à ton nom dès le premier jour. Nous n&apos;avons
+                    qu&apos;un accès, que tu donnes et que tu peux retirer.
+                  </p>
+                  <Illustration
+                    src="/assets/images/agence-n8n/propriete-instance-n8n.svg"
+                    alt="Agence n8n : workflows et données sur les comptes du client, accès Fyliz révocable"
+                    width={1280}
+                    height={680}
+                  />
+
+                  <h3>n8n Cloud ou self-hosted : lequel pour ta PME ?</h3>
+                  <p>
+                    n8n Cloud est hébergé par l&apos;éditeur : rien à installer,
+                    mises à jour automatiques. Le self-hosted tourne sur ton
+                    serveur : plus de contrôle sur les données et les coûts,
+                    mais une infrastructure à maintenir. On tranche ensemble à
+                    l&apos;onboarding. Détails dans notre comparatif{" "}
+                    <Link href="/blog/n8n-cloud-vs-self-hosted">
+                      n8n Cloud vs self-hosted
+                    </Link>
+                    .
+                  </p>
+
+                  <h3>RGPD et accès</h3>
+                  <p>
+                    Trois engagements. Tes workflows et tes données sont
+                    hébergés dans l&apos;Union européenne. On signe un DPA,
+                    l&apos;accord de sous-traitance prévu par le RGPD. Et on
+                    travaille uniquement depuis des accès sur tes comptes,
+                    limités aux outils nécessaires.
+                  </p>
 
                   <h2>Qui est derrière Fyliz</h2>
                   <figure
@@ -969,6 +1103,8 @@ export default function AgenceN8nPage() {
                     connecte des outils métiers, automatise des tâches
                     chronophages et déploie des agents IA chez ses clients.
                     C&apos;est lui que tu rencontres pendant la consultation.
+                  </p>
+                  <p>
                     Son{" "}
                     <a
                       href="https://www.linkedin.com/in/camille-vingere-developpeur-fullstack/"
@@ -983,208 +1119,11 @@ export default function AgenceN8nPage() {
                     >
                       chaîne YouTube
                     </a>{" "}
-                    te donnent une idée de sa façon de travailler. Autour de
-                    lui, l&apos;équipe réunit les compétences n8n, IA et
+                    montrent sa façon de travailler. Autour de lui,
+                    l&apos;équipe réunit les compétences n8n, IA et
                     développement, sans que tu aies à recruter chacune.
                   </p>
                   <div className="clear-both" />
-
-                  <h2>Tes données et tes comptes restent chez toi</h2>
-                  <p>
-                    Tout est hébergé sur tes comptes, dans l&apos;Union
-                    européenne, documenté, et t&apos;appartient, même si tu
-                    arrêtes. On travaille dans tes outils, avec des accès que tu
-                    donnes et que tu peux retirer.
-                  </p>
-                  <p>
-                    Une agence qui héberge tes workflows chez elle te rend
-                    dépendant. Chez nous, l&apos;instance n8n, les clés
-                    d&apos;API et la documentation sont à ton nom dès le premier
-                    jour.
-                  </p>
-
-                  <h3>n8n Cloud ou self-hosted : lequel pour ta PME ?</h3>
-                  <p>
-                    n8n Cloud est hébergé par l&apos;éditeur : rien à installer,
-                    mises à jour automatiques. La version self-hosted tourne sur
-                    ton serveur : plus de contrôle sur les données et les coûts,
-                    mais une infrastructure à maintenir. On t&apos;aide à
-                    trancher pendant l&apos;onboarding. Détails dans notre
-                    comparatif{" "}
-                    <Link href="/blog/n8n-cloud-vs-self-hosted">
-                      n8n Cloud vs self-hosted
-                    </Link>
-                    .
-                  </p>
-
-                  <h3>RGPD et accès</h3>
-                  <p>
-                    Trois engagements. Tes workflows et tes données sont
-                    hébergés dans l&apos;Union européenne. On signe un DPA,
-                    l&apos;accord de sous-traitance prévu par le RGPD. Et on
-                    travaille uniquement depuis des accès sur tes comptes,
-                    limités aux outils nécessaires.
-                  </p>
-                  <Table
-                    head={["Critère", "n8n Cloud", "n8n self-hosted"]}
-                    rows={[
-                      ["Installation", "Aucune", "Serveur à préparer"],
-                      ["Mises à jour", "Automatiques", "À planifier"],
-                      [
-                        "Contrôle de l'emplacement des données",
-                        "Limité aux options de l'éditeur",
-                        "Total",
-                      ],
-                      [
-                        "Coût",
-                        "Abonnement n8n Cloud",
-                        "Serveur + temps de maintenance",
-                      ],
-                      [
-                        "Pour qui",
-                        "PME qui veut aller vite",
-                        "PME aux données sensibles ou au gros volume",
-                      ],
-                    ]}
-                  />
-
-                  <h2>
-                    Expert n8n freelance, agence au projet ou abonnement : que
-                    choisir ?
-                  </h2>
-                  <p>
-                    Le freelance convient à un besoin ponctuel bien défini,
-                    l&apos;agence au projet à un chantier unique,
-                    l&apos;abonnement à une PME qui veut automatiser en continu.
-                    Le bon choix dépend moins du prix affiché que de ce qui se
-                    passe après la livraison.
-                  </p>
-                  <p>
-                    Un expert n8n indépendant est souvent excellent
-                    techniquement. Mais il est seul : s&apos;il part en congés,
-                    ton workflow attend. L&apos;agence au projet règle la
-                    question des compétences, puis s&apos;en va.
-                    L&apos;abonnement garde la même équipe sur tes workflows
-                    mois après mois.
-                  </p>
-                  <Table
-                    head={[
-                      "Critère",
-                      "Expert ou consultant n8n freelance",
-                      "Agence au projet",
-                      "Abonnement Fyliz",
-                    ]}
-                    rows={[
-                      [
-                        "Coût",
-                        "Taux journalier, construction puis maintenance facturées au temps passé",
-                        "Forfait par projet + maintenance à part",
-                        "3 000 € HT/mois, construction comprise",
-                      ],
-                      [
-                        "Continuité en cas d'absence",
-                        "Dépend d'une personne",
-                        "Équipe, pendant le projet seulement",
-                        "Équipe en continu, dépannage sous 24 h",
-                      ],
-                      [
-                        "Maintenance",
-                        "À négocier",
-                        "Souvent en option",
-                        "Incluse",
-                      ],
-                      [
-                        "Compétences",
-                        "n8n, parfois IA",
-                        "Variables",
-                        "n8n + IA + dev",
-                      ],
-                      [
-                        "Engagement",
-                        "À la mission",
-                        "Au projet",
-                        "Sans engagement, résiliation fin de mois",
-                      ],
-                      [
-                        "Qui garde la main sur les workflows",
-                        "Selon le contrat",
-                        "Selon le contrat",
-                        "Toi, sur tes comptes",
-                      ],
-                    ]}
-                  />
-
-                  <h3>Combien coûte un expert n8n freelance ?</h3>
-                  <p>
-                    Un freelance n8n facture à la journée, et son taux varie
-                    fortement selon l&apos;expérience. Pour comparer
-                    honnêtement, additionne les jours de construction, puis ceux
-                    de maintenance et d&apos;évolution sur un an. C&apos;est ce
-                    total qui se compare à un abonnement, pas le prix d&apos;une
-                    journée.
-                  </p>
-
-                  <h3>Et recruter en interne ?</h3>
-                  <p>
-                    Recruter un profil IA expérimenté prend du temps et coûte un
-                    salaire chargé, pour une seule personne. C&apos;est le
-                    calcul qu&apos;a fait Equity Family. On compare les deux
-                    options dans notre article internaliser ou externaliser
-                    l&apos;IA.
-                  </p>
-
-                  <h2>
-                    n8n, Make ou Zapier : pourquoi on travaille surtout avec n8n
-                  </h2>
-                  <p>
-                    On choisit n8n par défaut pour trois raisons. Il est open
-                    source et hébergeable chez toi. Il est facturé à
-                    l&apos;exécution du workflow, pas à chaque étape (voir la{" "}
-                    <a href="https://n8n.io/pricing/" {...external}>
-                      page tarifs de n8n
-                    </a>
-                    ). Et il intègre des nœuds IA natifs : agents, RAG, OpenAI
-                    ou Claude.
-                  </p>
-                  <p>
-                    Make et Zapier restent de bons outils, et on intervient
-                    aussi sur Make quand il fait le travail. Mais quand le
-                    volume grimpe, la facturation à l&apos;opération pèse :
-                    c&apos;est ce qui a poussé Equity Family à migrer vers n8n
-                    auto-hébergé. Tu envisages une migration depuis Make ou
-                    Zapier ? On la cadre pendant la consultation.
-                  </p>
-                  <p>
-                    Pour un comparatif détaillé, lis{" "}
-                    <a
-                      href="https://n8n-france.com/n8n-vs-make-vs-zapier/"
-                      {...external}
-                    >
-                      n8n vs Make vs Zapier
-                    </a>{" "}
-                    sur n8n-france.com, un site édité par la même équipe que
-                    Fyliz.
-                  </p>
-                  <Table
-                    head={["Argument", "Ce que ça change pour toi", "Source"]}
-                    rows={[
-                      [
-                        "Open source et self-hostable",
-                        "Tes données peuvent rester sur ton serveur",
-                        "Documentation n8n",
-                      ],
-                      [
-                        "Facturation à l'exécution",
-                        "Un workflow à 20 étapes compte comme une exécution",
-                        "Page tarifs n8n",
-                      ],
-                      [
-                        "Nœuds IA natifs",
-                        "Agents, RAG et modèles OpenAI ou Claude dans le même workflow",
-                        "Documentation n8n",
-                      ],
-                    ]}
-                  />
 
                   <h2>Quand n8n n&apos;est pas le bon choix</h2>
                   <p>
@@ -1218,35 +1157,6 @@ export default function AgenceN8nPage() {
                     Mieux vaut le savoir en 30 minutes qu&apos;après trois mois
                     d&apos;abonnement.
                   </p>
-                  <Table
-                    head={[
-                      "Situation",
-                      "Pourquoi n8n n'est pas adapté",
-                      "Ce qu'on te conseille",
-                    ]}
-                    rows={[
-                      [
-                        "Tâche simple déjà couverte par ton logiciel",
-                        "Un workflow ajoute une pièce à maintenir",
-                        "Activer la fonction native",
-                      ],
-                      [
-                        "Outil sans API",
-                        "Connexion fragile",
-                        "Vérifier les exports ou changer d'outil",
-                      ],
-                      [
-                        "Besoin d'interface ou d'application sur mesure",
-                        "Hors du périmètre d'un workflow",
-                        "Développement sur mesure (même équipe)",
-                      ],
-                      [
-                        "Volume très faible",
-                        "Abonnement non rentabilisé",
-                        "Projet ponctuel sur devis",
-                      ],
-                    ]}
-                  />
 
                   <h2>FAQ sur notre agence n8n</h2>
                   {faq.map((item) => (
@@ -1271,7 +1181,14 @@ export default function AgenceN8nPage() {
                     </div>
                   ))}
 
-                  <h2>Points à retenir</h2>
+                  <h2>Et maintenant ?</h2>
+                  <p>
+                    Choisir une agence n8n, c&apos;est surtout choisir qui sera
+                    là le lundi où ça casse.
+                  </p>
+                  <p>
+                    <strong>Points à retenir :</strong>
+                  </p>
                   <ul>
                     <li>
                       <strong>Prix</strong> : 3 000 € HT/mois, construction,
@@ -1294,12 +1211,12 @@ export default function AgenceN8nPage() {
                     </li>
                   </ul>
                   <p>
-                    Prochaine étape : voir ce que ça donnerait chez toi. En 30
-                    minutes, on audite ton activité et tes priorités
-                    d&apos;automatisation.
+                    En 30 minutes avec Camille, on passe ton activité en revue
+                    et on repère les automatisations qui comptent vraiment. Si
+                    n8n n&apos;est pas la bonne réponse, tu le sauras aussi.
                   </p>
 
-                  <Cta note="30 min d'audit de ton activité et de tes priorités d'automatisation." />
+                  <Cta note="30 min d'audit de ton activité et de tes priorités d'automatisation. Sans engagement." />
 
                   <p>
                     <strong>Pour aller plus loin</strong>

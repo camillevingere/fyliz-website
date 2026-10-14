@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 700" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.6" fill="#ddd3c4"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b5a894"/>
+    </marker>
+  </defs>
+  <rect width="1280" height="700" rx="36" fill="#f7f3ec"/>
+  <rect x="40" y="40" width="1200" height="620" rx="24" fill="#fffdf9"/>
+  <rect x="40" y="40" width="1200" height="620" rx="24" fill="url(#dots)"/>
+
+  <!-- barre d'outil façon éditeur -->
+  <rect x="40" y="40" width="1200" height="64" rx="24" fill="#fffdf9"/>
+  <rect x="40" y="80" width="1200" height="24" fill="#fffdf9"/>
+  <line x1="40" y1="104" x2="1240" y2="104" stroke="#ece4d7" stroke-width="2"/>
+  <text x="76" y="80" font-size="22" font-weight="700" fill="#17130f">Relance des devis non signés</text>
+  <rect x="1046" y="58" width="160" height="32" rx="16" fill="#dcf3e6"/>
+  <circle cx="1068" cy="74" r="6" fill="#17945b"/>
+  <text x="1084" y="81" font-size="17" font-weight="700" fill="#17945b">Actif</text>
+
+  <!-- liens -->
+  <g fill="none" stroke="#b5a894" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M216 360 H 290"/>
+    <path d="M446 360 H 520"/>
+    <path d="M676 360 C 720 360, 720 250, 770 250"/>
+    <path d="M676 360 C 720 360, 720 470, 770 470"/>
+    <path d="M926 470 H 1000"/>
+  </g>
+  <text x="704" y="236" font-size="16" fill="#8a8178">oui</text>
+  <text x="704" y="500" font-size="16" fill="#8a8178">non</text>
+
+  <!-- noeuds -->
+  <g>
+    <rect x="96" y="300" width="120" height="120" rx="28" fill="#ffffff" stroke="#ff781a" stroke-width="3"/>
+    <path d="M128 360 l18 -26 h28 l-14 20 h20 l-36 38 l10 -32 z" fill="#ff781a"/>
+    <text x="156" y="452" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">Nouveau devis</text>
+    <text x="156" y="476" font-size="16" fill="#8a8178" text-anchor="middle">CRM</text>
+  </g>
+  <g>
+    <rect x="296" y="300" width="150" height="120" rx="20" fill="#ffffff" stroke="#e5dccd" stroke-width="2"/>
+    <circle cx="371" cy="360" r="30" fill="none" stroke="#8a8178" stroke-width="4"/>
+    <path d="M371 342 v18 l12 10" stroke="#8a8178" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <text x="371" y="452" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">Attendre 3 jours</text>
+  </g>
+  <g>
+    <rect x="526" y="300" width="150" height="120" rx="20" fill="#ffffff" stroke="#e5dccd" stroke-width="2"/>
+    <path d="M601 328 l32 32 l-32 32 l-32 -32 z" fill="#e1eaff" stroke="#2f6bff" stroke-width="3"/>
+    <text x="601" y="452" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">Devis signé ?</text>
+  </g>
+  <g>
+    <rect x="776" y="190" width="150" height="120" rx="20" fill="#ffffff" stroke="#e5dccd" stroke-width="2"/>
+    <rect x="816" y="226" width="70" height="48" rx="8" fill="#dcf3e6"/>
+    <path d="M832 250 l12 12 l24 -24" stroke="#17945b" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="851" y="342" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">Mettre à jour</text>
+    <text x="851" y="366" font-size="16" fill="#8a8178" text-anchor="middle">le CRM</text>
+  </g>
+  <g>
+    <rect x="776" y="410" width="150" height="120" rx="20" fill="#ffffff" stroke="#6e56ff" stroke-width="3"/>
+    <rect x="806" y="440" width="90" height="60" rx="14" fill="#e9e5ff"/>
+    <text x="851" y="480" font-size="24" font-weight="700" fill="#6e56ff" text-anchor="middle">IA</text>
+    <text x="851" y="562" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">Agent IA</text>
+    <text x="851" y="586" font-size="16" fill="#8a8178" text-anchor="middle">rédige la relance</text>
+  </g>
+  <g>
+    <rect x="1006" y="410" width="150" height="120" rx="20" fill="#ffffff" stroke="#e5dccd" stroke-width="2"/>
+    <rect x="1046" y="446" width="70" height="48" rx="6" fill="#ffe4cf" stroke="#ff781a" stroke-width="3"/>
+    <path d="M1046 448 l35 26 l35 -26" stroke="#ff781a" stroke-width="3" fill="none"/>
+    <text x="1081" y="562" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">Envoyer l'e-mail</text>
+    <text x="1081" y="586" font-size="16" fill="#8a8178" text-anchor="middle">+ alerte au commercial</text>
+  </g>
+
+  <text x="76" y="636" font-size="16" fill="#8a8178">Exemple type de workflow n8n, simplifié</text>
+</svg>

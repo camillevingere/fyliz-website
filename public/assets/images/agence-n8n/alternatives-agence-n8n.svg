@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 860" font-family="Helvetica, Arial, sans-serif">
+<rect width="1280" height="860" rx="36" fill="#f7f3ec"/>
+<text x="80" y="92" font-size="34" font-weight="700" fill="#17130f">Six façons d'automatiser, trois questions</text>
+<text x="80" y="128" font-size="20" fill="#8a8178">Ce qui se passe après la livraison, ce que ça coûte, quand ça démarre</text>
+<g font-size="19" font-weight="700" fill="#17130f" text-anchor="middle">
+<text x="505" y="196">Qui maintient ensuite</text>
+<text x="795" y="196">Coût prévisible</text>
+<text x="1085" y="196">Démarrage</text></g>
+<line x1="80" y1="220" x2="1230" y2="220" stroke="#17130f" stroke-width="3"/>
+<text x="80" y="290.0" font-size="20" font-weight="700" fill="#17130f">Faire soi-même</text>
+<text x="505" y="290.0" font-size="18" fill="#17130f" text-anchor="middle">toi seul</text>
+<text x="795" y="290.0" font-size="18" fill="#17130f" text-anchor="middle">ton temps interne</text>
+<text x="1085" y="290.0" font-size="18" fill="#17130f" text-anchor="middle">selon ton temps libre</text>
+<line x1="80" y1="328" x2="1230" y2="328" stroke="#e5dccd" stroke-width="2"/>
+<text x="80" y="382.0" font-size="20" font-weight="700" fill="#17130f">Freelance n8n</text>
+<text x="505" y="370.0" font-size="18" fill="#17130f" text-anchor="middle">le freelance,</text>
+<text x="505" y="394.0" font-size="18" fill="#17130f" text-anchor="middle">s'il est disponible</text>
+<text x="795" y="382.0" font-size="18" fill="#17130f" text-anchor="middle">au temps passé</text>
+<text x="1085" y="382.0" font-size="18" fill="#17130f" text-anchor="middle">selon son agenda</text>
+<line x1="80" y1="420" x2="1230" y2="420" stroke="#e5dccd" stroke-width="2"/>
+<text x="80" y="474.0" font-size="20" font-weight="700" fill="#17130f">Agence au projet</text>
+<text x="505" y="474.0" font-size="18" fill="#17130f" text-anchor="middle">option à négocier</text>
+<text x="795" y="462.0" font-size="18" fill="#17130f" text-anchor="middle">projet + maintenance</text>
+<text x="795" y="486.0" font-size="18" fill="#17130f" text-anchor="middle">à part</text>
+<text x="1085" y="474.0" font-size="18" fill="#17130f" text-anchor="middle">après devis</text>
+<line x1="80" y1="512" x2="1230" y2="512" stroke="#e5dccd" stroke-width="2"/>
+<text x="80" y="566.0" font-size="20" font-weight="700" fill="#17130f">Recrutement</text>
+<text x="505" y="566.0" font-size="18" fill="#17130f" text-anchor="middle">ton salarié</text>
+<text x="795" y="566.0" font-size="18" fill="#17130f" text-anchor="middle">salaire chargé</text>
+<text x="1085" y="566.0" font-size="18" fill="#17130f" text-anchor="middle">délai de recrutement</text>
+<line x1="80" y1="604" x2="1230" y2="604" stroke="#e5dccd" stroke-width="2"/>
+<text x="80" y="658.0" font-size="20" font-weight="700" fill="#17130f">Make ou Zapier seul</text>
+<text x="505" y="658.0" font-size="18" fill="#17130f" text-anchor="middle">toi seul</text>
+<text x="795" y="658.0" font-size="18" fill="#17130f" text-anchor="middle">suit le volume</text>
+<text x="1085" y="658.0" font-size="18" fill="#17130f" text-anchor="middle">immédiat</text>
+<rect x="64" y="702" width="1182" height="96" rx="20" fill="#ffe4cf"/>
+<text x="80" y="750.0" font-size="20" font-weight="700" fill="#e35d00">Abonnement agence n8n</text>
+<text x="505" y="738.0" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">la même équipe,</text>
+<text x="505" y="762.0" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">dépannage sous 24 h</text>
+<text x="795" y="738.0" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">3 000 € HT/mois,</text>
+<text x="795" y="762.0" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">fixe</text>
+<text x="1085" y="738.0" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">onboarding</text>
+<text x="1085" y="762.0" font-size="18" font-weight="700" fill="#17130f" text-anchor="middle">sous 48 h</text>
+<text x="80" y="836" font-size="16" fill="#8a8178">Aucune option n'est mauvaise : chacune a son cas d'usage. La différence se joue sur la durée.</text>
+</svg>

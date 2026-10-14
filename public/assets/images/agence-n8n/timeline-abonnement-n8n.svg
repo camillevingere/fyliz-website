@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 600" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1280" height="600" rx="36" fill="#f7f3ec"/>
+  <text x="80" y="96" font-size="34" font-weight="700" fill="#17130f">Les premières semaines, concrètement</text>
+
+  <!-- axe -->
+  <line x1="120" y1="290" x2="1170" y2="290" stroke="#17130f" stroke-width="4" stroke-linecap="round"/>
+  <path d="M1180 290 l-16 -9 v18 z" fill="#17130f"/>
+
+  <!-- jalons -->
+  <g>
+    <circle cx="170" cy="290" r="22" fill="#ff781a"/>
+    <text x="170" y="298" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+    <text x="170" y="232" font-size="22" font-weight="700" fill="#17130f" text-anchor="middle">J0</text>
+    <text x="170" y="350" font-size="19" font-weight="700" fill="#17130f" text-anchor="middle">Consultation</text>
+    <text x="170" y="376" font-size="16" fill="#8a8178" text-anchor="middle">30 min, audit</text>
+    <text x="170" y="398" font-size="16" fill="#8a8178" text-anchor="middle">des priorités</text>
+  </g>
+  <g>
+    <circle cx="430" cy="290" r="22" fill="#ff781a"/>
+    <text x="430" y="298" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+    <text x="430" y="232" font-size="22" font-weight="700" fill="#17130f" text-anchor="middle">J+2</text>
+    <text x="430" y="350" font-size="19" font-weight="700" fill="#17130f" text-anchor="middle">Onboarding</text>
+    <text x="430" y="376" font-size="16" fill="#8a8178" text-anchor="middle">accès, outils,</text>
+    <text x="430" y="398" font-size="16" fill="#8a8178" text-anchor="middle">premier backlog</text>
+  </g>
+  <g>
+    <circle cx="700" cy="290" r="22" fill="#17945b"/>
+    <text x="700" y="298" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+    <text x="700" y="232" font-size="22" font-weight="700" fill="#17130f" text-anchor="middle">Quelques jours</text>
+    <text x="700" y="350" font-size="19" font-weight="700" fill="#17130f" text-anchor="middle">1re automatisation</text>
+    <text x="700" y="376" font-size="16" fill="#8a8178" text-anchor="middle">en production,</text>
+    <text x="700" y="398" font-size="16" fill="#8a8178" text-anchor="middle">documentée</text>
+  </g>
+  <g>
+    <circle cx="980" cy="290" r="22" fill="#6e56ff"/>
+    <path d="M970 290 a10 10 0 1 1 4 8" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+    <text x="980" y="232" font-size="22" font-weight="700" fill="#17130f" text-anchor="middle">Chaque mois</text>
+    <text x="980" y="350" font-size="19" font-weight="700" fill="#17130f" text-anchor="middle">Point mensuel</text>
+    <text x="980" y="376" font-size="16" fill="#8a8178" text-anchor="middle">résultats, nouvelles</text>
+    <text x="980" y="398" font-size="16" fill="#8a8178" text-anchor="middle">priorités</text>
+  </g>
+
+  <!-- bande support continu -->
+  <rect x="430" y="460" width="740" height="64" rx="32" fill="#e1eaff"/>
+  <circle cx="470" cy="492" r="18" fill="#2f6bff"/>
+  <path d="M470 482 v10 l7 6" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <text x="502" y="488" font-size="19" font-weight="700" fill="#17130f">En continu : maintenance et dépannage sous 24 h</text>
+  <text x="502" y="511" font-size="16" fill="#2f6bff">un workflow casse, il est réparé sans ticket à rallonge</text>
+</svg>
