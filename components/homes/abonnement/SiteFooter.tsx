@@ -33,6 +33,7 @@ const columns = [
 ];
 
 export default function SiteFooter() {
+  const { office } = siteConfig.company;
   const social = siteConfig.footer.find((section) => section.title === "Social")?.links ?? [];
 
   return (
@@ -48,6 +49,18 @@ export default function SiteFooter() {
               Ton équipe IA externalisée. Agents IA et workflows n8n sur mesure,
               pour les entreprises françaises.
             </p>
+            <address className={s.footerAddress}>
+              <span className={s.footerAddressTitle}>Nos bureaux</span>
+              {office.street}
+              <br />
+              {office.postalCode} {office.city}
+              <br />
+              {office.hours}
+              <br />
+              <a href={office.phoneHref} className={s.footerPhone}>
+                {office.phone}
+              </a>
+            </address>
           </div>
           {columns.map((column) => (
             <div key={column.title}>
@@ -65,7 +78,7 @@ export default function SiteFooter() {
 
         <div className={s.footerBottom}>
           <span>
-            © {new Date().getFullYear()} {siteConfig.company.name} · {siteConfig.company.address}
+            © {new Date().getFullYear()} {siteConfig.company.name} · Siège social : {siteConfig.company.address}
           </span>
           <ul className={s.footerLinks} style={{ flexDirection: "row", gap: 20 }}>
             {social.map((link) => (

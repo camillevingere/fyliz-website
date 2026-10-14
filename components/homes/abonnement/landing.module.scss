@@ -2067,6 +2067,29 @@
   }
 }
 
+.footerAddress {
+  margin-top: 20px;
+  font-style: normal;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.footerAddressTitle {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.footerPhone {
+  color: var(--ink-2);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--orange-deep);
+  }
+}
+
 .root .footerTitle {
   margin-bottom: 16px;
 }

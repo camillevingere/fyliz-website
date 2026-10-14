@@ -26,6 +26,14 @@ export const siteConfig = {
   company: {
     name: "Fyliz",
     address: "200 Rue de la Croix Nivert, 75015 Paris",
+    office: {
+      street: "19 place Jean Jaurès",
+      postalCode: "13005",
+      city: "Marseille",
+      hours: "Du lundi au vendredi, de 9 h à 17 h",
+      phone: "07 70 62 17 96",
+      phoneHref: "tel:+33770621796",
+    },
   },
   cta: {
     title: "Automatisez votre business 🚀",
