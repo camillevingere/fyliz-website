@@ -1,4 +1,5 @@
 import { automationAreas, tools } from "@/data/subscription";
+import Link from "next/link";
 import { InvoiceVisual, LeadVisual, OpsVisual, SupportVisual } from "./AutomationVisuals";
 import { Check } from "./icons";
 import s from "./landing.module.scss";
@@ -61,6 +62,12 @@ export default function Automations() {
             <li key={tool}>{tool}</li>
           ))}
         </ul>
+
+        <p className={s.toolsNote}>
+          On choisit l&apos;outil selon ton problème, et c&apos;est souvent n8n : il tourne sur
+          tes comptes et se branche à tes agents IA. Découvre comment on travaille en{" "}
+          <Link href="/agence-n8n">agence n8n pour PME</Link>.
+        </p>
       </div>
     </section>
   );

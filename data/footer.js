@@ -251,6 +251,7 @@ export const footerLinks5 = [
 export const footerLinks6 = [
   {
     links: [
+      { text: "Agence n8n", href: "/agence-n8n", isLink: true },
       { text: "Solutions", href: "/solutions-automatisation-ia" },
       { text: "Cas clients", href: "/cas-clients" },
       { text: "Avis", href: "/#avis_clients" },

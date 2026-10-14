@@ -1148,6 +1148,21 @@
   }
 }
 
+.root .toolsNote {
+  max-width: 60ch;
+  margin: 20px auto 0;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+
+  a {
+    color: var(--orange-deep);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
 // Mini-démos animées
 
 .visual {

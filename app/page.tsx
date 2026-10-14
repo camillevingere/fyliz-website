@@ -33,6 +33,7 @@ const jsonLd = [
       "Une équipe d'experts n8n et IA externalisée qui conçoit, déploie et maintient les automatisations de ton entreprise, sans engagement.",
     provider: {
       "@type": "Organization",
+      "@id": "https://fyliz.com/#organization",
       name: siteConfig.name,
       url: siteConfig.url,
     },
