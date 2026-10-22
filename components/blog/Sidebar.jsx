@@ -1,4 +1,4 @@
-import { getSignedImageUrl } from "@/lib/image-utils";
+import { getPublicImageUrl } from "@/lib/image-utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -25,7 +25,7 @@ export default async function Sidebar({
           title: featuredArticle.title,
           description: featuredArticle.description,
           imgSrc:
-            (await getSignedImageUrl(featuredArticle.image || null)) ||
+            getPublicImageUrl(featuredArticle.image || null) ||
             FALLBACK_IMAGE,
           imgAlt: featuredArticle.title,
         },

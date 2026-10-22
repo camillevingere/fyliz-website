@@ -86,7 +86,8 @@ export default function HeroEngine() {
             <p className={s.ideaLabel}>Résultat</p>
             <strong>
               {current.prefix}
-              {delivered ? <CountUp key={cycle} value={current.value} /> : 0}
+              {/* Valeur finale tant que le résultat est masqué : le HTML serveur n'affiche pas « +0 % ». */}
+              {delivered ? <CountUp key={cycle} value={current.value} /> : current.value}
               {current.suffix}
             </strong>
             <span>{current.result}</span>

@@ -15,11 +15,14 @@ export function constructMetadata({
   title = siteConfig.name,
   description = siteConfig.description,
   image = absoluteUrl("/og"),
+  path,
   ...props
 }: {
   title?: string;
   description?: string;
   image?: string;
+  /** Chemin de la page (ex. "/blog") : fixe le canonical et l'og:url. */
+  path?: string;
   [key: string]: Metadata[keyof Metadata];
 }): Metadata {
   return {
@@ -32,10 +35,11 @@ export function constructMetadata({
           },
     description: description || siteConfig.description,
     keywords: siteConfig.keywords,
+    ...(path && { alternates: { canonical: path } }),
     openGraph: {
       title,
       description,
-      url: siteConfig.url,
+      ...(path && { url: path }),
       siteName: siteConfig.name,
       images: [
         {
@@ -46,7 +50,7 @@ export function constructMetadata({
         },
       ],
       type: "website",
-      locale: "en_US",
+      locale: "fr_FR",
     },
     icons: "/favicon.ico",
     metadataBase: new URL(siteConfig.url),

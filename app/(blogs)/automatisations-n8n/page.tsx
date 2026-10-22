@@ -1,15 +1,17 @@
 import ListPage from "@/components/site/ListPage";
 import { getN8nWorkflowPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
-import { getSignedImageUrl } from "@/lib/image-utils";
+import { getPublicImageUrl } from "@/lib/image-utils";
 import { constructMetadata } from "@/lib/utils";
 import AutomatisationsN8nClient from "./page-client";
 
-export const revalidate = 432000; // 5 days — regenerate before presigned URLs expire (7 days)
+export const revalidate = 432000; // 5 days
 
 export const metadata = constructMetadata({
   title: "Automatisations n8n",
-  description: `Automatisations n8n | ${siteConfig.name}.`,
+  description:
+    "Des workflows n8n en français, expliqués pas à pas et prêts à importer dans ton instance.",
+  path: "/automatisations-n8n",
 });
 
 const breadcrumbJsonLd = {
@@ -39,7 +41,7 @@ export default async function AutomatisationsN8n() {
       .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
       .map(async (workflow) => {
         const signedImage =
-          (await getSignedImageUrl(workflow.image || null)) ||
+          getPublicImageUrl(workflow.image || null) ||
           "/images/default-blog.webp";
         return {
           ...workflow,
@@ -75,7 +77,7 @@ export default async function AutomatisationsN8n() {
         "@type": "Person",
         name: workflow.author || `Équipe ${siteConfig.name}`,
       },
-      image: workflow.image || siteConfig.logo,
+      image: getPublicImageUrl(workflow.image) || siteConfig.logo,
       description: workflow.description,
     })),
   };

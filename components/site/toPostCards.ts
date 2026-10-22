@@ -1,4 +1,4 @@
-import { getSignedImageUrl } from "@/lib/image-utils";
+import { getPublicImageUrl } from "@/lib/image-utils";
 import type { PostCard } from "./PostCards";
 
 type Post = {
@@ -22,7 +22,7 @@ export async function toPostCards(
       key: post.slug || post.id || post.title,
       href: external && post.link ? post.link : `${basePath}/${post.slug || post.id}`,
       external: external && Boolean(post.link),
-      image: (await getSignedImageUrl(post.image || null)) || "/images/default-blog.webp",
+      image: getPublicImageUrl(post.image || null) || "/images/default-blog.webp",
       title: post.title,
       category: post.tags?.[0] || defaultCategory,
       excerpt: post.description,

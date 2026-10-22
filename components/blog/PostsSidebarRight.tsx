@@ -1,4 +1,4 @@
-import { getSignedImageUrl } from "@/lib/image-utils";
+import { getPublicImageUrl } from "@/lib/image-utils";
 import PostsListClient from "./PostsListClient";
 import Sidebar from "./Sidebar";
 
@@ -36,7 +36,7 @@ export default async function PostsSidebarRight({
       ? await Promise.all(
           articles.map(async (post) => {
             const signedImage =
-              (await getSignedImageUrl(post.image || null)) ||
+              getPublicImageUrl(post.image || null) ||
               "/images/default-blog.webp";
 
             return {

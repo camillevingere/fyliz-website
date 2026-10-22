@@ -1,6 +1,6 @@
 import { getCustomerCasePosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
-import { getSignedImageUrl } from "@/lib/image-utils";
+import { getPublicImageUrl } from "@/lib/image-utils";
 import Image from "next/image";
 import Link from "next/link";
 import posthog from "posthog-js";
@@ -14,7 +14,7 @@ export default async function ClientSuccess() {
   const customerCases = await Promise.all(
     articles.map(async (post) => {
       const signedImage =
-        (await getSignedImageUrl(post.image || null)) ||
+        getPublicImageUrl(post.image || null) ||
         "/images/default-blog.webp";
 
       return {

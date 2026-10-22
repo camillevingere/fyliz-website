@@ -1,5 +1,5 @@
 import { getCustomerCasePosts } from "@/lib/blog";
-import { getSignedImageUrl } from "@/lib/image-utils";
+import { getPublicImageUrl } from "@/lib/image-utils";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "./icons";
@@ -15,7 +15,7 @@ export default async function CaseStudies() {
     latest.map(async (post) => ({
       slug: post.slug,
       title: post.title,
-      image: (await getSignedImageUrl(post.image || null)) || "/images/default-blog.webp",
+      image: getPublicImageUrl(post.image || null) || "/images/default-blog.webp",
     })),
   );
 

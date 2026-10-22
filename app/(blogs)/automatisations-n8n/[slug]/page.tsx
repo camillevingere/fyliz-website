@@ -2,11 +2,11 @@ import ArticleView from "@/components/site/ArticleView";
 import DownloadButton from "@/components/workflows/DownloadButton";
 import { getN8nWorkflowSlugs, getPost, getPostById } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
-import { getSignedImageUrl } from "@/lib/image-utils";
+import { getPublicImageUrl } from "@/lib/image-utils";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-export const revalidate = 432000; // 5 days — regenerate before presigned URLs expire (7 days)
+export const revalidate = 432000; // 5 days
 
 export async function generateStaticParams() {
   return getN8nWorkflowSlugs();
@@ -33,6 +33,7 @@ export async function generateMetadata({
     tags,
     keywords,
   } = post.metadata;
+  image = getPublicImageUrl(image) ?? image;
 
   const postSlug = post.metadata.slug || post.slug || slug;
   const postUrl = `${siteConfig.url}/automatisations-n8n/${postSlug}`;
@@ -96,7 +97,7 @@ export default async function WorkflowPost({
     notFound();
   }
 
-  const signedImageUrl = await getSignedImageUrl(post.metadata.image || null);
+  const imageUrl = getPublicImageUrl(post.metadata.image || null);
   const { metadata } = post;
   const workflowJson = (post.metadata as any).workflowJson || null;
 
@@ -105,7 +106,7 @@ export default async function WorkflowPost({
     "@type": "BlogPosting",
     headline: metadata.title,
     description: metadata.description,
-    image: metadata.image,
+    image: imageUrl,
     datePublished: metadata.publishedAt,
     author: {
       "@type": "Person",
@@ -172,7 +173,7 @@ export default async function WorkflowPost({
         author={metadata.author}
         authorImage={metadata.authorImage}
         publishedAt={metadata.publishedAt}
-        cover={signedImageUrl || metadata.image || "/images/default-blog.webp"}
+        cover={imageUrl || metadata.image || "/images/default-blog.webp"}
         html={demoteH1(post.source)}
         back={{ href: "/automatisations-n8n", label: "Toutes les automatisations" }}
         actions={workflowJson ? (

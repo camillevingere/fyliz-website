@@ -3,11 +3,14 @@ import PostCards from "@/components/site/PostCards";
 import { toPostCards } from "@/components/site/toPostCards";
 import { getBlogPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
+import { getPublicImageUrl } from "@/lib/image-utils";
 import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
-  title: "Blog",
-  description: `Dernières news sur l'automatisation IA.`,
+  title: "Automatisation IA et n8n : guides et retours terrain",
+  description:
+    "Guides n8n, agents IA et retours de projets réels : ce qu'on automatise pour les PME, et comment. Et si tu préfères qu'on le fasse pour toi, on en parle.",
+  path: "/blog",
 });
 
 const breadcrumbJsonLd = {
@@ -63,7 +66,7 @@ export default async function Blog() {
         "@type": "Person",
         name: post.author || `Équipe ${siteConfig.name}`,
       },
-      image: post.image || siteConfig.logo,
+      image: getPublicImageUrl(post.image) || siteConfig.logo,
       description: post.description,
     })),
   };

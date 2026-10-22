@@ -1,7 +1,7 @@
 import ArticleView from "@/components/site/ArticleView";
 import { getBlogPosts, getPost, getPostById } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
-import { getSignedImageUrl } from "@/lib/image-utils";
+import { getPublicImageUrl } from "@/lib/image-utils";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -33,6 +33,7 @@ export async function generateMetadata({
     tags,
     keywords,
   } = post.metadata;
+  image = getPublicImageUrl(image) ?? image;
 
   const postSlug = post.metadata.slug || post.slug || slug;
   const postUrl = `${siteConfig.url}/blog/${postSlug}`;
@@ -92,7 +93,7 @@ export default async function BlogPost({
     notFound();
   }
 
-  const signedImageUrl = await getSignedImageUrl(post.metadata.image || null);
+  const imageUrl = getPublicImageUrl(post.metadata.image || null);
   const { metadata } = post;
 
   const articleJsonLd = {
@@ -100,7 +101,7 @@ export default async function BlogPost({
     "@type": "BlogPosting",
     headline: metadata.title,
     description: metadata.description,
-    image: metadata.image,
+    image: imageUrl,
     datePublished: metadata.publishedAt,
     author: {
       "@type": "Person",
@@ -167,7 +168,7 @@ export default async function BlogPost({
         author={metadata.author}
         authorImage={metadata.authorImage}
         publishedAt={metadata.publishedAt}
-        cover={signedImageUrl || metadata.image || "/images/default-blog.webp"}
+        cover={imageUrl || metadata.image || "/images/default-blog.webp"}
         html={post.source}
         back={{ href: "/blog", label: "Retour au blog" }}
       />

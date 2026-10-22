@@ -7,7 +7,7 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import { siteConfig } from "./config";
-import { preprocessMarkdown } from "./mdx-utils";
+import { toPublicImageUrls } from "./image-utils";
 import { assertContentTable, sql } from "./db";
 
 export type Post = {
@@ -92,8 +92,8 @@ export async function getPost(slug: string, type = "articles") {
     return { metadata: null, source: null };
   }
 
-  // Preprocess markdown to convert S3 keys to presigned URLs before HTML conversion
-  const preprocessedMarkdown = await preprocessMarkdown(article.content);
+  // Les clés S3 des images deviennent des URLs publiques stables (proxy /media).
+  const preprocessedMarkdown = toPublicImageUrls(article.content);
   const content = await markdownToHTML(preprocessedMarkdown);
   const defaultImage = `${siteConfig.url}/og?title=${encodeURIComponent(
     article.title,
@@ -138,8 +138,8 @@ async function getAllPosts(type = "articles") {
 
   const posts = await Promise.all(
     articles.map(async (article) => {
-      // Preprocess markdown to convert S3 keys to presigned URLs before HTML conversion
-      const preprocessedMarkdown = await preprocessMarkdown(article.content);
+      // Les clés S3 des images deviennent des URLs publiques stables (proxy /media).
+      const preprocessedMarkdown = toPublicImageUrls(article.content);
       const content = await markdownToHTML(preprocessedMarkdown);
       const defaultImage = `${siteConfig.url}/og?title=${encodeURIComponent(
         article.title,
@@ -251,8 +251,8 @@ export async function getPostById(id: string, type = "articles") {
     return { metadata: null, source: null };
   }
 
-  // Preprocess markdown to convert S3 keys to presigned URLs before HTML conversion
-  const preprocessedMarkdown = await preprocessMarkdown(article.content);
+  // Les clés S3 des images deviennent des URLs publiques stables (proxy /media).
+  const preprocessedMarkdown = toPublicImageUrls(article.content);
   const content = await markdownToHTML(preprocessedMarkdown);
   const defaultImage = `${siteConfig.url}/og?title=${encodeURIComponent(
     article.title,

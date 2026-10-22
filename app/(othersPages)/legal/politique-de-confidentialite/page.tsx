@@ -4,6 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 
 export const metadata = constructMetadata({
   title: "Politique de Confidentialité",
+  path: "/legal/politique-de-confidentialite",
   description:
     "Fyliz - Agence d'automatisation. Consultez notre politique de confidentialité pour comprendre comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD.",
 });

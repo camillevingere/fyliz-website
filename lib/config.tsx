@@ -1,14 +1,15 @@
 export const BLUR_FADE_DELAY = 0.15;
 
+const url = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3071";
+
 export const siteConfig = {
-  logo: "/images/logo.webp",
-  title: "Fyliz - Première Agence d'Automatisation IA en France | 2026",
+  logo: `${url}/assets/images/logo.webp`,
+  title: "Équipe IA externalisée : agents IA & automatisation | Fyliz",
   name: "Fyliz",
   description:
-    "Fyliz est la première agence d'automatisation IA en France. Experts en automatisation des processus métier, nous aidons les entreprises françaises à réduire leurs coûts opérationnels et à gagner en efficacité grâce à des solutions IA sur mesure. Résultats mesurables, déploiement rapide.",
-  url: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3071",
+    "Fyliz, ton équipe IA externalisée : des experts n8n et IA conçoivent, déploient et maintiennent tes agents IA et automatisations. Sans recruter, sans engagement.",
+  url,
   keywords: [
-    "première agence automatisation IA France",
     "agence automatisation IA France",
     "automatisation IA entreprise France",
     "fyliz",
@@ -17,7 +18,7 @@ export const siteConfig = {
     "solutions IA sur mesure",
     "automatisation business France",
   ],
-  appIcon: "/images/logo.webp",
+  appIcon: "/assets/images/logo.webp",
   links: {
     email: "contact@fyliz.com",
     linkedinUrl:

@@ -6,9 +6,10 @@ import { siteConfig } from "@/lib/config";
 import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
-  title: "Solutions d'automatisation IA",
+  title: "Automatisation IA pour PME : ce qu'on automatise",
   description:
-    "Fyliz - Agence d'automatisation. Découvrez nos solutions d'automatisation et d'intelligence artificielle pour optimiser vos processus métier.",
+    "Ventes, admin et finance, opérations, support : les automatisations et agents IA que Fyliz conçoit, déploie et maintient pour ton entreprise.",
+  path: "/solutions-automatisation-ia",
   keywords: [
     "solutions automatisation",
     "automatisation IA",

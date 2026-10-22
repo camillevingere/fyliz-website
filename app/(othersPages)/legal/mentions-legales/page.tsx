@@ -4,6 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 
 export const metadata = constructMetadata({
   title: "Mentions Légales",
+  path: "/legal/mentions-legales",
   description:
     "Fyliz - Agence d'automatisation. Consultez nos mentions légales : informations sur l'éditeur, l'hébergeur et les conditions d'utilisation du site.",
 });

@@ -4,6 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 
 export const metadata = constructMetadata({
   title: "Conditions Générales de Vente",
+  path: "/legal/conditions-generales-de-vente",
   description:
     "Fyliz - Agence d'automatisation. Consultez nos conditions générales de vente pour nos prestations de conseil, développement et automatisation.",
 });

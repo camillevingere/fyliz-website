@@ -3,11 +3,14 @@ import PostCards from "@/components/site/PostCards";
 import { toPostCards } from "@/components/site/toPostCards";
 import { getCustomerCasePosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
+import { getPublicImageUrl } from "@/lib/image-utils";
 import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
-  title: "Nos cas clients",
-  description: `Nos cas clients | ${siteConfig.name}.`,
+  title: "Cas clients : agents IA et automatisations en PME",
+  path: "/cas-clients",
+  description:
+    "Agents IA pour un organisme de formation, SAV IA en hôtellerie, tests automatisés pour Crédit Agricole : nos projets livrés, le contexte et le résultat.",
 });
 
 const breadcrumbJsonLd = {
@@ -63,7 +66,7 @@ export default async function CasClients() {
         "@type": "Person",
         name: post.author || `Équipe ${siteConfig.name}`,
       },
-      image: post.image || siteConfig.logo,
+      image: getPublicImageUrl(post.image) || siteConfig.logo,
       description: post.description,
     })),
   };

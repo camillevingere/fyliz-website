@@ -1,17 +1,22 @@
-import { Icons } from "@/components/icons";
 import { siteConfig } from "@/lib/config";
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 
 export const runtime = "edge";
 
+// Couleurs de la landing (landing.module.scss).
+const paper = "#f7f3ec";
+const ink = "#17130f";
+const ink2 = "#4a433c";
+const orange = "#ff781a";
+
+const defaultTitle = "Ton équipe IA externalisée : agents IA et automatisation";
+
 export async function GET(req: NextRequest) {
-  const { searchParams } = req.nextUrl;
-  const postTitle = searchParams.get("title") || siteConfig.description;
-  const font = fetch(
+  const title = (req.nextUrl.searchParams.get("title") || defaultTitle).slice(0, 140);
+  const fontData = await fetch(
     new URL("../../public/assets/fonts/Inter-SemiBold.ttf", import.meta.url)
   ).then((res) => res.arrayBuffer());
-  const fontData = await font;
 
   return new ImageResponse(
     (
@@ -21,85 +26,46 @@ export async function GET(req: NextRequest) {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#fff",
-          // set background image if needed
-          backgroundImage: `url(${siteConfig.url}/og.png)`,
-          fontSize: 32,
-          fontWeight: 600,
+          justifyContent: "space-between",
+          padding: "72px 80px",
+          backgroundColor: paper,
+          color: ink,
+          borderBottom: `16px solid ${orange}`,
         }}
       >
-        <div
-          style={{
-            position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            top: "125px",
-          }}
-        >
-          <Icons.logo
+        <div style={{ display: "flex", alignItems: "center", fontSize: 36 }}>
+          <div
             style={{
-              width: "64px",
-              height: "64px",
+              width: 22,
+              height: 22,
+              borderRadius: 11,
+              backgroundColor: orange,
+              marginRight: 16,
             }}
           />
-
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              fontSize: "64px",
-              fontWeight: "600",
-              marginTop: "24px",
-              textAlign: "center",
-              width: "80%",
-              letterSpacing: "-0.05em", // Added tighter tracking
-            }}
-          >
-            {postTitle}
-          </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: "16px",
-              fontWeight: "500",
-              marginTop: "16px",
-              color: "#808080",
-            }}
-          >
-            {siteConfig.name}
-          </div>
+          {siteConfig.name}
         </div>
 
-        <img
-          src={`${siteConfig.url}/dashboard.png`}
-          width={900}
+        <div
           style={{
-            position: "relative",
-            bottom: -160,
-            aspectRatio: "auto",
-            border: "4px solid lightgray",
-            background: "lightgray",
-            borderRadius: 20,
-            zIndex: 1,
+            display: "flex",
+            fontSize: title.length > 70 ? 56 : 68,
+            lineHeight: 1.1,
+            letterSpacing: "-0.03em",
           }}
-        />
+        >
+          {title}
+        </div>
+
+        <div style={{ display: "flex", fontSize: 26, color: ink2 }}>
+          fyliz.com · Agents IA et automatisation pour les PME
+        </div>
       </div>
     ),
     {
       width: 1200,
       height: 630,
-      fonts: [
-        {
-          name: "Inter",
-          data: fontData,
-          style: "normal",
-        },
-      ],
+      fonts: [{ name: "Inter", data: fontData, style: "normal", weight: 600 }],
     }
   );
 }
