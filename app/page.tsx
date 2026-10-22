@@ -1,6 +1,7 @@
 import LandingPage from "@/components/homes/abonnement/LandingPage";
 import { subscription, subscriptionFaq } from "@/data/subscription";
 import { siteConfig } from "@/lib/config";
+import { ORG_ID, organizationNode, ref } from "@/lib/schema";
 import { constructMetadata } from "@/lib/utils";
 import type { Metadata } from "next";
 
@@ -14,42 +15,8 @@ export const metadata: Metadata = {
   title: { absolute: title },
 };
 
-const organizationId = `${siteConfig.url}/#organization`;
-const { office } = siteConfig.company;
-
 const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": organizationId,
-    name: siteConfig.name,
-    url: siteConfig.url,
-    logo: siteConfig.logo,
-    image: siteConfig.logo,
-    description,
-    email: siteConfig.links.email,
-    telephone: office.phoneHref.replace("tel:", ""),
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: office.street,
-      postalCode: office.postalCode,
-      addressLocality: office.city,
-      addressCountry: "FR",
-    },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "17:00",
-    },
-    areaServed: "FR",
-    founder: {
-      "@type": "Person",
-      name: "Camille Vingere",
-      sameAs: [siteConfig.links.linkedinUrl, "https://www.youtube.com/@camilleroydev"],
-    },
-    sameAs: ["https://www.youtube.com/@camilleroydev"],
-  },
+  { "@context": "https://schema.org", ...organizationNode(description) },
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -58,7 +25,7 @@ const jsonLd = [
     description,
     inLanguage: "fr",
     url: siteConfig.url,
-    publisher: { "@id": organizationId },
+    publisher: ref(ORG_ID),
   },
   {
     "@context": "https://schema.org",
@@ -67,7 +34,7 @@ const jsonLd = [
     serviceType: "Équipe IA externalisée : agents IA et automatisation des processus",
     description:
       "Une équipe d'experts n8n et IA externalisée qui conçoit, déploie et maintient les automatisations de ton entreprise, sans engagement.",
-    provider: { "@id": organizationId },
+    provider: ref(ORG_ID),
     areaServed: "FR",
     offers: {
       "@type": "Offer",

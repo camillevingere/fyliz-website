@@ -1,6 +1,7 @@
 import landing from "@/components/homes/abonnement/landing.module.scss";
 import { ArrowRight } from "@/components/homes/abonnement/icons";
 import Image from "next/image";
+import type { RelatedLink } from "@/lib/internal-links";
 import Link from "next/link";
 import { Crumbs, type Crumb } from "./PageHead";
 import SiteShell from "./SiteShell";
@@ -18,6 +19,7 @@ type ArticleViewProps = {
   html: string;
   back: { href: string; label: string };
   actions?: React.ReactNode;
+  related?: { title: string; links: RelatedLink[] }[];
 };
 
 // Gabarit commun des contenus en base (blog, cas clients, workflows n8n).
@@ -33,6 +35,7 @@ export default function ArticleView({
   html,
   back,
   actions,
+  related = [],
 }: ArticleViewProps) {
   return (
     <SiteShell>
@@ -78,6 +81,28 @@ export default function ArticleView({
             </figure>
 
             <div className={s.prose} dangerouslySetInnerHTML={{ __html: html }} />
+
+            {/* Liens en texte : l'ancre est le titre de la page cible, donc son mot-clé. */}
+            {related
+              .filter((group) => group.links.length > 0)
+              .map((group) => (
+                <section key={group.title} className={s.related}>
+                  <h2>{group.title}</h2>
+                  <ul>
+                    {group.links.map((link) => (
+                      <li key={link.href}>
+                        <Link href={link.href}>
+                          <strong>
+                            {link.title}
+                            <ArrowRight />
+                          </strong>
+                          {link.excerpt && <span>{link.excerpt}</span>}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
 
             <div className={s.articleFoot}>
               <Link href={back.href} className={landing.btnGhost}>

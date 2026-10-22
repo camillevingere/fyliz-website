@@ -1,7 +1,10 @@
 import ArticleView from "@/components/site/ArticleView";
-import { getCustomerCasePosts, getPost, getPostById } from "@/lib/blog";
+import { getBlogPosts, getCustomerCasePosts, getPost, getPostById } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 import { getPublicImageUrl } from "@/lib/image-utils";
+import { relatedLinks } from "@/lib/internal-links";
+import { extractPostFaq } from "@/lib/post-faq";
+import { authorNode, ORG_ID, organizationNode, ref } from "@/lib/schema";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -96,30 +99,49 @@ export default async function BlogPost({
   const imageUrl = getPublicImageUrl(post.metadata.image || null);
   const { metadata } = post;
 
+  const postUrl = `${siteConfig.url}/cas-clients/${metadata.slug}`;
+  // Les questions viennent du corps rendu, jamais d'une liste tenue à part.
+  const faq = extractPostFaq(post.source);
+
   const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: metadata.title,
-    description: metadata.description,
-    image: imageUrl,
-    datePublished: metadata.publishedAt,
-    author: {
-      "@type": "Person",
-      name: metadata.author || `Équipe ${siteConfig.name}`,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      logo: {
-        "@type": "ImageObject",
-        url: siteConfig.logo,
+    "@graph": [
+      organizationNode(),
+      {
+        "@type": "Article",
+        "@id": `${postUrl}#article`,
+        headline: metadata.title,
+        description: metadata.description,
+        image: imageUrl,
+        datePublished: metadata.publishedAt,
+        dateModified: metadata.updatedAt || metadata.publishedAt,
+        url: postUrl,
+        inLanguage: "fr",
+        mainEntityOfPage: postUrl,
+        author: authorNode(metadata.author),
+        publisher: ref(ORG_ID),
       },
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${siteConfig.url}/cas-clients/${metadata.slug}`,
-    },
+      ...(faq.length > 0
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `${postUrl}#faq`,
+              mainEntity: faq.map((item) => ({
+                "@type": "Question",
+                name: item.question,
+                acceptedAnswer: { "@type": "Answer", text: item.answer },
+              })),
+            },
+          ]
+        : []),
+    ],
   };
+
+  const [samePosts, otherPosts] = await Promise.all([getCustomerCasePosts("fr"), getBlogPosts("fr")]);
+  const related = [
+    { title: "D'autres projets livrés", links: relatedLinks(metadata, samePosts, "/cas-clients") },
+    { title: "Pour aller plus loin", links: relatedLinks(metadata, otherPosts, "/blog", 2) },
+  ];
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -169,6 +191,7 @@ export default async function BlogPost({
         cover={imageUrl || metadata.image || "/images/default-blog.webp"}
         html={post.source}
         back={{ href: "/cas-clients", label: "Tous les cas clients" }}
+        related={related}
       />
     </>
   );

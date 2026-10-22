@@ -14,6 +14,7 @@ export type Post = {
   id: string;
   title: string;
   publishedAt: string;
+  updatedAt?: string;
   description: string;
   author: string;
   slug: string;
@@ -109,6 +110,7 @@ export async function getPost(slug: string, type = "articles") {
       title: article.title,
       description: article.description || "",
       publishedAt: article.published_at || article.created_at,
+      updatedAt: article.updated_at || article.published_at || article.created_at,
       author: article.author || "",
       keywords: article.keywords || [],
       tags: article.tags || [],
@@ -152,6 +154,7 @@ async function getAllPosts(type = "articles") {
         title: article.title,
         description: article.description || "",
         publishedAt: article.published_at || article.created_at,
+        updatedAt: article.updated_at || article.published_at || article.created_at,
         author: article.author || "",
         keywords: article.keywords || [],
         tags: article.tags || [],
@@ -267,6 +270,7 @@ export async function getPostById(id: string, type = "articles") {
       title: article.title,
       description: article.description || "",
       publishedAt: article.published_at || article.created_at,
+      updatedAt: article.updated_at || article.published_at || article.created_at,
       author: article.author || "",
       keywords: article.keywords || [],
       tags: article.tags || [],
