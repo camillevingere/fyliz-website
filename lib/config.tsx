@@ -43,7 +43,7 @@ export const siteConfig = {
   ctaHeader: {
     title: "Automatisez votre business",
     buttonText: "Automatisez votre business",
-    buttonLink: "https://cdyp.fr/auto-free",
+    buttonLink: "https://cdyp.fr/kit",
   },
   brand: {
     primary: "#ff781a",

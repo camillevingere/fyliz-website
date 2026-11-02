@@ -1,7 +1,7 @@
-"use client";
-import posthog from "posthog-js";
 import type { ReactNode } from "react";
 
+// Le clic est suivi par l'écouteur global de app/posthog-provider.tsx,
+// qui lit le nom du CTA dans data-cta.
 export default function CtaLink({
   href,
   ctaName,
@@ -14,16 +14,7 @@ export default function CtaLink({
   children: ReactNode;
 }) {
   return (
-    <a
-      href={href}
-      className={className}
-      onClick={() => {
-        posthog.capture("cta_clicked", {
-          cta_name: ctaName,
-          page: window.location.pathname,
-        });
-      }}
-    >
+    <a href={href} className={className} data-cta={ctaName}>
       {children}
     </a>
   );

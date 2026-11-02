@@ -5,7 +5,6 @@ import { openMobileMenu } from "@/utlis/toggleMobileMenu";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import posthog from "posthog-js";
 import { useEffect, useState } from "react";
 
 export default function Header8() {
@@ -120,12 +119,7 @@ export default function Header8() {
                 <Link
                   className="btn btn-md dark:text-white border border-dark dark:border-white dark:border-opacity-15 dark:bg-gradient-45 from-tertiary to-transparent fs-5 lg:px-3 d-none lg:d-inline-flex rounded-pill"
                   href={siteConfig.ctaHeader.buttonLink}
-                  onClick={() => {
-                    posthog.capture("cta_clicked", {
-                      cta_name: "Consultation stratégique (offerte)",
-                      page: window.location.pathname,
-                    });
-                  }}
+                  data-cta="header_automatisez"
                 >
                   {siteConfig.ctaHeader.buttonText}
                 </Link>

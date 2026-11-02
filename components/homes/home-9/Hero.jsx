@@ -1,7 +1,6 @@
 "use client";
 import { siteConfig } from "@/lib/config";
 import Image from "next/image";
-import posthog from "posthog-js";
 import { useFeatureFlagVariantKey } from "posthog-js/react";
 
 export default function Hero() {
@@ -123,12 +122,7 @@ export default function Hero() {
                 <div className="mb-2 lg:mb-3" style={{ width: "100%" }}>
                   <a
                     href={siteConfig.cta.buttonLink}
-                    onClick={() => {
-                      posthog.capture("cta_clicked", {
-                        cta_name: "Consultation stratégique (offerte)",
-                        page: window.location.pathname,
-                      });
-                    }}
+                    data-cta="hero_consultation"
                     className="hero-cta-btn btn btn-md xl:btn-lg btn-primary border border-dark dark:border-white dark:border-opacity-15 rounded-pill"
                   >
                     <span className="hero-cta-text">

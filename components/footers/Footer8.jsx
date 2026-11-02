@@ -3,7 +3,6 @@ import { footerLinks6 } from "@/data/footer";
 import { siteConfig } from "@/lib/config";
 import Image from "next/image";
 import Link from "next/link";
-import posthog from "posthog-js";
 
 export default function Footer8() {
   return (
@@ -20,12 +19,7 @@ export default function Footer8() {
                         <a
                           href={siteConfig.cta.buttonLink}
                           className="btn btn-md xl:btn-lg btn-primary border border-dark dark:border-white dark:border-opacity-15 px-3 lg:px-5 w-auto rounded-pill"
-                          onClick={() => {
-                            posthog.capture("cta_clicked", {
-                              cta_name: "Consultation stratégique (offerte)",
-                              page: window.location.pathname,
-                            });
-                          }}
+                          data-cta="footer_consultation"
                         >
                           <span>{siteConfig.cta.buttonText}</span>
                         </a>
