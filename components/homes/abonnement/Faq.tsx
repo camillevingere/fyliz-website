@@ -14,7 +14,8 @@ export default function Faq() {
             FAQ
           </span>
           <h2 className={s.h2}>
-            Tes questions, <span className={s.serif}>nos réponses.</span>
+            Agence d&apos;automatisation IA :{" "}
+            <span className={s.serif}>tes questions.</span>
           </h2>
           <p className={s.lead}>Une autre question ? Le plus simple, c&apos;est d&apos;en parler.</p>
           <CtaLink

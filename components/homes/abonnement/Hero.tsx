@@ -27,9 +27,9 @@ export default function Hero() {
           </span>
 
           <h1 className={s.h1} data-reveal style={{ "--delay": 80 } as React.CSSProperties}>
-            Ton équipe IA externalisée.
+            Agence d&apos;automatisation IA :
             <br />
-            <span className={s.serif}>Tes idées deviennent du&nbsp;chiffre.</span>
+            <span className={s.serif}>ton équipe IA externalisée.</span>
           </h1>
 
           <p className={s.lead} data-reveal style={{ "--delay": 160 } as React.CSSProperties}>

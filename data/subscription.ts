@@ -5,10 +5,10 @@ export const subscription = {
 };
 
 export const navLinks = [
-  { href: "/#automatisations", label: "Ce qu'on automatise" },
-  { href: "/#methode", label: "Méthode" },
-  { href: "/#cas-clients", label: "Cas clients" },
-  { href: "/#tarif", label: "Tarif" },
+  { href: "/agence-n8n", label: "Agence n8n" },
+  { href: "/solutions-automatisation-ia", label: "Cas d'usage" },
+  { href: "/cas-clients", label: "Cas clients" },
+  { href: "/tarifs", label: "Tarifs" },
   { href: "/blog", label: "Blog" },
 ];
 
@@ -161,7 +161,7 @@ export const tools = [
 
 export const pricingFeatures = [
   "Demandes d'automatisation illimitées",
-  "Agents IA & workflows n8n sur mesure",
+  "Agents IA, applications et automatisations sur mesure",
   "Maintenance et corrections incluses",
   "Point mensuel de priorisation",
   "Documentation de chaque livrable",

@@ -648,7 +648,8 @@ export default function AgenceN8nPage() {
                   sans engagement, construction, maintenance et évolutions comprises.
                   Pour un besoin unique, on propose aussi un projet au forfait sur
                   devis. Les logiciels et l&apos;IA restent payés sur tes propres
-                  comptes, ce qui te garantit d&apos;en rester propriétaire.
+                  comptes, ce qui te garantit d&apos;en rester propriétaire. Le détail
+                  est sur notre page <Link href="/tarifs">tarifs</Link>.
                 </p>
 
                 <h3>Ce qui est inclus dans l&apos;abonnement</h3>
@@ -969,7 +970,7 @@ export default function AgenceN8nPage() {
                 ))}
               </div>
 
-              <div className={s.prose}>
+              <div className={`${s.prose} ${s.afterFaq}`}>
                 <h2 id="a-retenir">Agence n8n Fyliz : l&apos;essentiel</h2>
                 <ul>
                   <li>

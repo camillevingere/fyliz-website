@@ -5,9 +5,9 @@ import { ORG_ID, organizationNode, ref } from "@/lib/schema";
 import { constructMetadata } from "@/lib/utils";
 import type { Metadata } from "next";
 
-const title = "Équipe IA externalisée : agents IA & automatisation | Fyliz";
+const title = "Agence automatisation IA : ton équipe IA externalisée | Fyliz";
 const description =
-  "Fyliz, ton équipe IA externalisée : des experts n8n et IA conçoivent, déploient et maintiennent tes agents IA et automatisations. Sans recruter, sans engagement.";
+  "Fyliz, agence d'automatisation IA : ton équipe IA externalisée conçoit, déploie et maintient tes agents IA, applications et automatisations sur mesure. 3 000 € HT/mois, sans engagement.";
 
 export const metadata: Metadata = {
   ...constructMetadata({ title, description, path: "/" }),
@@ -30,8 +30,8 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Équipe IA externalisée",
-    serviceType: "Équipe IA externalisée : agents IA et automatisation des processus",
+    name: "Agence d'automatisation IA",
+    serviceType: "Agence d'automatisation IA : équipe IA externalisée, agents IA et automatisation des processus",
     description:
       "Une équipe d'experts n8n et IA externalisée qui conçoit, déploie et maintient les automatisations de ton entreprise, sans engagement.",
     provider: ref(ORG_ID),

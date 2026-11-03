@@ -826,6 +826,15 @@
     margin-bottom: 24px;
   }
 
+  // Le résumé qui suit la FAQ : `.prose > :first-child` annule la marge de son titre.
+  .afterFaq {
+    margin-top: 64px;
+
+    @media (min-width: 1024px) {
+      margin-top: 96px;
+    }
+  }
+
   .pageEnd {
     height: 96px;
 

@@ -21,7 +21,8 @@ export default function Automations() {
             Ce qu&apos;on automatise
           </span>
           <h2 className={s.h2}>
-            Tout ce qui fait perdre du temps <span className={s.serif}>à tes équipes.</span>
+            L&apos;IA automatise ce qui fait perdre du temps{" "}
+            <span className={s.serif}>à tes équipes.</span>
           </h2>
           <p className={s.lead}>
             Ventes, finance, opérations, support : ton équipe IA externalisée
@@ -64,8 +65,9 @@ export default function Automations() {
         </ul>
 
         <p className={s.toolsNote}>
-          On choisit l&apos;outil selon ton problème, et c&apos;est souvent n8n : il tourne sur
-          tes comptes et se branche à tes agents IA. Découvre comment on travaille en{" "}
+          On choisit l&apos;outil selon ton problème : du code sur mesure, Claude déployé
+          dans tes équipes, ou n8n quand c&apos;est le plus simple. Découvre comment on
+          travaille en{" "}
           <Link href="/agence-n8n">agence n8n pour PME</Link>.
         </p>
       </div>

@@ -1,5 +1,6 @@
 import { pricingFeatures, subscription } from "@/data/subscription";
 import { siteConfig } from "@/lib/config";
+import Link from "next/link";
 import CtaLink from "./CtaLink";
 import { ArrowRight, Check } from "./icons";
 import s from "./landing.module.scss";
@@ -17,7 +18,8 @@ export default function Pricing() {
             Un prix. <span className={s.serif}>Tout compris.</span>
           </h2>
           <p className={s.lead}>
-            Moins cher qu&apos;un recrutement, sans les délais ni l&apos;engagement.
+            Moins cher qu&apos;un recrutement, sans les délais ni l&apos;engagement.{" "}
+            <Link href="/tarifs">Voir le détail des tarifs</Link>.
           </p>
         </div>
 

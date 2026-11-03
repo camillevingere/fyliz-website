@@ -126,7 +126,8 @@
 
 .h1 {
   composes: display;
-  font-size: clamp(44px, 6.6vw, 84px);
+  // « d'automatisation » doit tenir dans la colonne du hero, à côté de la carte animée.
+  font-size: clamp(38px, 5.2vw, 68px);
 }
 
 .h2 {
