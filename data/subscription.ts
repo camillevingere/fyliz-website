@@ -5,6 +5,7 @@ export const subscription = {
 };
 
 export const navLinks = [
+  { href: "/agence-agents-ia", label: "Agents IA" },
   { href: "/agence-n8n", label: "Agence n8n" },
   { href: "/solutions-automatisation-ia", label: "Cas d'usage" },
   { href: "/cas-clients", label: "Cas clients" },

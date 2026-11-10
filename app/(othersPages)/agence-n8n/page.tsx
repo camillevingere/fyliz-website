@@ -481,7 +481,9 @@ export default function AgenceN8nPage() {
                   <Link href="/blog/creer-un-agent-ia-rag-sur-n8n-guide-complet">
                     créer un agent IA RAG sur n8n
                   </Link>
-                  .
+                  . Quand l&apos;agent demande plus qu&apos;un workflow, on le code sur
+                  mesure : voir notre{" "}
+                  <Link href="/agence-agents-ia">agence agents IA</Link>.
                 </p>
 
                 <h3>Migration de Make ou Zapier vers n8n</h3>

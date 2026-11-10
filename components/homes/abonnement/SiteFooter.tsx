@@ -7,6 +7,7 @@ const columns = [
   {
     title: "Offre",
     links: [
+      { href: "/agence-agents-ia", label: "Agence agents IA" },
       { href: "/agence-n8n", label: "Agence n8n" },
       { href: "/#methode", label: "Méthode" },
       { href: "/tarifs", label: "Tarifs" },

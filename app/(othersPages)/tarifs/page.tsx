@@ -449,7 +449,9 @@ export default function TarifsPage() {
                 </ul>
                 <p>
                   Quand n8n est l&apos;outil le plus simple, on l&apos;utilise : voir
-                  notre page <Link href="/agence-n8n">agence n8n</Link>.
+                  notre page <Link href="/agence-n8n">agence n8n</Link>. Pour un agent
+                  qui répond, relance ou agit dans tes outils, voir notre{" "}
+                  <Link href="/agence-agents-ia">agence agents IA</Link>.
                 </p>
 
                 <h2 id="comparatif">Abonnement, projet ou recrutement : que choisir ?</h2>

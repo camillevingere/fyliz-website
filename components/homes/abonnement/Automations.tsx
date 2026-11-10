@@ -66,9 +66,9 @@ export default function Automations() {
 
         <p className={s.toolsNote}>
           On choisit l&apos;outil selon ton problème : du code sur mesure, Claude déployé
-          dans tes équipes, ou n8n quand c&apos;est le plus simple. Découvre comment on
-          travaille en{" "}
-          <Link href="/agence-n8n">agence n8n pour PME</Link>.
+          dans tes équipes, ou n8n quand c&apos;est le plus simple. Découvre nos{" "}
+          <Link href="/agence-agents-ia">agents IA sur mesure</Link> et comment on
+          travaille en <Link href="/agence-n8n">agence n8n pour PME</Link>.
         </p>
       </div>
     </section>

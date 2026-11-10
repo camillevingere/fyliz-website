@@ -22,6 +22,7 @@ blog qui documente l'automatisation IA et n8n à partir de projets réels.
 
 ## Offre
 - [Équipe IA externalisée](${siteConfig.url}): L'offre, la méthode, le tarif de 3 000 € HT/mois et la FAQ.
+- [Agence agents IA](${siteConfig.url}/agence-agents-ia): Agents IA codés sur mesure pour PME, branchés sur le CRM, les e-mails et WhatsApp, maintenus en production. 3 000 € HT/mois sans engagement.
 - [Agence n8n en France](${siteConfig.url}/agence-n8n): Création, hébergement et maintenance de workflows n8n et d'agents IA pour les PME, démarrage sous 48 h.
 - [Ce qu'on automatise](${siteConfig.url}/solutions-automatisation-ia): Ventes, admin et finance, opérations, support : les automatisations et agents IA que Fyliz conçoit et maintient.
 `;
