@@ -25,6 +25,7 @@ function latestUpdate(...collections: { updatedAt?: string | Date; publishedAt: 
 const editedAt = {
   home: new Date("2026-11-02"),
   agenceN8n: new Date("2026-11-02"),
+  agenceAgentsIa: new Date("2026-11-10"),
   tarifs: new Date("2026-11-02"),
   solutions: new Date("2026-10-22"),
   legal: new Date("2025-12-30"),
@@ -58,6 +59,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: `${baseUrl}/agence-n8n`,
       lastModified: editedAt.agenceN8n,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/agence-agents-ia`,
+      lastModified: editedAt.agenceAgentsIa,
       changeFrequency: "monthly" as const,
       priority: 0.9,
     },
